@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<title>全區域業績分析報告 — 2026 H1 直客銷售</title>
+<title>2026 全年業績分析報告 — 直客銷售</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   :root{--primary:#1a3a5c;--danger:#e53e3e;--warn:#ed8936;--success:#38a169;--bg:#f5f7fa;--card:#fff;--text:#2d3748;--war:#c53030}
@@ -13,6 +13,9 @@
   h1{color:var(--primary);font-size:26px;margin-bottom:8px}
   .meta{color:#718096;font-size:13px;display:flex;gap:24px;flex-wrap:wrap}
   .meta strong{color:var(--text)}
+  .nav{display:flex;gap:8px;margin:18px 0 28px;flex-wrap:wrap}
+  .nav a{padding:8px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:6px;text-decoration:none;color:var(--primary);font-size:13px;font-weight:500;transition:all .2s}
+  .nav a:hover{background:var(--primary);color:#fff}
   .hero{background:linear-gradient(135deg,#1a3a5c 0%,#2c5282 100%);color:#fff;padding:26px 30px;border-radius:10px;margin-bottom:24px}
   .hero h2{color:#fff;border:none;font-size:20px;margin-bottom:12px}
   .hero p{font-size:14.5px;line-height:1.85}
@@ -26,9 +29,11 @@
   .card .value{font-size:24px;font-weight:700;color:var(--primary)}
   .card.danger .value{color:var(--danger)}
   .card.success .value{color:var(--success)}
+  .card.warn .value{color:var(--warn)}
   .card .sub{font-size:11.5px;color:#a0aec0;margin-top:3px}
   .section{background:var(--card);border-radius:8px;padding:24px;margin-bottom:22px;box-shadow:0 2px 4px rgba(0,0,0,0.06)}
-  .section h2{color:var(--primary);font-size:19px;margin-bottom:8px}
+  .section h2{color:var(--primary);font-size:19px;margin-bottom:8px;scroll-margin-top:20px}
+  .section h3{color:var(--primary);font-size:16px;margin:18px 0 10px}
   .section .lead{color:#4a5568;font-size:13.5px;margin-bottom:14px}
   .chart-box{position:relative;height:380px;margin:12px 0 8px}
   table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
@@ -57,7 +62,7 @@
   .cat-card.gray h4{color:#4a5568}
   .cat-card .area-list{font-size:13px;color:#4a5568;line-height:1.7}
   .cat-card .area-list strong{color:#2d3748}
-  .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+  .scenario-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
   .scenario{padding:16px;border-radius:8px;border:2px solid #e2e8f0}
   .scenario.likely{border-color:var(--primary);background:#ebf8ff}
   .scenario h4{color:var(--primary);margin-bottom:6px;font-size:14px}
@@ -70,275 +75,334 @@
   .footer strong{color:var(--text)}
   .footer-meta{display:flex;justify-content:space-between;margin-top:10px;font-size:11px}
   .data-warning{background:#fff5f5;border-left:4px solid var(--danger);padding:12px 16px;margin:10px 0;border-radius:4px;font-size:13px}
-  @media(max-width:900px){.scenario-grid{grid-template-columns:1fr}.category-grid{grid-template-columns:1fr}}
+  .target-tracker{background:#fff;border:2px solid var(--primary);border-radius:10px;padding:20px;margin:18px 0}
+  .target-tracker h3{margin-bottom:14px}
+  .progress-bar{width:100%;background:#e2e8f0;border-radius:20px;height:28px;position:relative;overflow:hidden;margin:8px 0}
+  .progress-fill{height:100%;background:linear-gradient(90deg,#38a169,#319795);display:flex;align-items:center;justify-content:flex-end;padding-right:12px;color:#fff;font-weight:700;font-size:13px;transition:width 1s}
+  .progress-fill.warn{background:linear-gradient(90deg,#ed8936,#dd6b20)}
+  .progress-fill.danger{background:linear-gradient(90deg,#e53e3e,#c53030)}
+  @media(max-width:900px){.scenario-grid{grid-template-columns:repeat(2,1fr)}.category-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="container">
 
 <div class="header">
-<h1>全區域業績分析報告 — 2026 H1 直客銷售</h1>
+<h1>2026 全年業績分析報告 — 直客銷售</h1>
 <div class="meta">
-  <span><strong>對比期間：</strong>2026/1/5 ~ 6/1（21週）vs 2025同期（25週）</span>
-  <span><strong>分析範圍：</strong>直客銷售全部 14 個大區</span>
+  <span><strong>資料截至：</strong>2026/6/1</span>
+  <span><strong>對比基準：</strong>2025年同期</span>
+  <span><strong>分析範圍：</strong>直客銷售全部14個大區（H1實際 + H2目前已預訂）</span>
   <span><strong>外部事件：</strong><span class="war-tag">美伊戰爭 2026/2/28爆發</span></span>
 </div>
 </div>
 
-<div class="hero">
+<div class="nav">
+<a href="#summary">執行摘要</a>
+<a href="#target">TARGET達成度</a>
+<a href="#h1">H1分析</a>
+<a href="#h2">H2分析</a>
+<a href="#regions">各區H1+H2對比</a>
+<a href="#categories">區域分類</a>
+<a href="#scenarios">全年情境推估</a>
+<a href="#actions">行動計畫</a>
+</div>
+
+<div class="hero" id="summary">
 <h2>執行摘要</h2>
 <p>
-2026 H1 直客銷售總體 <span class="highlight">+6.1%（+184人）</span>，但表面達標掩蓋了結構性風險：
+2026 截至 6/1 直客銷售總累計 <span class="highlight">4,695 人</span>（H1 實際 3,182 + H2 已預訂 1,513），vs 2025 全年 4,568 人成長 <span class="highlight">+2.8%</span>。但對照公司目標：
 <br><br>
-<strong>① 整體 +184 人但兩極分化嚴重：</strong>中國 +376、美洲 +33、遊輪 +38 三大區域共貢獻 +447 人；歐洲四區合計則少 329 人，跨區互補才造就帳面達標。
+<strong>① TARGET一階 6,185 完成 75.9%，缺口 1,490人；二階 6,533 完成 71.9%，缺口 1,838人。</strong>由於旅遊業 H2 預訂提前期長，現在報表上的 H2 數字已接近全年最終結果，後續成長空間有限。
 <br>
-<strong>② 戰爭主要重災區為歐洲與中東/紐澳/非洲/遊輪：</strong>戰前年比為正、戰後失速，估計戰爭外部因素總共吃掉直客 <span class="highlight">約 500 人</span>。
+<strong>② H1表面成長 +6.1% 主要靠中國暴衝（+196%）撐起，但 H2 中國轉跌 -49%</strong>，全年中國貢獻被自己吃回去，<span class="highlight">扣除中國後直客全年實際為負成長</span>。
 <br>
-<strong>③ 真正的成長引擎是中國市場（+196%）：</strong>扣除中國後直客 H1 為負成長 -192 人，<span class="highlight">過度依賴單一市場是最大風險</span>。
+<strong>③ 戰爭重災在 H1：</strong>戰前週均進件 +83.7人/週，戰後暴跌至 +18.8 人/週，H1 估計被戰爭吃掉約 1,353 人；H2 戰爭影響延續但部分區域出現復甦訊號。
 <br>
-<strong>④ 北歐、南亞、東南亞屬結構性衰退：</strong>戰前年比就已大幅下滑，與戰爭關聯低，須另案檢討產品與通路問題。
+<strong>④ H2 出現新成長引擎：</strong><span class="highlight">遊輪 +300%、日本Q4 +121%、東歐 +46.5%</span>，是下半年可加碼的方向。
 <br><br>
-<strong>⚠️ 對 TARGET 達標的客觀判讀：</strong>2026 公司目標一階 6,185 / 二階 6,533 人。H1 完成度 51.4%（一階）看似在軌道上，但旅遊業 H1 為旺季（2025 占全年 65.6%），<span class="highlight">實際進度已嚴重落後</span>。按季節性推估全年約落在 4,800-5,000 人，<span class="highlight">vs 第一階目標將短缺 1,200~1,400 人</span>。
-<br><br>
-<strong>建議：</strong>(1) 正式申請目標重新檢視，以戰爭為不可抗力外部因素提請下修；(2) 結構性衰退三區（北歐／南亞／東南亞）獨立檢討；(3) 下半年資源集中於成長動能四區（中國／美洲／遊輪／非洲）；(4) 中西歐、紐澳等戰前強勢區於戰爭情勢趨緩後優先加碼。
+<strong>建議：</strong>(1) 正式向公司高層呈報目標達成困難度，以戰爭為不可抗力外部因素說明；(2) 下半年資源集中遊輪 / 日本Q4 / 東歐三大新引擎；(3) 北歐 / 南亞 / 東南亞結構性衰退獨立檢討；(4) 中國市場H2轉弱原因需釐清，避免影響2027規劃。
 </p>
 </div>
 
-<div class="summary">
-<div class="card success"><div class="label">2026 H1 直客銷售</div><div class="value">3,182</div><div class="sub">vs 2025: +184人 (+6.1%)</div></div>
-<div class="card warn"><div class="label">vs 公司目標一階6,185</div><div class="value">51.4%</div><div class="sub">需週均+100人,難達標</div></div>
-<div class="card warn"><div class="label">直客占全公司比重</div><div class="value">13.6%</div><div class="sub">較去年 14.5% 下滑 0.9pp</div></div>
-<div class="card danger"><div class="label">戰爭推估總損失</div><div class="value">約 -500人</div><div class="sub">歐洲、中東、紐澳、非洲、遊輪合計</div></div>
-<div class="card"><div class="label">扣除中國後直客</div><div class="value warn">-192人</div><div class="sub">過度依賴中國市場</div></div>
+<div class="section" id="target">
+<h2>1. 公司 TARGET 達成度即時看板</h2>
+<div class="lead">基於目前已預訂的 4,695 人，對照公司一階 6,185 / 二階 6,533 目標。</div>
+
+<div class="target-tracker">
+<h3 style="color:var(--primary)">📊 第一階目標 6,185 人</h3>
+<div class="progress-bar">
+<div class="progress-fill warn" style="width:75.9%">75.9%</div>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:13px;color:#4a5568;margin-top:8px">
+<span>目前累計 <strong>4,695</strong> 人</span>
+<span>缺口 <strong style="color:var(--danger)">1,490</strong> 人</span>
+<span>目標 <strong>6,185</strong> 人</span>
+</div>
 </div>
 
-<div class="section">
-<h2>1. 全區域 H1 對比總覽</h2>
-<div class="lead">14 個大區依本年人數高低排列。⚠️ 為年比衰退、🚀 為高成長區域。</div>
+<div class="target-tracker">
+<h3 style="color:var(--primary)">🎯 第二階目標 6,533 人</h3>
+<div class="progress-bar">
+<div class="progress-fill danger" style="width:71.9%">71.9%</div>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:13px;color:#4a5568;margin-top:8px">
+<span>目前累計 <strong>4,695</strong> 人</span>
+<span>缺口 <strong style="color:var(--danger)">1,838</strong> 人</span>
+<span>目標 <strong>6,533</strong> 人</span>
+</div>
+</div>
+
+<div class="data-warning" style="margin-top:18px">
+<div style="font-weight:700;color:var(--danger);margin-bottom:6px;font-size:14px">⚠️ 重要：H2 預訂進度已接近最終結果</div>
+2025年同期（6/2）H2 預訂累計 1,570 人 = 2025 年實際全年 H2（1,570 人）。<br>
+代表 <strong>旅遊業到 6 月初時 H2 訂單已大致進件完畢</strong>，後續雖會再增加但幅度小。<br>
+因此目前報表的 4,695 人 <strong>已是 2026 全年的接近最終值</strong>，後續預期落在 4,700~4,900 人區間。
+</div>
+</div>
+
+<div class="section" id="h1">
+<h2>2. H1 (1-6月) 分析</h2>
+<div class="summary" style="margin-top:14px">
+<div class="card success"><div class="label">H1 直客銷售</div><div class="value">3,182</div><div class="sub">vs 2025: +184人 (+6.1%)</div></div>
+<div class="card warn"><div class="label">直客占全公司比重</div><div class="value">13.6%</div><div class="sub">較去年 14.5% 下滑 0.9pp</div></div>
+<div class="card danger"><div class="label">戰爭推估造成損失</div><div class="value">約 -1,353人</div><div class="sub">全直客戰前週均速度推估</div></div>
+<div class="card"><div class="label">扣除中國後H1直客</div><div class="value warn">-192人</div><div class="sub">過度依賴中國市場</div></div>
+</div>
+
+<h3>H1 戰爭衝擊量化</h3>
+<div class="info-box">
+<div class="title">用戰前週均速度推估法計算</div>
+戰前（1/5~2/23）全直客週均進件 <strong>+83.7人/週</strong>，戰後（4/7~6/1穩定期）週均暴跌至 <strong>+18.8人/週</strong>，速度衰退 <strong>-77.6%</strong>。<br>
+若無戰爭，6/1 應達 4,535 人，實際 3,182 人 → <strong>戰爭推估造成損失約 1,353 人</strong>。
+</div>
+
+<h3>H1 各區重點</h3>
 <table>
-<thead><tr><th>大區</th><th style="text-align:right">2025 H1</th><th style="text-align:right">2026 H1</th><th style="text-align:right">增減人數</th><th style="text-align:right">年增率</th><th>分類</th></tr></thead>
+<thead><tr><th>大區</th><th style="text-align:right">2025 H1</th><th style="text-align:right">2026 H1</th><th style="text-align:right">年比</th><th>性質</th></tr></thead>
 <tbody>
-<tr><td><strong>中國</strong></td><td style="text-align:right">192</td><td style="text-align:right">568</td><td style="text-align:right" class="good">+376</td><td style="text-align:right" class="good">+195.8% 🚀</td><td>成長動能（主要引擎）</td></tr>
-<tr><td><strong>南歐</strong></td><td style="text-align:right">690</td><td style="text-align:right">512</td><td style="text-align:right" class="warn">-178</td><td style="text-align:right" class="warn">-25.8% ⚠️</td><td>戰爭加劇衰退</td></tr>
-<tr><td><strong>日本</strong></td><td style="text-align:right">454</td><td style="text-align:right">475</td><td style="text-align:right" class="good">+21</td><td style="text-align:right" class="good">+4.6%</td><td>穩定（資料定義變動需釐清）</td></tr>
-<tr><td><strong>東歐</strong></td><td style="text-align:right">408</td><td style="text-align:right">351</td><td style="text-align:right" class="warn">-57</td><td style="text-align:right" class="warn">-14.0% ⚠️</td><td>戰爭加劇衰退</td></tr>
-<tr><td><strong>中西歐</strong></td><td style="text-align:right">315</td><td style="text-align:right">314</td><td style="text-align:right">-1</td><td style="text-align:right">-0.3%</td><td>戰爭重災（戰前年比+41.5%）</td></tr>
-<tr><td><strong>紐澳</strong></td><td style="text-align:right">175</td><td style="text-align:right">182</td><td style="text-align:right" class="good">+7</td><td style="text-align:right" class="good">+4.0%</td><td>戰爭加劇（戰前強勢成長）</td></tr>
-<tr><td><strong>北歐</strong></td><td style="text-align:right">249</td><td style="text-align:right">156</td><td style="text-align:right" class="warn">-93</td><td style="text-align:right" class="warn">-37.3% ⚠️</td><td><strong style="color:var(--war)">結構性衰退（與戰爭關聯低）</strong></td></tr>
-<tr><td><strong>遊輪</strong></td><td style="text-align:right">101</td><td style="text-align:right">139</td><td style="text-align:right" class="good">+38</td><td style="text-align:right" class="good">+37.6%</td><td>成長動能（戰前已高速）</td></tr>
-<tr><td><strong>非洲</strong></td><td style="text-align:right">74</td><td style="text-align:right">89</td><td style="text-align:right" class="good">+15</td><td style="text-align:right" class="good">+20.3%</td><td>穩定成長</td></tr>
-<tr><td><strong>中東</strong></td><td style="text-align:right">100</td><td style="text-align:right">77</td><td style="text-align:right" class="warn">-23</td><td style="text-align:right" class="warn">-23.0% ⚠️</td><td>戰爭重災</td></tr>
-<tr><td><strong>東南亞</strong></td><td style="text-align:right">96</td><td style="text-align:right">70</td><td style="text-align:right" class="warn">-26</td><td style="text-align:right" class="warn">-27.1% ⚠️</td><td><strong style="color:var(--war)">結構性衰退</strong></td></tr>
-<tr><td><strong>美洲</strong></td><td style="text-align:right">36</td><td style="text-align:right">69</td><td style="text-align:right" class="good">+33</td><td style="text-align:right" class="good">+91.7% 🚀</td><td>成長動能（戰前年比+97%）</td></tr>
-<tr><td><strong>南亞</strong></td><td style="text-align:right">76</td><td style="text-align:right">51</td><td style="text-align:right" class="warn">-25</td><td style="text-align:right" class="warn">-32.9% ⚠️</td><td><strong style="color:var(--war)">結構性衰退</strong></td></tr>
-<tr><td><strong>韓國</strong></td><td style="text-align:right">4</td><td style="text-align:right">47</td><td style="text-align:right" class="good">+43</td><td style="text-align:right" class="good">+1075%</td><td>新興（基數低）</td></tr>
-<tr style="background:#fffbeb;font-weight:700"><td><strong>總計</strong></td><td style="text-align:right">2,998</td><td style="text-align:right">3,182</td><td style="text-align:right" class="good">+184</td><td style="text-align:right" class="good">+6.1%</td><td>整體達標</td></tr>
+<tr><td><strong>中國</strong></td><td style="text-align:right">192</td><td style="text-align:right">568</td><td style="text-align:right" class="good">+195.8% 🚀</td><td>H1 最大成長引擎</td></tr>
+<tr><td><strong>南歐</strong></td><td style="text-align:right">690</td><td style="text-align:right">512</td><td style="text-align:right" class="warn">-25.8%</td><td>戰爭加劇</td></tr>
+<tr><td><strong>東歐</strong></td><td style="text-align:right">408</td><td style="text-align:right">351</td><td style="text-align:right" class="warn">-14.0%</td><td>戰爭加劇</td></tr>
+<tr><td><strong>中西歐</strong></td><td style="text-align:right">315</td><td style="text-align:right">314</td><td style="text-align:right">-0.3%</td><td>戰爭重災（戰前年比+41.5%）</td></tr>
+<tr><td><strong>北歐</strong></td><td style="text-align:right">249</td><td style="text-align:right">156</td><td style="text-align:right" class="warn">-37.3%</td><td><strong>結構性衰退</strong></td></tr>
+<tr><td><strong>南亞</strong></td><td style="text-align:right">76</td><td style="text-align:right">51</td><td style="text-align:right" class="warn">-32.9%</td><td><strong>結構性衰退</strong></td></tr>
+<tr><td><strong>東南亞</strong></td><td style="text-align:right">96</td><td style="text-align:right">70</td><td style="text-align:right" class="warn">-27.1%</td><td><strong>結構性衰退</strong></td></tr>
+<tr><td>美洲</td><td style="text-align:right">36</td><td style="text-align:right">69</td><td style="text-align:right" class="good">+91.7%</td><td>成長動能</td></tr>
+<tr><td>遊輪</td><td style="text-align:right">101</td><td style="text-align:right">139</td><td style="text-align:right" class="good">+37.6%</td><td>成長動能</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section" id="h2">
+<h2>3. H2 (7-12月) 分析</h2>
+<div class="summary" style="margin-top:14px">
+<div class="card danger"><div class="label">H2 已預訂</div><div class="value">1,513</div><div class="sub">vs 2025: -57人 (-3.6%)</div></div>
+<div class="card"><div class="label">Q3 (7-9月)</div><div class="value">1,112</div><div class="sub">vs 2025: -20人 (-1.8%)</div></div>
+<div class="card warn"><div class="label">Q4 (10-12月)</div><div class="value">401</div><div class="sub">vs 2025: -37人 (-8.4%)</div></div>
+<div class="card success"><div class="label">H2 最大成長引擎</div><div class="value">遊輪</div><div class="sub">+300%（59→236）</div></div>
+</div>
+
+<h3>H2 雙年對比</h3>
+<div class="chart-box"><canvas id="ch_h2"></canvas></div>
+
+<h3>H2 各區年比表現</h3>
+<table>
+<thead><tr><th>區域</th><th style="text-align:right">2025 H2</th><th style="text-align:right">2026 H2</th><th style="text-align:right">年比</th><th>判讀</th></tr></thead>
+<tbody>
+<tr style="background:#f0fff4"><td><strong>遊輪</strong></td><td style="text-align:right">59</td><td style="text-align:right">236</td><td style="text-align:right" class="good">+300% 🚀</td><td><strong>H2最大引擎</strong>，戰爭低關聯</td></tr>
+<tr style="background:#f0fff4"><td><strong>非洲</strong></td><td style="text-align:right">8</td><td style="text-align:right">29</td><td style="text-align:right" class="good">+263%</td><td>大幅成長但基數小</td></tr>
+<tr style="background:#f0fff4"><td><strong>東南亞</strong></td><td style="text-align:right">21</td><td style="text-align:right">53</td><td style="text-align:right" class="good">+152%</td><td>Q3單檔放量</td></tr>
+<tr style="background:#f0fff4"><td><strong>南亞</strong></td><td style="text-align:right">9</td><td style="text-align:right">17</td><td style="text-align:right" class="good">+89%</td><td>H1衰退後Q3開始回升</td></tr>
+<tr style="background:#f0fff4"><td><strong>東歐</strong></td><td style="text-align:right">200</td><td style="text-align:right">293</td><td style="text-align:right" class="good">+46.5%</td><td>Q3/Q4雙引擎</td></tr>
+<tr style="background:#f0fff4"><td><strong>日本</strong></td><td style="text-align:right">135</td><td style="text-align:right">167</td><td style="text-align:right" class="good">+24% (Q4 +121%)</td><td><strong>Q4賞楓季已開賣翻倍</strong></td></tr>
+<tr><td>美洲</td><td style="text-align:right">63</td><td style="text-align:right">68</td><td style="text-align:right" class="good">+8%</td><td>穩定</td></tr>
+<tr><td>北歐</td><td style="text-align:right">124</td><td style="text-align:right">120</td><td style="text-align:right">-3.2%</td><td>持平（H1結構問題）</td></tr>
+<tr style="background:#fff5f5"><td><strong>紐澳</strong></td><td style="text-align:right">17</td><td style="text-align:right">14</td><td style="text-align:right" class="warn">-17.6%</td><td>Q4 -57%</td></tr>
+<tr style="background:#fff5f5"><td><strong>南歐</strong></td><td style="text-align:right">220</td><td style="text-align:right">156</td><td style="text-align:right" class="warn">-29.1%</td><td>戰爭延續</td></tr>
+<tr style="background:#fff5f5"><td><strong>中西歐</strong></td><td style="text-align:right">242</td><td style="text-align:right">124</td><td style="text-align:right" class="warn">-48.8%</td><td>Q4 -83% 嚴重</td></tr>
+<tr style="background:#fff5f5"><td><strong>中國</strong></td><td style="text-align:right">357</td><td style="text-align:right">182</td><td style="text-align:right" class="warn">-49.0% ⚠️</td><td><strong>H1暴衝後H2轉跌</strong></td></tr>
+<tr style="background:#fff5f5"><td><strong>中東</strong></td><td style="text-align:right">102</td><td style="text-align:right">35</td><td style="text-align:right" class="warn">-65.7%</td><td>戰爭重災延續</td></tr>
 </tbody>
 </table>
 
-<div class="data-warning">
-<strong>資料定義提醒：</strong>日本、韓國於 3/30 起報表「直客銷售」欄位定義有調整跡象（日本3/23累計 1,028 → 3/30 直接修正為 439），推估前期可能含獎勵團型。本報告日本相關判讀以年比為主，建議後續向人資部釐清欄位定義變更時點。
+<div class="key-box" style="margin-top:18px">
+<div class="title">⚠️ 中國市場 H2 轉跌的重大警訊</div>
+中國 H1 +196% 看似亮眼，但 H2 直接掉 -49%（357 → 182）。<br>
+<strong>全年中國淨增量被自己吃回去</strong>，2026 中國全年實際成長只剩約 +37%（2025 全年 549 → 2026 全年 750）。<br>
+這意味著 <strong>H1 中國暴衝可能不是真實市場擴張，而是訂單提前釋出</strong>，2027 規劃時不能再用 H1 的成長率推估。
 </div>
 </div>
 
-<div class="section">
-<h2>2. 區域分類：四種狀態</h2>
-<div class="lead">依「戰前年比」與「戰後動能」交叉判讀，將 14 區歸為四類，各類採取不同對策。</div>
+<div class="section" id="regions">
+<h2>4. 各區 H1 + H2 完整對比</h2>
+<div class="lead">14 個大區雙半年對比，看哪些區域上下半年趨勢一致、哪些反轉。</div>
+<div class="chart-box" style="height:440px"><canvas id="ch_h1h2"></canvas></div>
+
+<h3>全年累計表現</h3>
+<table>
+<thead><tr><th>大區</th><th style="text-align:right">2025 全年</th><th style="text-align:right">2026 目前累計</th><th style="text-align:right">年比</th><th>狀態</th></tr></thead>
+<tbody>
+<tr><td><strong>中國</strong></td><td style="text-align:right">549</td><td style="text-align:right">750</td><td style="text-align:right" class="good">+36.6%</td><td>全年仍成長但 H2 轉跌</td></tr>
+<tr><td><strong>南歐</strong></td><td style="text-align:right">910</td><td style="text-align:right">668</td><td style="text-align:right" class="warn">-26.6%</td><td>H1+H2 均衰退</td></tr>
+<tr><td><strong>東歐</strong></td><td style="text-align:right">608</td><td style="text-align:right">644</td><td style="text-align:right" class="good">+5.9%</td><td>H2 大幅成長補 H1 衰退</td></tr>
+<tr><td><strong>日本</strong></td><td style="text-align:right">589</td><td style="text-align:right">642</td><td style="text-align:right" class="good">+9.0%</td><td>Q4 賞楓季驅動</td></tr>
+<tr><td><strong>中西歐</strong></td><td style="text-align:right">557</td><td style="text-align:right">438</td><td style="text-align:right" class="warn">-21.4%</td><td>戰爭衝擊延續</td></tr>
+<tr><td><strong>遊輪</strong></td><td style="text-align:right">160</td><td style="text-align:right">375</td><td style="text-align:right" class="good">+134.4% 🚀</td><td><strong>全年最大亮點</strong></td></tr>
+<tr><td><strong>北歐</strong></td><td style="text-align:right">373</td><td style="text-align:right">276</td><td style="text-align:right" class="warn">-26.0%</td><td>結構性問題</td></tr>
+<tr><td><strong>紐澳</strong></td><td style="text-align:right">192</td><td style="text-align:right">196</td><td style="text-align:right">+2.1%</td><td>H1強H2弱</td></tr>
+<tr><td><strong>美洲</strong></td><td style="text-align:right">99</td><td style="text-align:right">137</td><td style="text-align:right" class="good">+38.4%</td><td>持續成長</td></tr>
+<tr><td><strong>非洲</strong></td><td style="text-align:right">82</td><td style="text-align:right">118</td><td style="text-align:right" class="good">+43.9%</td><td>H1+H2 雙引擎</td></tr>
+<tr><td><strong>東南亞</strong></td><td style="text-align:right">117</td><td style="text-align:right">123</td><td style="text-align:right" class="good">+5.1%</td><td>H2 Q3 救起來</td></tr>
+<tr><td><strong>中東</strong></td><td style="text-align:right">202</td><td style="text-align:right">112</td><td style="text-align:right" class="warn">-44.6%</td><td>戰爭重災</td></tr>
+<tr><td><strong>南亞</strong></td><td style="text-align:right">85</td><td style="text-align:right">68</td><td style="text-align:right" class="warn">-20.0%</td><td>結構性</td></tr>
+<tr><td><strong>韓國</strong></td><td style="text-align:right">4</td><td style="text-align:right">49</td><td style="text-align:right" class="good">+1125%</td><td>新興（基數低）</td></tr>
+<tr style="background:#fffbeb;font-weight:700"><td><strong>總計</strong></td><td style="text-align:right">4,568</td><td style="text-align:right">4,695</td><td style="text-align:right" class="good">+2.8%</td><td>整體微幅成長</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section" id="categories">
+<h2>5. 區域分類四類別</h2>
 <div class="category-grid">
 
-<div class="cat-card red">
-<h4>🔴 戰爭重災（戰前強→戰後失速）</h4>
+<div class="cat-card green">
+<h4>🟢 全年成長亮點</h4>
 <div class="area-list">
-<strong>中西歐</strong>：戰前年比 +41.5%，戰爭吃掉約 152 人<br>
-<strong>中東</strong>：戰前年比 +1.3%，戰爭直接波及<br>
-<strong>紐澳</strong>：戰前年比 +2.9%，戰爭後幾乎停滯<br>
-<strong>非洲</strong>：戰前年比 +47%，戰後反向收縮<br>
-<strong>遊輪</strong>：戰前年比 +63%，戰後波動下滑
+<strong>遊輪</strong>：全年 +134%（160→375）<br>
+<strong>美洲</strong>：全年 +38%<br>
+<strong>非洲</strong>：全年 +44%<br>
+<strong>日本</strong>：全年 +9%（Q4賞楓驅動）<br>
+<strong>東歐</strong>：全年 +6%（H2 +46.5%）
 </div>
-<div style="margin-top:10px;font-size:12px;color:#742a2a"><strong>對策：</strong>等待戰爭情勢明朗，做好復甦客戶名單與行銷預算重新配置</div>
+<div style="margin-top:10px;font-size:12px;color:#22543d"><strong>對策：</strong>下半年資源優先加碼，是達標關鍵</div>
 </div>
 
 <div class="cat-card orange">
-<h4>🟡 戰爭加劇（戰前已弱→戰爭加重）</h4>
+<h4>🟡 H1強H2弱（依賴單一半年）</h4>
 <div class="area-list">
-<strong>南歐</strong>：戰前年比 -13.6%，戰後估損 156 人<br>
-<strong>東歐</strong>：戰前年比 -20.6%，戰後估損 74 人
+<strong>中國</strong>：H1 +196%、H2 -49%（全年+37%但動能耗盡）<br>
+<strong>紐澳</strong>：H1 +4%、H2 -18%
 </div>
-<div style="margin-top:10px;font-size:12px;color:#7c2d12"><strong>對策：</strong>同時面對外部與內部問題，需檢視產品競爭力，並等戰爭結束後重新評估</div>
+<div style="margin-top:10px;font-size:12px;color:#7c2d12"><strong>對策：</strong>需釐清是訂單提前還是市場降溫，影響2027規劃</div>
+</div>
+
+<div class="cat-card red">
+<h4>🔴 戰爭重災（全年明顯下滑）</h4>
+<div class="area-list">
+<strong>中西歐</strong>：全年 -21%（戰前年比+41.5%）<br>
+<strong>南歐</strong>：全年 -27%<br>
+<strong>中東</strong>：全年 -45%
+</div>
+<div style="margin-top:10px;font-size:12px;color:#742a2a"><strong>對策：</strong>等待戰後復甦，準備行銷預算重新配置</div>
 </div>
 
 <div class="cat-card gray">
 <h4>⚫ 結構性衰退（與戰爭關聯低）</h4>
 <div class="area-list">
-<strong>北歐</strong>：戰前年比 -35.7%（-93人）<br>
-<strong>南亞</strong>：戰前年比 -54.2%（-25人）<br>
-<strong>東南亞</strong>：戰前年比 -21.4%（-26人）
+<strong>北歐</strong>：全年 -26%（戰前年比就-35.7%）<br>
+<strong>南亞</strong>：全年 -20%<br>
+<strong>東南亞</strong>：H1衰退但H2救回（Q3 +179%）
 </div>
-<div style="margin-top:10px;font-size:12px;color:#1a202c"><strong>對策：</strong>另案專案檢討，盤點產品線、定價、競品、航班合作條件，不應混入戰爭討論</div>
-</div>
-
-<div class="cat-card green">
-<h4>🟢 成長動能（H1 持續正向）</h4>
-<div class="area-list">
-<strong>中國</strong>：+196%（+376人，最大引擎）<br>
-<strong>美洲</strong>：+92%（+33人）<br>
-<strong>遊輪</strong>：+38%（+38人）<br>
-<strong>非洲</strong>：+20%（+15人）<br>
-<strong>韓國</strong>：+1075%（基數低，+43人）
-</div>
-<div style="margin-top:10px;font-size:12px;color:#22543d"><strong>對策：</strong>把成長動能化為可複製 SOP，分散對中國的過度依賴</div>
+<div style="margin-top:10px;font-size:12px;color:#1a202c"><strong>對策：</strong>另案專案檢討產品/航線/競品，不混入戰爭討論</div>
 </div>
 
 </div>
 </div>
 
-<div class="section">
-<h2>3. 全區域 H1 累計走勢圖</h2>
-<div class="lead">14 個大區 2026 週度累計演進（紅色虛線為戰爭爆發切點）。</div>
-<div class="chart-box" style="height:480px"><canvas id="ch_all"></canvas></div>
-</div>
+<div class="section" id="scenarios">
+<h2>6. 全年最終結果情境推估</h2>
+<div class="lead">基於目前累計 4,695 人 + H2 進件即將完成，全年最終預估如下：</div>
 
-<div class="section">
-<h2>4. 雙年同期對比 — 全區域</h2>
-<div class="chart-box"><canvas id="ch_yoy"></canvas></div>
-</div>
-
-<div class="section">
-<h2>5. 風險集中度分析</h2>
-<div class="info-box">
-<div class="title">中國依賴度過高 — 最大潛在風險</div>
-2025 H1 中國僅占直客 6.4%（192/2998），2026 H1 已躍升至 17.9%（568/3182）。<br>
-<strong>中國一區的成長 +376 人，貢獻了直客整體成長的 204%</strong>（亦即扣除中國後直客其實是負成長）。<br>
-若中國市場下半年因政策、匯率、簽證或競爭出現任何逆風，直客整體將立即由正轉負。
-</div>
-<div class="key-box">
-<div class="title">建議：分散風險</div>
-<ul style="margin-top:6px;margin-bottom:0">
-<li>主動將部分業務資源從中國分配到「成長動能」其他四區（美洲、遊輪、非洲、韓國）</li>
-<li>盤點中國成長動能是來自市場本身或單一檔促銷，評估永續性</li>
-<li>設定中國占比上限（例如 20%），避免單一市場依賴持續擴大</li>
-</ul>
-</div>
-</div>
-
-<div class="section">
-<h2>6. 公司 TARGET 達成分析</h2>
-<div class="lead">
-2026 公司目標：第一階 <strong>6,185人</strong>、第二階 <strong>6,533人</strong>。基於 H1 實際 3,182 人，剩餘約 30 週需達成下半年缺口。
-</div>
-
-<div class="summary" style="margin-top:14px">
-<div class="card warn"><div class="label">第一階目標 H1完成度</div><div class="value">51.4%</div><div class="sub">表面達標,但需考慮季節性</div></div>
-<div class="card warn"><div class="label">第二階目標 H1完成度</div><div class="value">48.7%</div><div class="sub">略低於均勻分配50%</div></div>
-<div class="card danger"><div class="label">下半年缺口(一階)</div><div class="value">3,003人</div><div class="sub">週均需 +100人/週</div></div>
-<div class="card danger"><div class="label">下半年缺口(二階)</div><div class="value">3,351人</div><div class="sub">週均需 +112人/週</div></div>
-</div>
-
-<div class="data-warning" style="margin-top:16px">
-<div style="font-weight:700;color:var(--danger);margin-bottom:6px;font-size:14px">⚠️ 季節性風險警告 — 旅遊業 H1 是旺季、H2 是淡季</div>
-參考 2025 年實際結構：H1 占全年 <strong>65.6%</strong>、H2 僅占 <strong>34.4%</strong>（H2=1,570 人 / H1=2,998 人）。<br>
-<strong>這代表「H1 完成度 51.4% 看似在軌道上」其實是錯覺</strong> —— 旅遊業 H1 本應承擔超過六成業績，H1 只達 51.4% 等於進度已嚴重落後。
-</div>
-
-<h3 style="margin-top:24px;color:var(--primary);font-size:16px">全年達標推估 — 四情境</h3>
-<div class="scenario-grid" style="grid-template-columns:repeat(4,1fr);margin-top:12px">
+<div class="scenario-grid">
 
 <div class="scenario">
 <h4>悲觀</h4>
-<div style="font-size:12px;color:#718096">戰爭延續、戰後速度+19人/週</div>
-<div class="num warn">3,744</div>
-<div style="font-size:12px;color:#4a5568">vs一階 -2,440人</div>
-<div style="font-size:12px;color:#4a5568">vs二階 -2,788人</div>
+<div style="font-size:11px;color:#718096">H2無進一步成長</div>
+<div class="num warn">4,695</div>
+<div style="font-size:12px;color:#4a5568">vs一階 -1,490人</div>
+<div style="font-size:12px;color:#4a5568">vs二階 -1,838人</div>
 </div>
 
 <div class="scenario likely">
-<h4>基線（季節性推估）</h4>
-<div style="font-size:11px;color:#718096">按2025季節性比例(H2=H1×0.52)</div>
-<div class="num" style="color:var(--primary)">4,848</div>
-<div style="font-size:12px;color:#4a5568">vs一階 -1,337人</div>
-<div style="font-size:12px;color:#4a5568">vs二階 -1,685人</div>
+<h4>基線（最可能）</h4>
+<div style="font-size:11px;color:#718096">H2 持續以目前進度滾動</div>
+<div class="num" style="color:var(--primary)">4,800~4,900</div>
+<div style="font-size:12px;color:#4a5568">vs一階 -1,300人</div>
+<div style="font-size:12px;color:#4a5568">vs二階 -1,650人</div>
 </div>
 
 <div class="scenario">
 <h4>努力情境</h4>
-<div style="font-size:12px;color:#718096">下半年週均回到 +60 人</div>
-<div class="num">4,982</div>
-<div style="font-size:12px;color:#4a5568">vs一階 -1,203人</div>
-<div style="font-size:12px;color:#4a5568">vs二階 -1,551人</div>
+<div style="font-size:11px;color:#718096">下半年再進件 300 人</div>
+<div class="num">4,995</div>
+<div style="font-size:12px;color:#4a5568">vs一階 -1,190人</div>
+<div style="font-size:12px;color:#4a5568">vs二階 -1,538人</div>
 </div>
 
 <div class="scenario">
-<h4>奇蹟情境</h4>
-<div style="font-size:12px;color:#718096">下半年週均達 +100 人/週</div>
-<div class="num good">6,182</div>
-<div style="font-size:12px;color:#4a5568">vs一階 -3人(達標)</div>
-<div style="font-size:12px;color:#4a5568">vs二階 -351人</div>
+<h4>達標情境</h4>
+<div style="font-size:11px;color:#718096">需多進件1,490人達一階</div>
+<div class="num good">6,185</div>
+<div style="font-size:12px;color:#4a5568">vs一階 達標</div>
+<div style="font-size:12px;color:#4a5568">vs二階 -348人</div>
 </div>
 
 </div>
 
 <div class="key-box" style="margin-top:18px">
-<div class="title">⚠️ 對 TARGET 達成的客觀判讀</div>
+<div class="title">客觀判讀</div>
 <ul style="margin-top:6px;margin-bottom:0">
-<li><strong>第一階目標 6,185 人：</strong>需下半年週均達 100 人/週,而戰前最高週均也才 83.7 人/週。即使戰爭立即結束、所有區域回到戰前最佳狀態,仍需 +20% 的額外動能,難度極高。</li>
-<li><strong>第二階目標 6,533 人：</strong>需週均 112 人/週,在當前戰爭與季節性雙重壓力下,本年達成可能性低。</li>
-<li><strong>合理預期：</strong>按季節性推估,2026 全年約落在 <strong>4,800 ~ 5,000 人</strong>區間,vs 第一階目標將短缺 <strong>1,200 ~ 1,400 人</strong>。</li>
+<li><strong>一階目標 6,185 達成可能：低</strong>，需下半年再進件 1,490 人，而 2025 同期到年底僅再增加極少（H2已大致進件完畢）。</li>
+<li><strong>二階目標 6,533 達成可能：極低</strong>，本年度幾乎不可能達成。</li>
+<li><strong>合理預期 4,800~4,900 人</strong>，vs 2025 全年 4,568 微幅成長 +5~7%。</li>
 </ul>
 </div>
-
-<div class="info-box" style="margin-top:14px">
-<div class="title">建議向公司提出的三點</div>
-<ol style="padding-left:22px;margin-top:6px">
-<li><strong>正式申請目標重新檢視：</strong>以美伊戰爭為由(屬不可抗力外部因素),提請將第一階目標下修至 5,000 人區間,並調整對應 KPI 與獎金結構。</li>
-<li><strong>第二階目標暫不啟動：</strong>建議第二階獎勵機制本年度凍結,待戰爭情勢明朗後再評估。</li>
-<li><strong>下半年聚焦保住基線 4,800 人：</strong>把資源集中在「成長動能」四區(中國、美洲、遊輪、非洲),其他區域維持但不加碼。</li>
-</ol>
-</div>
 </div>
 
-<div class="section">
+<div class="section" id="actions">
 <h2>7. 下一步行動計畫</h2>
 <div class="action-list">
 
 <div class="step">
-<strong>結構性衰退三區獨立檢討（本月內啟動）</strong>
-北歐、南亞、東南亞衰退與戰爭脫鉤，須另立專案。各區盤點：產品線結構、競品同期定價、航班合作條件、客群輪廓。預計兩週內提出問題定位報告。
+<strong>正式向公司高層呈報達成困難（一週內）</strong>
+以美伊戰爭為不可抗力外部因素，呈報目前進度與全年推估。需強調：H1 戰爭推估損失 1,353 人、H2 預訂期已過、TARGET 達成需突破歷史水準。建議高層自行評估目標調整或資源配置。
 </div>
 
 <div class="step">
-<strong>中國市場分散風險策略（兩週內）</strong>
-盤點中國 +376 人成長是來自哪些團型與檔期，評估永續性。同步將部分業務資源配置到美洲、遊輪、非洲等其他成長區域，避免過度集中。
+<strong>下半年資源集中三大成長引擎（立即啟動）</strong>
+遊輪（+134%）、日本Q4賞楓（+121%）、東歐（H2 +46.5%）是目前最強動能。建議將剩餘行銷預算、業務人力優先配置到這三區，盡可能多接訂單以拉近 TARGET 缺口。
 </div>
 
 <div class="step">
-<strong>戰前強勢區復甦準備（戰爭情勢趨緩時啟動）</strong>
-中西歐、紐澳、非洲、遊輪為戰前年比強勢區，需先建立：(1) 推薦團型與檔期排程；(2) 既有報名退單客戶名單；(3) 行銷預算重新配置優先序。
+<strong>中國市場 H2 轉跌原因釐清（兩週內）</strong>
+中國 H1 +196% 但 H2 -49%，需釐清原因：訂單提前釋出？促銷紅利結束？競品搶單？這個答案直接影響 2027 預算與目標設定。
 </div>
 
 <div class="step">
-<strong>釐清日本資料定義變動（一週內）</strong>
-向人資部確認日本「直客銷售」欄位於 3/30 前後的計算口徑差異，以確保後續分析可信度。
+<strong>結構性衰退三區獨立檢討（本月內）</strong>
+北歐、南亞、東南亞（H1部分）與戰爭脫鉤，須另立專案。盤點：產品線結構、競品同期定價、航班合作條件、客群輪廓。
 </div>
 
 <div class="step">
-<strong>建立週度全區追蹤儀表板</strong>
-每週固定追蹤五項指標：各區週進件人數、戰後缺口走勢、中國占比變化、Q3/Q4 預訂進度、結構性衰退區改善進度。每週一例會同步更新。
+<strong>戰前強勢區復甦準備（戰爭趨緩時啟動）</strong>
+中西歐、紐澳、非洲為戰前年比強勢區，需先建立：(1) 推薦團型與檔期排程；(2) 既有報名退單客戶名單；(3) 行銷預算重新配置優先序。
 </div>
 
 <div class="step">
-<strong>全年目標正式修正提案（兩週內）</strong>
-依「合理情境 +9.5%」推估，建議將直客銷售全年目標調整至 5,000 人區間，同步調整業務 KPI 與獎金結構，避免下半年產生不合理壓力。
+<strong>建立週度全區追蹤機制</strong>
+每週追蹤五項：各區週進件、戰後缺口走勢、中國占比變化、Q3/Q4 預訂進度、結構性衰退區改善進度。
 </div>
 
 </div>
 </div>
 
 <div class="footer">
-<strong>方法論說明：</strong>戰爭損失採「戰前週均速度推估法」——以 1/5~2/23 共 7 週實際週均進件斜率，外推至 6/1 應達人數，與實際結果差距視為戰爭外部因素造成的損失。此為人數損失推估，未涵蓋營業額與毛利影響。長程線單價較高，營收衝擊預期高於人數衝擊。
+<strong>方法論說明：</strong>戰爭損失採「戰前週均速度推估法」——以 1/5~2/23 共 7 週實際週均進件斜率，外推至 6/1 應達人數，差距視為戰爭外部因素造成的損失。H2 進度評估參考 2025 同期 6/2 時 H2 已預訂量 = 全年最終 H2 量，故推估 2026 H2 後續成長空間有限。
 <br><br>
 <strong>資料來源：</strong>人力資源部全公司業績總表 — 2026年 21份週報（1/5~6/1）、2025年 25份週報（1/6~6/30）。
 <br><br>
-<strong>注意：</strong>本報告分析範圍為「直客銷售」欄位，不含同業業務處、商務展覽、專案企劃、獎勵旅遊、分公司事業處。
+<strong>分析範圍：</strong>本報告為「直客銷售」欄位，不含同業業務處、商務展覽、專案企劃、獎勵旅遊、分公司事業處。日本欄位於 3/30 前後有定義變動跡象，前期數據需與人資部釐清。
 <div class="footer-meta">
 <span>直客銷售二部 製表</span>
 <span>分析日期：2026/6/1</span>
@@ -348,75 +412,38 @@
 </div>
 
 <script>
-const data = {"weeks_26": ["01/05", "01/12", "01/19", "01/26", "02/02", "02/09", "02/23", "03/02", "03/09", "03/16", "03/23", "03/30", "04/07", "04/13", "04/20", "04/27", "05/04", "05/11", "05/18", "05/25", "06/01"], "weeks_25": ["01/06", "01/13", "01/21", "02/03", "02/10", "02/17", "02/24", "03/03", "03/10", "03/17", "03/24", "03/30", "04/07", "04/14", "04/21", "04/28", "05/05", "05/12", "05/19", "05/23", "06/02", "06/09", "06/16", "06/23", "06/30"], "data_26": {"中西歐": [219, 232, 246, 257, 265, 272, 293, 294, 308, 312, 318, 325, 320, 315, 315, 315, 308, 312, 312, 314, 314], "東歐": [215, 219, 236, 247, 259, 264, 278, 288, 287, 303, 304, 311, 317, 331, 330, 336, 337, 344, 354, 352, 351], "南歐": [385, 414, 431, 438, 433, 447, 470, 485, 498, 490, 492, 493, 492, 492, 493, 507, 512, 506, 507, 509, 512], "北歐": [129, 133, 135, 136, 138, 142, 144, 144, 144, 144, 144, 149, 149, 149, 151, 151, 151, 152, 154, 154, 156], "中東": [60, 59, 69, 72, 74, 76, 80, 84, 85, 85, 83, 78, 79, 79, 77, 73, 73, 74, 75, 75, 77], "非洲": [95, 100, 97, 100, 100, 103, 103, 103, 101, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89], "美洲": [65, 65, 61, 63, 65, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 69, 69, 69, 69, 69, 69], "遊輪": [149, 151, 151, 153, 157, 157, 153, 156, 156, 134, 134, 132, 130, 130, 135, 133, 137, 139, 139, 139, 139], "紐西蘭．澳洲": [160, 162, 169, 170, 175, 176, 178, 178, 178, 179, 179, 179, 179, 179, 179, 179, 179, 182, 182, 182, 182], "南亞": [21, 25, 27, 52, 29, 31, 33, 37, 37, 37, 37, 41, 49, 51, 51, 51, 51, 51, 51, 51, 51], "中國": [345, 373, 388, 404, 404, 403, 414, 430, 466, 472, 507, 508, 512, 524, 530, 569, 610, 536, 552, 565, 568], "日本": [873, 905, 916, 944, 957, 968, 978, 994, 1004, 1012, 1028, 439, 470, 471, 471, 471, 471, 471, 475, 475, 475], "韓國": [43, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47], "東南亞": [49, 49, 65, 65, 64, 64, 66, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70]}};
+// H2 雙年對比
+const h2_labels = ['遊輪','東歐','日本','中西歐','南歐','中國','北歐','美洲','東南亞','中東','非洲','南亞','紐澳','韓國'];
+const h2_25 = [59,200,135,242,220,357,124,63,21,102,8,9,17,0];
+const h2_26 = [236,293,167,124,156,182,120,68,53,35,29,17,14,2];
 
-const palette = {
-  '中西歐':'#3182ce','東歐':'#38a169','南歐':'#ed8936','北歐':'#e53e3e',
-  '中東':'#9f7aea','非洲':'#d69e2e','美洲':'#319795','遊輪':'#2c5282',
-  '紐西蘭．澳洲':'#48bb78','南亞':'#ad5389','中國':'#c53030','日本':'#805ad5',
-  '韓國':'#dd6b20','東南亞':'#0bc5ea'
-};
-
-const warAnnotation = {
-  id:'warLine',
-  afterDraw(chart){
-    const x = chart.scales.x;
-    const y = chart.scales.y;
-    const idx = data.weeks_26.indexOf("02/23");
-    if(idx<0) return;
-    const px = x.getPixelForValue(idx)+ (x.getPixelForValue(idx+1)-x.getPixelForValue(idx))/2;
-    const ctx = chart.ctx;
-    ctx.save();
-    ctx.strokeStyle = '#c53030';
-    ctx.lineWidth = 2;
-    ctx.setLineDash([6,4]);
-    ctx.beginPath();
-    ctx.moveTo(px, y.top);
-    ctx.lineTo(px, y.bottom);
-    ctx.stroke();
-    ctx.fillStyle='#c53030';
-    ctx.font='bold 12px sans-serif';
-    ctx.fillText('戰爭爆發 2/28',px+6,y.top+18);
-    ctx.restore();
-  }
-};
-
-// Chart: 全區域走勢
-const datasets_all = [];
-for (const a in data.data_26) {
-  datasets_all.push({
-    label: a,
-    data: data.data_26[a],
-    borderColor: palette[a],
-    backgroundColor: palette[a]+'20',
-    tension: 0.2,
-    borderWidth: 2,
-    pointRadius: 2
-  });
-}
-new Chart(document.getElementById('ch_all'),{
-  type:'line',
-  data:{labels:data.weeks_26, datasets:datasets_all},
-  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{font:{size:11}}}},scales:{y:{title:{display:true,text:'H1累計人數'}}}},
-  plugins:[warAnnotation]
-});
-
-// Chart: 雙年對比
-const v25 = [690,568,475,408,315,182,156,139,89,77,70,69,51,47];
-const v26_labels = ['南歐','中國','日本','東歐','中西歐','紐澳','北歐','遊輪','非洲','中東','東南亞','美洲','南亞','韓國'];
-const v25_actual_25 = [690,192,454,408,315,175,249,101,74,100,96,36,76,4];
-const v26_actual = [512,568,475,351,314,182,156,139,89,77,70,69,51,47];
-
-new Chart(document.getElementById('ch_yoy'),{
+new Chart(document.getElementById('ch_h2'),{
   type:'bar',
   data:{
-    labels:v26_labels,
+    labels:h2_labels,
     datasets:[
-      {label:'2025 H1',data:v25_actual_25,backgroundColor:'rgba(100,116,139,0.7)'},
-      {label:'2026 H1',data:v26_actual,backgroundColor:'rgba(26,58,92,0.85)'}
+      {label:'2025 H2',data:h2_25,backgroundColor:'rgba(100,116,139,0.7)'},
+      {label:'2026 H2 (已預訂)',data:h2_26,backgroundColor:'rgba(26,58,92,0.85)'}
     ]
   },
-  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,title:{display:true,text:'H1人數'}}}}
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,title:{display:true,text:'人數'}}}}
+});
+
+// H1 vs H2 雙半年對比
+const reg_labels = ['中國','南歐','日本','東歐','中西歐','遊輪','北歐','紐澳','美洲','非洲','東南亞','中東','南亞','韓國'];
+const h1_26_data = [568,512,475,351,314,139,156,182,69,89,70,77,51,47];
+const h2_26_data = [182,156,167,293,124,236,120,14,68,29,53,35,17,2];
+
+new Chart(document.getElementById('ch_h1h2'),{
+  type:'bar',
+  data:{
+    labels:reg_labels,
+    datasets:[
+      {label:'2026 H1 (實際)',data:h1_26_data,backgroundColor:'rgba(56,161,105,0.8)'},
+      {label:'2026 H2 (已預訂)',data:h2_26_data,backgroundColor:'rgba(237,137,54,0.8)'}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},tooltip:{mode:'index'}},scales:{y:{beginAtZero:true,stacked:false,title:{display:true,text:'人數'}}}}
 });
 </script>
 </body>
