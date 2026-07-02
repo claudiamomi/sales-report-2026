@@ -1,271 +1,291 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>巨匠旅遊 直客銷售週報 | 2026/6/8</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>直客銷售週報 W27｜2026/6/30</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif; background: #f4f6f9; color: #1f2937; line-height: 1.6; padding: 24px; }
-.wrap { max-width: 1180px; margin: 0 auto; }
-header { background: linear-gradient(135deg,#1e3a8a,#0f172a); color: #fff; padding: 28px 32px; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
-header h1 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
-header .meta { font-size: 13px; opacity: .85; }
-header .badge { display: inline-block; background: rgba(255,255,255,.15); padding: 3px 10px; border-radius: 999px; font-size: 12px; margin-right: 8px; margin-top: 8px; }
-
-.kpi-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin: 20px 0; }
-.kpi { background: #fff; padding: 18px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.04); border-left: 4px solid #1e3a8a; }
-.kpi .label { font-size: 12px; color: #6b7280; margin-bottom: 6px; }
-.kpi .value { font-size: 26px; font-weight: 700; color: #111827; }
-.kpi .sub { font-size: 12px; margin-top: 4px; }
-.kpi.warn { border-left-color: #dc2626; }
-.kpi.warn .value { color: #dc2626; }
-.kpi.good { border-left-color: #059669; }
-.kpi.good .value { color: #059669; }
-
-section { background: #fff; padding: 24px 28px; border-radius: 12px; margin: 16px 0; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
-section h2 { font-size: 18px; margin-bottom: 12px; color: #1e3a8a; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
-section h3 { font-size: 15px; margin: 16px 0 8px; color: #374151; }
-
-.alert { background: #fef2f2; border-left: 4px solid #dc2626; padding: 14px 18px; border-radius: 8px; margin: 12px 0; font-size: 14px; }
-.alert strong { color: #991b1b; }
-.success { background: #ecfdf5; border-left: 4px solid #059669; padding: 14px 18px; border-radius: 8px; margin: 12px 0; font-size: 14px; }
-.success strong { color: #047857; }
-.info { background: #eff6ff; border-left: 4px solid #2563eb; padding: 14px 18px; border-radius: 8px; margin: 12px 0; font-size: 14px; }
-
-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
-th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid #e5e7eb; }
-th { background: #f9fafb; color: #374151; font-weight: 600; text-align: center; font-size: 12px; }
-td:first-child, th:first-child { text-align: left; }
-tr.total { background: #f3f4f6; font-weight: 700; }
-.up { color: #059669; font-weight: 600; }
-.down { color: #dc2626; font-weight: 600; }
-.flat { color: #6b7280; }
-
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
-.split .card { background: #f9fafb; padding: 16px; border-radius: 10px; }
-.split .card h4 { font-size: 13px; color: #6b7280; margin-bottom: 6px; }
-.split .card .num { font-size: 22px; font-weight: 700; color: #111827; }
-
-.bar-chart { margin: 10px 0; }
-.bar-row { display: flex; align-items: center; margin: 6px 0; font-size: 13px; }
-.bar-label { width: 90px; }
-.bar-track { flex: 1; height: 22px; background: #f3f4f6; border-radius: 4px; position: relative; }
-.bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; color: #fff; font-size: 11px; font-weight: 600; }
-.bar-value { width: 100px; text-align: right; padding-left: 10px; font-weight: 600; }
-
-.action-list { padding-left: 20px; }
-.action-list li { margin: 8px 0; font-size: 14px; }
-
-footer { text-align: center; color: #9ca3af; font-size: 12px; margin-top: 24px; padding: 16px; }
-
-@media (max-width: 720px) {
-  .kpi-row { grid-template-columns: repeat(2,1fr); }
-  .split { grid-template-columns: 1fr; }
-  body { padding: 12px; }
-}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:#f5f7fb;color:#1f2937;line-height:1.55;padding:24px}
+  .container{max-width:1280px;margin:0 auto}
+  h1{font-size:28px;color:#0f172a;margin-bottom:6px}
+  .subtitle{color:#64748b;font-size:14px;margin-bottom:24px}
+  .subtitle b{color:#1e40af}
+  .summary{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;padding:24px;border-radius:12px;margin-bottom:20px;box-shadow:0 4px 14px rgba(37,99,235,0.25)}
+  .summary h2{font-size:18px;margin-bottom:12px;border-left:4px solid #fbbf24;padding-left:10px}
+  .summary ul{list-style:none;padding-left:8px}
+  .summary li{padding:6px 0;font-size:15px}
+  .summary li::before{content:"▸ ";color:#fbbf24;font-weight:bold}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+  .card{background:#fff;padding:18px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.06);border-top:3px solid #2563eb}
+  .card.green{border-top-color:#16a34a}
+  .card.amber{border-top-color:#f59e0b}
+  .card.red{border-top-color:#dc2626}
+  .card .label{font-size:12px;color:#64748b;margin-bottom:6px}
+  .card .value{font-size:26px;font-weight:700;color:#0f172a}
+  .card .delta{font-size:13px;margin-top:6px}
+  .delta.up{color:#16a34a}
+  .delta.down{color:#dc2626}
+  .delta.flat{color:#64748b}
+  .section{background:#fff;padding:22px;border-radius:12px;margin-bottom:18px;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+  .section h2{font-size:18px;color:#0f172a;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e5e7eb}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{background:#f1f5f9;padding:10px 8px;text-align:right;font-weight:600;color:#334155;border-bottom:2px solid #cbd5e1}
+  th:first-child{text-align:left}
+  td{padding:9px 8px;text-align:right;border-bottom:1px solid #f1f5f9}
+  td:first-child{text-align:left;font-weight:500}
+  tr:hover{background:#f8fafc}
+  .pos{color:#16a34a;font-weight:600}
+  .neg{color:#dc2626;font-weight:600}
+  .flat{color:#94a3b8}
+  .alert{background:#fef3c7;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:6px;margin:14px 0;font-size:14px;color:#78350f}
+  .alert.good{background:#d1fae5;border-color:#16a34a;color:#064e3b}
+  .alert.bad{background:#fee2e2;border-color:#dc2626;color:#7f1d1d}
+  .tabs{display:flex;gap:4px;margin-bottom:14px;border-bottom:2px solid #e5e7eb;flex-wrap:wrap}
+  .tab{padding:10px 18px;cursor:pointer;border-radius:8px 8px 0 0;font-size:14px;color:#64748b;font-weight:500;transition:all 0.2s}
+  .tab.active{background:#2563eb;color:#fff}
+  .tab:hover:not(.active){background:#e0e7ff;color:#1e40af}
+  .tab-content{display:none}
+  .tab-content.active{display:block}
+  .chart-wrap{position:relative;height:340px;margin-top:10px}
+  .footer{text-align:center;color:#94a3b8;font-size:12px;margin-top:30px;padding:16px;border-top:1px solid #e5e7eb}
+  .badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-left:6px}
+  .badge.warn{background:#fef3c7;color:#92400e}
+  .badge.good{background:#d1fae5;color:#065f46}
+  .badge.alert{background:#fee2e2;color:#991b1b}
+  .note{font-size:12px;color:#64748b;margin-top:8px;padding:8px;background:#f8fafc;border-radius:6px}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:768px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .two-col{grid-template-columns:1fr}
+    h1{font-size:22px}
+    th,td{font-size:12px;padding:6px 4px}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="container">
+  <h1>直客銷售週報 <span style="color:#2563eb;font-size:18px;font-weight:500">W27</span></h1>
+  <div class="subtitle">本期：<b>2026/6/30</b> ｜ 上期：2026/6/22 ｜ 去年同期：2025/6/30 ｜ 單位：人頭數 ｜ 由 🫐 藍莓產出</div>
 
-<header>
-  <h1>直客銷售週報 — 全年累計（H1+H2）</h1>
-  <div class="meta">資料日期：2026/6/8　│　對比：2026/6/1（上週）& 2025/6/9（同期）</div>
-  <div>
-    <span class="badge">資料來源：全公司業績總表（人力資源部）</span>
-    <span class="badge">分析範圍：全年 1-12月 直客銷售累計</span>
+  <div class="summary">
+    <h2>本週結論（給主管）</h2>
+    <ul>
+      <li>全年累計 <b>5,053</b> 人，週增 <b>+104</b>（上週 +118），連續三週維持三位數動能。YoY <b>+2.1%</b>，同期口徑續正。</li>
+      <li>一階目標 6,185 完成 <b>81.7%</b>，缺口 1,132，剩 26 週週均只需 <b>+43.6</b>，本週實績已達 <b>2.4 倍</b>，一階達成機率高。</li>
+      <li>二階目標 6,533 完成 <b>77.3%</b>，缺口 1,480，剩 26 週週均需 <b>+56.9</b>，本週也達標 1.8 倍，二階機率轉<b>中偏高</b>。</li>
+      <li>本週動能分散：<b>非洲 +20（新亮點）、東歐 +19、中西歐 +17、日本 +17、南歐 +13、中國 +11 由負轉正</b>，前六大合計佔 +97/+104（93%）。</li>
+      <li>歐洲四線 YoY 依舊承壓：東歐 +5.7%（唯一翻正）、中西歐 -16.3%、南歐 -24.0%、北歐 -22.8%（本週持平未再往上）。</li>
+      <li><b>Q4 預售偏弱</b>：2026 Q4 直客 563 vs 2025 同期 635，YoY -11.3%，是全年目標達成的主要風險窗口。</li>
+    </ul>
   </div>
-</header>
 
-<div class="kpi-row">
-  <div class="kpi good">
-    <div class="label">全年累計人數</div>
-    <div class="value">4,831</div>
-    <div class="sub up">本週 +136 人 vs 6/1</div>
+  <div class="grid">
+    <div class="card green">
+      <div class="label">全年累計</div>
+      <div class="value">5,053</div>
+      <div class="delta up">本週 +104 ｜ YoY +2.1%</div>
+    </div>
+    <div class="card amber">
+      <div class="label">一階目標達成</div>
+      <div class="value">81.7%</div>
+      <div class="delta flat">缺口 1,132 ｜ 剩 26 週</div>
+    </div>
+    <div class="card amber">
+      <div class="label">二階目標達成</div>
+      <div class="value">77.3%</div>
+      <div class="delta flat">缺口 1,480 ｜ 剩 26 週</div>
+    </div>
+    <div class="card green">
+      <div class="label">H2 預售（7-12 月）</div>
+      <div class="value">1,873</div>
+      <div class="delta up">本週 +104（H1 定型 3,180）</div>
+    </div>
   </div>
-  <div class="kpi good">
-    <div class="label">vs 2025 同期</div>
-    <div class="value">+3.7%</div>
-    <div class="sub">2025=4,658 → 2026=4,831</div>
+
+  <div class="section">
+    <h2>本週 TOP 動能線別</h2>
+    <div class="two-col">
+      <div>
+        <table>
+          <thead><tr><th>排名</th><th>線別</th><th>週淨變化</th><th>本期全年</th></tr></thead>
+          <tbody>
+            <tr><td>🥇 1</td><td>非洲</td><td class="pos">+20</td><td>138</td></tr>
+            <tr><td>🥈 2</td><td>東歐</td><td class="pos">+19</td><td>729</td></tr>
+            <tr><td>🥉 3</td><td>中西歐</td><td class="pos">+17</td><td>477</td></tr>
+            <tr><td>4</td><td>日本</td><td class="pos">+17</td><td>691</td></tr>
+            <tr><td>5</td><td>南歐</td><td class="pos">+13</td><td>735</td></tr>
+            <tr><td>6</td><td>中國</td><td class="pos">+11</td><td>776</td></tr>
+            <tr><td>7</td><td>中東</td><td class="pos">+7</td><td>120</td></tr>
+          </tbody>
+        </table>
+        <div class="note">前 7 大合計 <b>+104</b>，等於全週淨變化（其餘 9 線持平）</div>
+      </div>
+      <div>
+        <div class="chart-wrap"><canvas id="topMoversChart"></canvas></div>
+      </div>
+    </div>
   </div>
-  <div class="kpi">
-    <div class="label">vs 一階目標 6,185</div>
-    <div class="value">78.1%</div>
-    <div class="sub">缺口 1,354 人</div>
+
+  <div class="section">
+    <h2>16 線別完整週度變化表</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>線別</th>
+          <th>本期</th>
+          <th>上期</th>
+          <th>週淨變化</th>
+          <th>去年同期</th>
+          <th>YoY %</th>
+          <th>提醒</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>中西歐</td><td>477</td><td>460</td><td class="pos">+17</td><td>570</td><td class="neg">-16.3%</td><td><span class="badge alert">歐洲承壓</span></td></tr>
+        <tr><td>東歐</td><td>729</td><td>710</td><td class="pos">+19</td><td>690</td><td class="pos">+5.7%</td><td><span class="badge good">歐洲唯一翻正</span></td></tr>
+        <tr><td>南歐</td><td>735</td><td>722</td><td class="pos">+13</td><td>967</td><td class="neg">-24.0%</td><td><span class="badge alert">YoY 深跌</span></td></tr>
+        <tr><td>北歐</td><td>298</td><td>298</td><td class="flat">0</td><td>386</td><td class="neg">-22.8%</td><td><span class="badge alert">YoY 深跌</span></td></tr>
+        <tr><td>中東</td><td>120</td><td>113</td><td class="pos">+7</td><td>209</td><td class="neg">-42.6%</td><td><span class="badge alert">基期高</span></td></tr>
+        <tr><td>非洲</td><td>138</td><td>118</td><td class="pos">+20</td><td>84</td><td class="pos">+64.3%</td><td><span class="badge good">本週亮點</span></td></tr>
+        <tr><td>美洲</td><td>144</td><td>144</td><td class="flat">0</td><td>131</td><td class="pos">+9.9%</td><td></td></tr>
+        <tr><td>遊輪</td><td>381</td><td>381</td><td class="flat">0</td><td>174</td><td class="pos">+119.0%</td><td><span class="badge good">結構性成長</span></td></tr>
+        <tr><td>紐西蘭．澳洲</td><td>206</td><td>206</td><td class="flat">0</td><td>196</td><td class="pos">+5.1%</td><td></td></tr>
+        <tr><td>南亞</td><td>71</td><td>71</td><td class="flat">0</td><td>95</td><td class="neg">-25.3%</td><td></td></tr>
+        <tr><td>俄羅斯．中亞．蒙古</td><td>93</td><td>93</td><td class="flat">0</td><td>31</td><td class="pos">+200.0%</td><td><span class="badge good">大幅回升</span></td></tr>
+        <tr><td>中國</td><td>776</td><td>765</td><td class="pos">+11</td><td>616</td><td class="pos">+26.0%</td><td><span class="badge good">由負轉正</span></td></tr>
+        <tr><td>日本</td><td>691</td><td>674</td><td class="pos">+17</td><td>620</td><td class="pos">+11.5%</td><td></td></tr>
+        <tr><td>韓國</td><td>49</td><td>49</td><td class="flat">0</td><td>4</td><td class="pos">+1125%</td><td><span class="badge warn">基數小</span></td></tr>
+        <tr><td>東南亞</td><td>139</td><td>139</td><td class="flat">0</td><td>164</td><td class="neg">-15.2%</td><td></td></tr>
+        <tr><td>自由行</td><td>6</td><td>6</td><td class="flat">0</td><td>5</td><td class="pos">+20.0%</td><td></td></tr>
+        <tr style="background:#e0e7ff;font-weight:700"><td>合計</td><td>5,053</td><td>4,949</td><td class="pos">+104</td><td>4,949</td><td class="pos">+2.1%</td><td></td></tr>
+      </tbody>
+    </table>
   </div>
-  <div class="kpi good">
-    <div class="label">下半年所需週均</div>
-    <div class="value">+46.0</div>
-    <div class="sub up">本週實際 +136，超標</div>
+
+  <div class="section">
+    <h2>目標追蹤 & 期別分解</h2>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab(event,'tab-goal')">目標達成</div>
+      <div class="tab" onclick="switchTab(event,'tab-h1h2')">H1 / H2 分解</div>
+      <div class="tab" onclick="switchTab(event,'tab-q4')">Q4 預售健康度</div>
+    </div>
+
+    <div id="tab-goal" class="tab-content active">
+      <table>
+        <thead><tr><th>目標</th><th>目標人數</th><th>本期累計</th><th>達成率</th><th>缺口</th><th>剩餘週</th><th>週均需求</th><th>本週倍數</th></tr></thead>
+        <tbody>
+          <tr><td>一階目標</td><td>6,185</td><td>5,053</td><td class="pos">81.7%</td><td>1,132</td><td>26</td><td>+43.6</td><td class="pos">2.4×</td></tr>
+          <tr><td>二階目標</td><td>6,533</td><td>5,053</td><td class="pos">77.3%</td><td>1,480</td><td>26</td><td>+56.9</td><td class="pos">1.8×</td></tr>
+        </tbody>
+      </table>
+      <div class="alert good">本週 +104 同時超越一階（2.4×）與二階（1.8×）週均門檻，若動能延續，二階目標達成機率轉中偏高。</div>
+      <div class="chart-wrap"><canvas id="goalChart"></canvas></div>
+    </div>
+
+    <div id="tab-h1h2" class="tab-content">
+      <table>
+        <thead><tr><th>期別</th><th>本期</th><th>上期</th><th>週淨變化</th><th>2025 同期</th><th>YoY</th></tr></thead>
+        <tbody>
+          <tr><td>H1（1-6 月）</td><td>3,180</td><td>3,180</td><td class="flat">0</td><td>3,007</td><td class="pos">+5.8%</td></tr>
+          <tr><td>H2（7-12 月）預售</td><td>1,873</td><td>1,769</td><td class="pos">+104</td><td>1,942</td><td class="neg">-3.6%</td></tr>
+          <tr style="background:#e0e7ff;font-weight:700"><td>全年</td><td>5,053</td><td>4,949</td><td class="pos">+104</td><td>4,949</td><td class="pos">+2.1%</td></tr>
+        </tbody>
+      </table>
+      <div class="alert">H1 已定型（週變化 0），本週 +104 全數落在 H2 預售，代表市場對下半年信心正在回穩。</div>
+    </div>
+
+    <div id="tab-q4" class="tab-content">
+      <table>
+        <thead><tr><th>期別</th><th>2026 目前預售</th><th>2025 同期</th><th>YoY</th><th>風險判讀</th></tr></thead>
+        <tbody>
+          <tr><td>Q3（7-9 月）</td><td>1,310</td><td>1,307</td><td class="pos">+0.2%</td><td><span class="badge good">持平</span></td></tr>
+          <tr><td>Q4（10-12 月）</td><td>563</td><td>635</td><td class="neg">-11.3%</td><td><span class="badge alert">預售偏弱</span></td></tr>
+          <tr style="background:#e0e7ff;font-weight:700"><td>H2 合計</td><td>1,873</td><td>1,942</td><td class="neg">-3.6%</td><td></td></tr>
+        </tbody>
+      </table>
+      <div class="alert bad">Q4 預售 YoY -11.3% 是本季主要風險窗口。距離年底目標達成，Q4 需在剩餘週數內拉出動能，建議聚焦：歐洲復甦線 + 中國/日本本週動能延續。</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>衰退區域預警（YoY 負成長線別）</h2>
+    <table>
+      <thead><tr><th>線別</th><th>本期累計</th><th>2025 同期</th><th>YoY</th><th>風險</th><th>主要觀察</th></tr></thead>
+      <tbody>
+        <tr><td>中東</td><td>120</td><td>209</td><td class="neg">-42.6%</td><td><span class="badge alert">🔴 高</span></td><td>2025 高基期，本週 +7 有回溫跡象</td></tr>
+        <tr><td>南亞</td><td>71</td><td>95</td><td class="neg">-25.3%</td><td><span class="badge warn">🟡 中</span></td><td>持平多週未見動能</td></tr>
+        <tr><td>南歐</td><td>735</td><td>967</td><td class="neg">-24.0%</td><td><span class="badge alert">🔴 高</span></td><td>戰爭衝擊未散，本週 +13 微幅回穩</td></tr>
+        <tr><td>北歐</td><td>298</td><td>386</td><td class="neg">-22.8%</td><td><span class="badge alert">🔴 高</span></td><td>本週持平 0，動能尚未啟動</td></tr>
+        <tr><td>中西歐</td><td>477</td><td>570</td><td class="neg">-16.3%</td><td><span class="badge warn">🟡 中</span></td><td>本週 +17 為歐洲第二強動能</td></tr>
+        <tr><td>東南亞</td><td>139</td><td>164</td><td class="neg">-15.2%</td><td><span class="badge warn">🟡 中</span></td><td>持平多週</td></tr>
+      </tbody>
+    </table>
+    <div class="alert bad"><b>歐洲四線總結</b>：東歐 +5.7% 唯一翻正，其餘三線仍雙位數 YoY 衰退，Q3 復甦力道是全年關鍵。</div>
+  </div>
+
+  <div class="section">
+    <h2>決策摘要</h2>
+    <ul style="list-style:none;padding:0">
+      <li style="padding:10px;margin-bottom:8px;background:#d1fae5;border-left:4px solid #16a34a;border-radius:6px"><b>✅ 續攻</b>：東歐、中國、日本、非洲 — YoY 正向且本週有動能，維持行銷資源配置</li>
+      <li style="padding:10px;margin-bottom:8px;background:#fef3c7;border-left:4px solid #f59e0b;border-radius:6px"><b>⚠️ 觀察</b>：中西歐、南歐 — 本週雖正但 YoY 深跌，觀察 Q3 復甦力道</li>
+      <li style="padding:10px;margin-bottom:8px;background:#fee2e2;border-left:4px solid #dc2626;border-radius:6px"><b>🚨 補救</b>：北歐、中東、南亞 — YoY 雙位數衰退且本週動能弱，建議檢視產品定價與話術包裝</li>
+      <li style="padding:10px;background:#e0e7ff;border-left:4px solid #2563eb;border-radius:6px"><b>🎯 全年關鍵</b>：Q4 預售 YoY -11.3%，需在剩餘 26 週內拉動能，聚焦歐洲復甦 + 亞洲延續</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    🫐 藍莓 v1.0 產出 ｜ 資料來源：人資部 2026業績總表(630).pdf ｜ 產出時間 2026/07/01 ｜ 統籌：Claudia
   </div>
 </div>
 
-<section>
-  <h2>本週重點（決策者一眼版）</h2>
-  <div class="success">
-    <strong>結論：全年看本週節奏穩健，一階目標可期。</strong>本週直客全年累計 +136 人（上週 +169 人），遠高於完成一階目標所需的週均 +46。<br>
-    H1 已大致定型（本週僅 +2），<strong>本週成長動能主要來自 H2 預售（+134 人）</strong>，代表下半年訂單正在進帳。
-  </div>
-  <h3>三件最值得看的事</h3>
-  <ol class="action-list">
-    <li><strong>H2 預售啟動：</strong>本週淨成長 136 人中，H2 貢獻 134 人，H1 僅 2 人。表示 Q3/Q4 旅客開始下單，這是好訊號。</li>
-    <li><strong>仍是中國一馬當先：</strong>中國本週 +17（全年累計 767 人，YoY +37.7%）。雖然中西歐 +9、日本 +19、東南亞 +16 也有貢獻，但整體成長動能仍向短程線傾斜。</li>
-    <li><strong>歐洲衰退基本盤未變：</strong>南歐 YoY -27.2%、北歐 -22.7%、中西歐 -19.3% 三大重災區仍延續，雖本週小有進帳但離 2025 水位還有距離。</li>
-  </ol>
-</section>
+<script>
+function switchTab(evt,id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  evt.target.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
 
-<section>
-  <h2>H1 vs H2 動能分解</h2>
-  <div class="split">
-    <div class="card">
-      <h4>H1（1-6月）累計</h4>
-      <div class="num">3,184</div>
-      <div style="font-size:12px;color:#6b7280;margin-top:4px;">本週 <span class="flat">+2</span>（基本定型）</div>
-    </div>
-    <div class="card">
-      <h4>H2（7-12月）累計</h4>
-      <div class="num">1,647</div>
-      <div style="font-size:12px;color:#6b7280;margin-top:4px;">本週 <span class="up">+134</span>（預售啟動）</div>
-    </div>
-  </div>
-  <div class="info">
-    <strong>解讀：</strong>6 月已接近 H1 尾聲，H1 旅客名單大致確認、本週幾乎不再增減。本週全年的 +136 幾乎都是 H2 在進帳，這代表 7-12 月的旺季預售訂單正在實現。後續每週應主追 H2 的成長速度。
-  </div>
-</section>
+new Chart(document.getElementById('topMoversChart'),{
+  type:'bar',
+  data:{
+    labels:['非洲','東歐','中西歐','日本','南歐','中國','中東'],
+    datasets:[{
+      label:'本週淨變化（人）',
+      data:[20,19,17,17,13,11,7],
+      backgroundColor:'rgba(37,99,235,0.75)',
+      borderColor:'#1e40af',
+      borderWidth:1
+    }]
+  },
+  options:{
+    indexAxis:'y',
+    responsive:true,
+    maintainAspectRatio:false,
+    plugins:{legend:{display:false},title:{display:true,text:'本週 TOP 動能線別'}},
+    scales:{x:{beginAtZero:true,title:{display:true,text:'週淨變化（人）'}}}
+  }
+});
 
-<section>
-  <h2>全年累計區域對比表（2025 vs 2026/6/1 vs 2026/6/8）</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>區域</th>
-        <th>2025/6/9</th>
-        <th>2026/6/1</th>
-        <th>2026/6/8</th>
-        <th>週變化</th>
-        <th>YoY 人數</th>
-        <th>YoY %</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>中西歐</td><td>554</td><td>438</td><td>447</td><td class="up">+9</td><td class="down">-107</td><td class="down">-19.3%</td></tr>
-      <tr><td>東歐</td><td>645</td><td>644</td><td>669</td><td class="up">+25</td><td class="up">+24</td><td class="up">+3.7%</td></tr>
-      <tr><td>南歐</td><td>939</td><td>668</td><td>684</td><td class="up">+16</td><td class="down">-255</td><td class="down">-27.2%</td></tr>
-      <tr><td>北歐</td><td>375</td><td>276</td><td>290</td><td class="up">+14</td><td class="down">-85</td><td class="down">-22.7%</td></tr>
-      <tr><td>中東</td><td>208</td><td>112</td><td>112</td><td class="flat">0</td><td class="down">-96</td><td class="down">-46.2%</td></tr>
-      <tr><td>非洲</td><td>82</td><td>118</td><td>118</td><td class="flat">0</td><td class="up">+36</td><td class="up">+43.9%</td></tr>
-      <tr><td>美洲</td><td>104</td><td>137</td><td>144</td><td class="up">+7</td><td class="up">+40</td><td class="up">+38.5%</td></tr>
-      <tr><td>遊輪</td><td>162</td><td>375</td><td>379</td><td class="up">+4</td><td class="up">+217</td><td class="up">+134.0%</td></tr>
-      <tr><td>紐澳</td><td>192</td><td>196</td><td>204</td><td class="up">+8</td><td class="up">+12</td><td class="up">+6.2%</td></tr>
-      <tr><td>南亞</td><td>85</td><td>68</td><td>70</td><td class="up">+2</td><td class="down">-15</td><td class="down">-17.6%</td></tr>
-      <tr><td>俄羅斯．中亞．蒙古國</td><td>30</td><td>93</td><td>92</td><td class="down">-1</td><td class="up">+62</td><td class="up">+206.7%</td></tr>
-      <tr><td>中國</td><td>557</td><td>750</td><td>767</td><td class="up">+17</td><td class="up">+210</td><td class="up">+37.7%</td></tr>
-      <tr><td>日本</td><td>593</td><td>642</td><td>661</td><td class="up">+19</td><td class="up">+68</td><td class="up">+11.5%</td></tr>
-      <tr><td>韓國</td><td>4</td><td>49</td><td>49</td><td class="flat">0</td><td class="up">+45</td><td class="up">+1125%</td></tr>
-      <tr><td>東南亞</td><td>117</td><td>123</td><td>139</td><td class="up">+16</td><td class="up">+22</td><td class="up">+18.8%</td></tr>
-      <tr><td>自由行</td><td>5</td><td>6</td><td>6</td><td class="flat">0</td><td class="up">+1</td><td class="up">+20.0%</td></tr>
-      <tr class="total"><td>總計（直客銷售）</td><td>4,658</td><td>4,695</td><td>4,831</td><td class="up">+136</td><td class="up">+173</td><td class="up">+3.7%</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<section>
-  <h2>本週淨變化 TOP 區域</h2>
-  <div class="bar-chart">
-    <div class="bar-row">
-      <div class="bar-label">東歐</div>
-      <div class="bar-track"><div class="bar-fill" style="width: 90%; background: #059669;">+25</div></div>
-      <div class="bar-value up">+25 人</div>
-    </div>
-    <div class="bar-row">
-      <div class="bar-label">日本</div>
-      <div class="bar-track"><div class="bar-fill" style="width: 70%; background: #059669;">+19</div></div>
-      <div class="bar-value up">+19 人</div>
-    </div>
-    <div class="bar-row">
-      <div class="bar-label">中國</div>
-      <div class="bar-track"><div class="bar-fill" style="width: 62%; background: #059669;">+17</div></div>
-      <div class="bar-value up">+17 人</div>
-    </div>
-    <div class="bar-row">
-      <div class="bar-label">南歐</div>
-      <div class="bar-track"><div class="bar-fill" style="width: 58%; background: #059669;">+16</div></div>
-      <div class="bar-value up">+16 人</div>
-    </div>
-    <div class="bar-row">
-      <div class="bar-label">東南亞</div>
-      <div class="bar-track"><div class="bar-fill" style="width: 58%; background: #059669;">+16</div></div>
-      <div class="bar-value up">+16 人</div>
-    </div>
-    <div class="bar-row">
-      <div class="bar-label">北歐</div>
-      <div class="bar-track"><div class="bar-fill" style="width: 50%; background: #059669;">+14</div></div>
-      <div class="bar-value up">+14 人</div>
-    </div>
-    <div class="bar-row">
-      <div class="bar-label">中西歐</div>
-      <div class="bar-track"><div class="bar-fill" style="width: 34%; background: #059669;">+9</div></div>
-      <div class="bar-value up">+9 人</div>
-    </div>
-    <div class="bar-row">
-      <div class="bar-label">紐澳</div>
-      <div class="bar-track"><div class="bar-fill" style="width: 30%; background: #059669;">+8</div></div>
-      <div class="bar-value up">+8 人</div>
-    </div>
-  </div>
-  <p style="font-size: 13px; color: #6b7280; margin-top: 8px;">
-    本週成長動能廣泛分布：歐洲四線（東歐 +25、南歐 +16、北歐 +14、中西歐 +9 合計 +64）首次出現 H2 進帳，顯示戰後復原訊號浮現。
-  </p>
-</section>
-
-<section>
-  <h2>目標達成現況</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>指標</th>
-        <th>數值</th>
-        <th>說明</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>全年累計（6/8）</td><td>4,831 人</td><td>H1=3,184 + H2=1,647</td></tr>
-      <tr><td>一階目標 6,185</td><td class="up">達成 78.1%</td><td>缺口 1,354 人</td></tr>
-      <tr><td>二階目標 6,533</td><td>達成 73.9%</td><td>缺口 1,702 人</td></tr>
-      <tr><td>剩餘週數</td><td>約 29 週</td><td>6/8 → 12/31</td></tr>
-      <tr><td>一階目標所需週均</td><td class="up">+46 人/週</td><td>本週實際 +136、上週 +169</td></tr>
-      <tr><td>二階目標所需週均</td><td>+58 人/週</td><td>本週實際 +136、上週 +169</td></tr>
-      <tr><td>本週實際進度</td><td class="up">超標 195%</td><td>vs 一階所需 +46</td></tr>
-    </tbody>
-  </table>
-  <div class="success" style="margin-top: 14px;">
-    <strong>客觀判讀：</strong>以本週節奏，一階目標 6,185 達成機率高。但仍要警惕兩個風險：① H2 預售訂單後續可能因匯率、政策、地緣風險取消；② 上週 +169 → 本週 +136，速度有放緩跡象，需觀察是否為趨勢。
-  </div>
-</section>
-
-<section>
-  <h2>給主管的三個建議</h2>
-  <ol class="action-list">
-    <li><strong>後續週報主追 H2 預售進度，不要再盯 H1 數字。</strong>H1 已基本定型，後續變化只剩取消風險。把追蹤焦點移到 Q3、Q4 各區報名走勢，更能反映實際業務動能。</li>
-    <li><strong>歐洲線 H2 復原訊號需要驗證。</strong>本週歐洲四線 +64 是兩個月來首見，但無法判斷是「真實復原」或「單週訂單集中入帳」。建議向公司爭取 Q3/Q4 歐洲線分產品（航班、檔期）的報名明細交叉驗證。</li>
-    <li><strong>南歐、北歐 YoY 仍 -27%、-23%，要列入下半年重點救援。</strong>儘管全年達成在軌道上，這兩區若不救，會拖累營業額（單價高）。建議跟產品/同業部門協調，在 H2 增加促銷檔次。</li>
-  </ol>
-</section>
-
-<section>
-  <h2>數據盲區提醒</h2>
-  <div class="info">
-    本報表僅有<strong>人頭數</strong>，無營業額/毛利資料。長程線（歐美紐澳）單價高、短程線（中國日韓東南亞）單價低，<strong>人頭 +3.7% 不等同營收 +3.7%</strong>。<br>
-    增量人數 +173 中，中國貢獻 +210、遊輪 +217（兩者合計 +427），但歐洲四線合計仍 -423 人，<strong>若以單價加權，營業額表現可能低於人頭表現</strong>。<br>
-    建議向公司爭取：① 各區營業額明細　② 直客一部/二部細分　③ 產品線（航班、檔期）明細，才能做精準的毛利分析。
-  </div>
-</section>
-
-<footer>
-  製表：每週直客銷售追蹤報告（全年累計版）　│　資料封閉日：2026/6/8　│　下次更新：2026/6/15
-</footer>
-
-</div>
+new Chart(document.getElementById('goalChart'),{
+  type:'bar',
+  data:{
+    labels:['一階目標 6,185','二階目標 6,533'],
+    datasets:[
+      {label:'已達成',data:[5053,5053],backgroundColor:'rgba(22,163,74,0.85)'},
+      {label:'缺口',data:[1132,1480],backgroundColor:'rgba(245,158,11,0.6)'}
+    ]
+  },
+  options:{
+    indexAxis:'y',
+    responsive:true,
+    maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom'},title:{display:true,text:'目標達成 vs 缺口'}},
+    scales:{x:{stacked:true,beginAtZero:true},y:{stacked:true}}
+  }
+});
+</script>
 </body>
 </html>
