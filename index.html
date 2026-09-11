@@ -226,6 +226,59 @@
     </ul>
   </div>
 
+  <div class="section" style="border-top:4px solid #0d9488">
+    <h2>💰 直客營業額（財務維度・含中國全區）<span style="font-size:12px;font-weight:400;color:#64748b">　統計至 9/10・不含 TKT/HTL・會計已入帳</span></h2>
+    <div class="grid">
+      <div class="card green"><div class="label">2026 直客營業額（YTD 至 9/10）</div><div class="value">5.45 億</div><div class="delta flat">2025：6.91 億</div></div>
+      <div class="card green"><div class="label">一階目標達成（YTD）</div><div class="value">89.9%</div><div class="delta flat">目標 6.06 億 ｜ 缺 0.61 億</div></div>
+      <div class="card amber"><div class="label">二階目標達成（YTD）</div><div class="value">85.3%</div><div class="delta flat">目標 6.39 億 ｜ 缺 0.94 億</div></div>
+      <div class="card"><div class="label">佔全公司營收</div><div class="value">20.0%</div><div class="delta up">人頭僅 ~13% → 高單客價值</div></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <div style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">近三年直客營業額（百萬元）</div>
+        <div class="chart-wrap" style="height:280px"><canvas id="revTrendCN"></canvas></div>
+        <div class="note">2024／2025 為各年結算，2026 為 YTD（統計至 9/10）。2026 已達 2025 全年的 79%、且已超越 2024 全年（547 百萬）。</div>
+      </div>
+      <div>
+        <div style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">🎯 營業額目標達成（2026 YTD）</div>
+        <div class="chart-wrap" style="height:150px;margin-bottom:10px"><canvas id="revGoalCN"></canvas></div>
+        <table>
+          <thead><tr><th>目標</th><th>目標金額</th><th>YTD 達成率</th><th>缺口</th></tr></thead>
+          <tbody>
+            <tr><td>第一階</td><td>6.06 億</td><td class="pos">89.9%</td><td>0.61 億</td></tr>
+            <tr><td>第二階</td><td>6.39 億</td><td class="flat">85.3%</td><td>0.94 億</td></tr>
+          </tbody>
+        </table>
+        <div class="alert info" style="margin-top:12px">💡 2026 為 YTD（統計至9/10、會計已入帳）已達一階 <b>89.9%</b>，全年可望達標；<b>2025 實績 6.91 億</b>（達當年一階 4.28 億的 162%）。直客佔全公司營收 20.0%、人頭僅 ~13% → 高單客價值。</div>
+      </div>
+    </div>
+    <div style="font-size:15px;font-weight:700;color:#0f172a;margin:14px 0 8px">逐線營業額 2026（YTD）vs 2025　<span style="font-size:12px;font-weight:400;color:#64748b">單位：仟元</span></div>
+    <table>
+      <thead><tr><th>線別</th><th>2026 (YTD)</th><th>2025</th><th>YoY %</th><th>觀察</th></tr></thead>
+      <tbody>
+        <tr><td>南歐</td><td>89,480</td><td>142,771</td><td class="neg">-37.3%</td><td><span class="badge alert">缺口最大</span></td></tr>
+        <tr><td>東歐</td><td>80,133</td><td>91,112</td><td class="neg">-12.1%</td><td></td></tr>
+        <tr><td>中西歐</td><td>69,041</td><td>89,402</td><td class="neg">-22.8%</td><td></td></tr>
+        <tr><td>北歐</td><td>59,179</td><td>81,682</td><td class="neg">-27.6%</td><td></td></tr>
+        <tr><td>中國</td><td>57,070</td><td>57,594</td><td class="flat">-0.9%</td><td><span class="badge good">持平</span></td></tr>
+        <tr><td>日本</td><td>54,258</td><td>74,105</td><td class="neg">-26.8%</td><td></td></tr>
+        <tr><td>遊輪</td><td>37,161</td><td>30,413</td><td class="pos">+22.2%</td><td><span class="badge good">成長</span></td></tr>
+        <tr><td>紐西蘭．澳洲</td><td>30,901</td><td>33,652</td><td class="neg">-8.2%</td><td></td></tr>
+        <tr><td>美洲</td><td>18,979</td><td>31,014</td><td class="neg">-38.8%</td><td></td></tr>
+        <tr><td>非洲</td><td>16,140</td><td>13,066</td><td class="pos">+23.5%</td><td><span class="badge good">成長</span></td></tr>
+        <tr><td>俄羅斯．中亞．蒙古</td><td>11,854</td><td>6,026</td><td class="pos">+96.7%</td><td><span class="badge good">大幅回升</span></td></tr>
+        <tr><td>中東</td><td>9,541</td><td>20,384</td><td class="neg">-53.2%</td><td><span class="badge alert">深跌</span></td></tr>
+        <tr><td>南亞</td><td>5,034</td><td>8,944</td><td class="neg">-43.7%</td><td></td></tr>
+        <tr><td>東南亞</td><td>4,196</td><td>7,426</td><td class="neg">-43.5%</td><td></td></tr>
+        <tr><td>韓國</td><td>1,383</td><td>259</td><td class="pos">+433.6%</td><td><span class="badge warn">基數小</span></td></tr>
+        <tr><td>自由行</td><td>849</td><td>2,194</td><td class="neg">-61.3%</td><td></td></tr>
+        <tr style="background:#e0e7ff;font-weight:700"><td>直客合計</td><td>545,199</td><td>691,460</td><td class="neg">-21%</td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="note">＊營業額目標（公司下達）：2025 一階 4.28／二階 4.85 億、2026 一階 6.06／二階 6.39 億（原提供單位「仟元」經對帳應為萬元，此處以億呈現）。2026 為 YTD（至9/10），達成率＝已入帳營收÷目標，全年未完、最終可望更高。逐線 2025 為抽取值、合計以官方 691,460 仟元為準；營業額為不含 TKT/HTL、會計已入帳數。</div>
+  </div>
+
   </div><!-- /view-cn -->
 
   <!-- ================= 不含中國 ================= -->
@@ -369,10 +422,55 @@
     </ul>
   </div>
 
+  <div class="section" style="border-top:4px solid #10b981">
+    <h2>💰 直客營業額（財務維度・不含中國 15 線）<span style="font-size:12px;font-weight:400;color:#64748b">　統計至 9/10・不含 TKT/HTL・會計已入帳</span></h2>
+    <div class="grid">
+      <div class="card green"><div class="label">2026 直客營業額（不含中國・YTD）</div><div class="value">4.88 億</div><div class="delta flat">2025：6.34 億</div></div>
+      <div class="card amber"><div class="label">YoY（不含中國）</div><div class="value">-23.0%</div><div class="delta down">含中國為 -21%（中國營收持平拖低差異）</div></div>
+      <div class="card"><div class="label">已剔除中國營收</div><div class="value">0.57 億</div><div class="delta flat">中國僅佔直客營收 10.5%（佔人頭 17%）</div></div>
+      <div class="card"><div class="label">歐洲四線營收</div><div class="value">2.98 億</div><div class="delta down">佔不含中國 61% ｜ YoY -26.4%</div></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <div style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">近三年直客營業額・不含中國（百萬元）</div>
+        <div class="chart-wrap" style="height:280px"><canvas id="revTrendEX"></canvas></div>
+        <div class="note">不含中國＝直客總營收扣除中國一線。2024／2025 為各年結算、2026 為 YTD（至9/10）。</div>
+      </div>
+      <div>
+        <div style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">重點解讀</div>
+        <div class="alert info">💡 剔除中國後 <b>YoY -23.0%</b> 略差於含中國 -21%：因中國營收幾乎持平（-0.9%），而非中國多數線衰退更深。惟直客<b>單客價值仍高</b>（佔全公司營收 20%、人頭僅 ~13%），且非中國客群單價高於中國客群。</div>
+        <div class="alert" style="margin-top:12px">⚠️ 公司營業額目標（一階 6.06／二階 6.39 億）為<b>含中國全區口徑</b>，<b>本頁不套用達成率</b>；達成率請見「含中國（全區）」分頁。</div>
+      </div>
+    </div>
+    <div style="font-size:15px;font-weight:700;color:#0f172a;margin:14px 0 8px">逐線營業額 2026（YTD）vs 2025・不含中國 15 線　<span style="font-size:12px;font-weight:400;color:#64748b">單位：仟元</span></div>
+    <table>
+      <thead><tr><th>線別</th><th>2026 (YTD)</th><th>2025</th><th>YoY %</th><th>觀察</th></tr></thead>
+      <tbody>
+        <tr><td>南歐</td><td>89,480</td><td>142,771</td><td class="neg">-37.3%</td><td><span class="badge alert">缺口最大</span></td></tr>
+        <tr><td>東歐</td><td>80,133</td><td>91,112</td><td class="neg">-12.1%</td><td></td></tr>
+        <tr><td>中西歐</td><td>69,041</td><td>89,402</td><td class="neg">-22.8%</td><td></td></tr>
+        <tr><td>北歐</td><td>59,179</td><td>81,682</td><td class="neg">-27.6%</td><td></td></tr>
+        <tr><td>日本</td><td>54,258</td><td>74,105</td><td class="neg">-26.8%</td><td></td></tr>
+        <tr><td>遊輪</td><td>37,161</td><td>30,413</td><td class="pos">+22.2%</td><td><span class="badge good">成長</span></td></tr>
+        <tr><td>紐西蘭．澳洲</td><td>30,901</td><td>33,652</td><td class="neg">-8.2%</td><td></td></tr>
+        <tr><td>美洲</td><td>18,979</td><td>31,014</td><td class="neg">-38.8%</td><td></td></tr>
+        <tr><td>非洲</td><td>16,140</td><td>13,066</td><td class="pos">+23.5%</td><td><span class="badge good">成長</span></td></tr>
+        <tr><td>俄羅斯．中亞．蒙古</td><td>11,854</td><td>6,026</td><td class="pos">+96.7%</td><td><span class="badge good">大幅回升</span></td></tr>
+        <tr><td>中東</td><td>9,541</td><td>20,384</td><td class="neg">-53.2%</td><td><span class="badge alert">深跌</span></td></tr>
+        <tr><td>南亞</td><td>5,034</td><td>8,944</td><td class="neg">-43.7%</td><td></td></tr>
+        <tr><td>東南亞</td><td>4,196</td><td>7,426</td><td class="neg">-43.5%</td><td></td></tr>
+        <tr><td>韓國</td><td>1,383</td><td>259</td><td class="pos">+433.6%</td><td><span class="badge warn">基數小</span></td></tr>
+        <tr><td>自由行</td><td>849</td><td>2,194</td><td class="neg">-61.3%</td><td></td></tr>
+        <tr style="background:#ecfdf5;font-weight:700"><td>不含中國合計</td><td>488,129</td><td>633,866</td><td class="neg">-23.0%</td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="note">＊不含中國 15 線＝16 線扣除中國（2026 中國 57,070／2025 57,594 仟元）。逐線 2025 為抽取值；營業額為不含 TKT/HTL、會計已入帳數。</div>
+  </div>
+
   </div><!-- /view-ex -->
 
   <div class="footer">
-    🫐 藍莓 v1.0 產出 ｜ 資料來源：人資部 2026業績總表(0908).pdf（對照 0831 / 2025同期 0909）｜ 產出時間 2026/09/08 ｜ 統籌：Claudia ｜ 本檔含「含中國 / 不含中國」雙分頁
+    🫐 藍莓 v1.0 產出 ｜ 資料來源：人資部 2026業績總表(0908).pdf（對照 0831 / 2025同期 0909）、全公司營業額統計表（統計至9/10）｜ 產出時間 2026/09/08（財務維度 2026/09/10 補入）｜ 統籌：Claudia ｜ 本檔含「含中國 / 不含中國」雙分頁 ＋ 財務維度
   </div>
 </div>
 
@@ -418,8 +516,44 @@ var europeChart = new Chart(document.getElementById('europeChart'),{
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},title:{display:true,text:'歐洲四線 2026 vs 2025 同期'}},scales:{y:{beginAtZero:true,title:{display:true,text:'直客人頭數'}}}}
 });
 
-var cnCharts = [topMoversChartCN, goalChart];
-var exCharts = [topMoversChartEX, europeChart];
+var revGoalCN = new Chart(document.getElementById('revGoalCN'),{
+  type:'bar',
+  data:{labels:['一階 6.06億','二階 6.39億'],
+    datasets:[
+      {label:'已達成（YTD 5.45億）',data:[5.45,5.45],backgroundColor:'#16a34a',borderRadius:3},
+      {label:'缺口',data:[0.61,0.94],backgroundColor:'#fbbf24',borderRadius:3}
+    ]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
+      title:{display:true,text:'目標達成（億元）｜一階89.9% 二階85.3%',color:'#0f172a',font:{size:12,weight:'700'}},
+      tooltip:{callbacks:{label:function(c){return c.dataset.label.split('（')[0]+'：'+c.parsed.x+' 億';}}}},
+    scales:{x:{stacked:true,beginAtZero:true,grid:{color:'#eef2f7'},ticks:{callback:function(v){return v+'億';}}},y:{stacked:true,grid:{display:false}}}}
+});
+
+var revTrendCN = new Chart(document.getElementById('revTrendCN'),{
+  type:'bar',
+  data:{labels:['2024（全年）','2025（全年）','2026（YTD 至9/10）'],
+    datasets:[{label:'直客營業額（百萬元）',data:[547.4,691.5,545.2],
+      backgroundColor:['#94a3b8','#94a3b8','#0d9488'],borderRadius:5}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},title:{display:true,text:'直客營業額 3 年趨勢（含中國・百萬元）'},
+      tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' 百萬元';}}}},
+    scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'百萬元'}},x:{grid:{display:false}}}}
+});
+
+var revTrendEX = new Chart(document.getElementById('revTrendEX'),{
+  type:'bar',
+  data:{labels:['2024（全年）','2025（全年）','2026（YTD 至9/10）'],
+    datasets:[{label:'直客營業額・不含中國（百萬元）',data:[524.2,633.9,488.1],
+      backgroundColor:['#94a3b8','#94a3b8','#10b981'],borderRadius:5}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},title:{display:true,text:'直客營業額 3 年趨勢（不含中國・百萬元）'},
+      tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' 百萬元';}}}},
+    scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'百萬元'}},x:{grid:{display:false}}}}
+});
+
+var cnCharts = [topMoversChartCN, goalChart, revGoalCN, revTrendCN];
+var exCharts = [topMoversChartEX, europeChart, revTrendEX];
 </script>
 </body>
 </html>
