@@ -1,3 +1,6 @@
 .DS_Store
 Thumbs.db
 *.log
+# 本機佈署工具（勿推上公開站）
+deploy_positioning.ps1
+佈署定位分析.bat
