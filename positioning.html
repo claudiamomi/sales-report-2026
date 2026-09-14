@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<title>Report</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:#eef2f9;color:#1f2937;line-height:1.55;padding:24px}
+  .deck{max-width:1180px;margin:0 auto}
+  .cover{background:linear-gradient(135deg,#0f172a,#1e40af);color:#fff;border-radius:16px;padding:28px 34px;margin-bottom:20px;box-shadow:0 8px 24px rgba(30,64,175,.25)}
+  .cover .eyebrow{font-size:13px;letter-spacing:2px;color:#93c5fd;font-weight:600;margin-bottom:8px}
+  .cover h1{font-size:28px;font-weight:800;letter-spacing:1px;margin-bottom:10px}
+  .cover .meta{font-size:13px;color:#cbd5e1}
+  .cover .meta b{color:#fbbf24}
+  .headline{background:#fff;border-left:6px solid #0d9488;border-radius:10px;padding:16px 20px;margin-bottom:20px;font-size:17px;font-weight:600;color:#0f172a;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+  .headline .em{color:#16a34a}.headline .warn{color:#d97706}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
+  .kpi{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-top:4px solid #16a34a}
+  .kpi.amber{border-top-color:#f59e0b}.kpi.teal{border-top-color:#0d9488}
+  .kpi .k-label{font-size:12.5px;color:#64748b;margin-bottom:6px}
+  .kpi .k-val{font-size:26px;font-weight:800;color:#0f172a;line-height:1.15}
+  .kpi .k-sub{font-size:12.5px;margin-top:7px;color:#475569}
+  .card{background:#fff;border-radius:14px;padding:22px 24px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  .card h2{font-size:19px;color:#0f172a;margin-bottom:4px;display:flex;align-items:center;gap:9px}
+  .card h2 .dot{width:9px;height:20px;border-radius:3px;background:#0d9488;display:inline-block}
+  .card .cap{font-size:13px;color:#64748b;margin-bottom:14px}
+  .chart-wrap{position:relative;height:300px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{background:#f1f5f9;padding:8px;text-align:right;font-weight:700;color:#334155;border-bottom:2px solid #cbd5e1}
+  th:first-child{text-align:left}
+  td{padding:7px 8px;text-align:right;border-bottom:1px solid #f1f5f9}
+  td:first-child{text-align:left;font-weight:600}
+  tr:hover{background:#f8fafc}
+  .pos{color:#16a34a;font-weight:700}.neg{color:#dc2626;font-weight:700}.flat{color:#94a3b8}
+  .rowus{background:#ccfbf1 !important;font-weight:800}
+  .grouphdr td{background:#f8fafc;font-weight:700;color:#475569;font-size:12px;text-align:left}
+  .verdict{background:#ecfeff;border:1px solid #a5f3fc;border-left:6px solid #0d9488;border-radius:10px;padding:18px 20px;margin-bottom:20px}
+  .verdict .vhead{font-size:16px;font-weight:800;color:#0f766e;margin-bottom:10px}
+  .verdict .quote{font-size:15px;color:#0f172a;background:#fff;border-radius:8px;padding:14px 16px;border:1px dashed #a5f3fc;margin-bottom:12px}
+  .verdict ul{list-style:none;padding:0}
+  .verdict li{font-size:13.5px;padding:4px 0 4px 16px;position:relative}
+  .verdict li::before{content:"▸";position:absolute;left:0;color:#0d9488;font-weight:800}
+  .foot{text-align:center;color:#94a3b8;font-size:12px;margin-top:8px;padding:14px}
+  .datanote{font-size:12px;color:#64748b;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;margin-bottom:20px}
+  @media(max-width:820px){.kpis{grid-template-columns:1fr}.two{grid-template-columns:1fr}.cover h1{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <div class="cover">
+    <div class="eyebrow">直客銷售部門 · 內部說明</div>
+    <h1>近三年業績定位說明</h1>
+    <div class="meta">回應「直客逐年衰退、分公司成長」之疑慮 ｜ 人頭同期至 <b>9/8</b>（vs 2025 同期 9/9）、營收為<b>全年結算</b>（2026 為 YTD）｜ 🫐 藍莓製表</div>
+  </div>
+
+  <div class="datanote">
+    ⓘ <b>比較基準很關鍵</b>：2026 尚未結束（人頭統計至 9/8、營收至 9/10）。拿「2026 未完整年度」直接比「2025 全年」會造成<b>假性衰退</b>。本說明以兩種公平基準呈現：①<b>全年對全年</b>（2024→2025，皆結算完）；②<b>同期對同期</b>（2026 至 9 月 vs 2025 同期）。
+  </div>
+
+  <div class="headline">
+    直客是<span class="em"> 穩定、大型、高價值</span>的主力部門：規模全公司前段、<b>客單價最高（9.4 萬/人）</b>、三年穩定成長（2024→25 <b>+29% 為當年最快</b>、2026 同期仍 +5.1%，<b>並未衰退</b>）。<span class="warn">單以「成長率%」評斷一個大基期的穩定部門並不公平</span>——尤其對照新設／小基期單位（如嘉義 +518%）。
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="k-label">規模（2026 YTD）</div><div class="k-val">5,813 人</div><div class="k-sub">營收 5.45 億 ｜ 總部單位<b>第 3 大</b>、大於任一分店</div></div>
+    <div class="kpi teal"><div class="k-label">價值：客單價</div><div class="k-val">9.4 萬<span style="font-size:15px">/人</span></div><div class="k-sub">全公司<b>最高</b>（同業僅 4.7 萬，直客近 2 倍）</div></div>
+    <div class="kpi"><div class="k-label">成長（穩定·非衰退）</div><div class="k-val">+29%</div><div class="k-sub">2024→25 <b>當年最快</b>；2026 同期仍 +5.1%</div></div>
+  </div>
+
+  <div class="headline" style="border-left-color:#f59e0b;font-size:15px;font-weight:500">
+    ⚖️ <b>為何不能只看「成長率%」？</b>成長率受<b>基期規模</b>影響極大：同樣加 300 人，對 6,000 人的直客是 +5%、對 184 人的新設嘉義卻是 +160%。<b>%高 ≠ 貢獻大</b>。評斷一個大型、穩定、高價值的部門，應同時看<b>規模、客單價、穩定度、絕對貢獻、以及多年（非單年）趨勢</b>——單一年度的人頭成長率不是公平的唯一標準。
+  </div>
+
+  <div class="card">
+    <h2><span class="dot"></span>各單位 2026 同期成長率（人頭 YoY）<span style="font-size:12px;font-weight:400;color:#94a3b8">　※成長率僅一個面向，需搭配規模／客單價一起看</span></h2>
+    <div class="cap">2026 至 9/8 vs 2025 同期 9/9。直客 <b>+5.1% 為正成長</b>，低於同業／台中（+17%），但明顯優於<b>衰退的專案企劃（-40%）、台南（-7.8%）、桃園（-5.1%）、新竹（-0.1%）</b>。分公司整體 +9.6% 主要靠台中 +17.2% 與<b>新設嘉義</b>（+518%、基期極小另計不入圖）撐起，並非全面成長。<span style="color:#94a3b8">（🟢直客　🟠全公司平均　🔵分店　⚪總部單位）</span></div>
+    <div class="chart-wrap" style="height:340px"><canvas id="yoyChart"></canvas></div>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h2><span class="dot" style="background:#2563eb"></span>直客近三年（人頭）</h2>
+      <div class="cap">2025 大幅成長；2026 為 YTD（未完整年度），非衰退。</div>
+      <div class="chart-wrap" style="height:260px"><canvas id="hcChart"></canvas></div>
+    </div>
+    <div class="card">
+      <h2><span class="dot" style="background:#0d9488"></span>直客近三年（營業額·百萬元）</h2>
+      <div class="cap">2024→2025 +26%；2026 為 YTD（至 9/10）。</div>
+      <div class="chart-wrap" style="height:260px"><canvas id="revChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="dot" style="background:#f59e0b"></span>直客的一張好牌：客單價全公司最高</h2>
+    <div class="cap">營收 ÷ 人頭（2026・元/人）。直客「量小、但每客價值最高」——同業走 B2B 批售量大、單價低。若要衝人頭，須權衡是否稀釋客單價。</div>
+    <div class="chart-wrap" style="height:240px"><canvas id="cpChart"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="dot" style="background:#7c3aed"></span>近三年各單位對照（全區 vs 不含中日）</h2>
+    <div class="cap">「不含中日」＝各單位扣除中國、日本兩條線。同業高度依賴中日，剔除後直客與同業的差距明顯收斂（同業 6,293 vs 直客 3,984）。</div>
+    <div style="font-weight:700;color:#0f172a;margin:6px 0 6px">人頭數（人）</div>
+    <table>
+      <thead><tr><th>單位</th><th>2024</th><th>2025</th><th>2026YTD</th><th>｜</th><th>2024</th><th>2025</th><th>2026YTD</th></tr></thead>
+      <tbody>
+        <tr class="grouphdr"><td colspan="4">全區</td><td></td><td colspan="3">不含中日</td></tr>
+        <tr><td>同業</td><td>16,481</td><td>17,056</td><td>18,688</td><td></td><td>7,945</td><td>7,627</td><td>6,293</td></tr>
+        <tr class="rowus"><td>直客 🫐</td><td>5,073</td><td>6,534</td><td>5,813</td><td></td><td>4,112</td><td>4,228</td><td>3,984</td></tr>
+        <tr><td>專案企劃</td><td>1,715</td><td>1,872</td><td>1,003</td><td></td><td>979</td><td>1,308</td><td>656</td></tr>
+        <tr class="grouphdr"><td colspan="8">分公司（6 分店，逐一顯示）</td></tr>
+        <tr><td>　桃園</td><td>3,447</td><td>3,665</td><td>3,264</td><td></td><td>1,100</td><td>917</td><td>739</td></tr>
+        <tr><td>　新竹</td><td>2,521</td><td>2,377</td><td>2,156</td><td></td><td>1,219</td><td>902</td><td>831</td></tr>
+        <tr><td>　台中</td><td>5,243</td><td>4,770</td><td>5,314</td><td></td><td>3,423</td><td>3,109</td><td>3,103</td></tr>
+        <tr><td>　嘉義 <span style="color:#16a34a;font-weight:400">＊2025新設</span></td><td>0</td><td>189</td><td>1,137</td><td></td><td>0</td><td>85</td><td>157</td></tr>
+        <tr><td>　台南</td><td>2,453</td><td>2,778</td><td>2,457</td><td></td><td>1,638</td><td>1,564</td><td>1,505</td></tr>
+        <tr><td>　高雄</td><td>2,876</td><td>2,584</td><td>2,665</td><td></td><td>2,494</td><td>2,098</td><td>2,134</td></tr>
+        <tr style="background:#f1f5f9;font-weight:700"><td>分公司小計</td><td>16,540</td><td>16,363</td><td>16,993</td><td></td><td>9,874</td><td>8,675</td><td>8,469</td></tr>
+      </tbody>
+    </table>
+    <div style="font-weight:700;color:#0f172a;margin:14px 0 6px">營業額（百萬元）</div>
+    <table>
+      <thead><tr><th>單位</th><th>2024</th><th>2025</th><th>2026YTD</th><th>｜</th><th>2024</th><th>2025</th><th>2026YTD</th></tr></thead>
+      <tbody>
+        <tr class="grouphdr"><td colspan="4">全區</td><td></td><td colspan="3">不含中日</td></tr>
+        <tr><td>同業</td><td>1,117</td><td>1,204</td><td>885</td><td></td><td>811</td><td>860</td><td>562</td></tr>
+        <tr class="rowus"><td>直客 🫐</td><td>547</td><td>691</td><td>545</td><td></td><td>488</td><td>560</td><td>434</td></tr>
+        <tr><td>專案企劃</td><td>143</td><td>192</td><td>70</td><td></td><td>109</td><td>161</td><td>60</td></tr>
+        <tr class="grouphdr"><td colspan="8">分公司（6 分店，逐一顯示）</td></tr>
+        <tr><td>　桃園</td><td>200</td><td>211</td><td>145</td><td></td><td>105</td><td>98</td><td>64</td></tr>
+        <tr><td>　新竹</td><td>176</td><td>158</td><td>126</td><td></td><td>127</td><td>102</td><td>82</td></tr>
+        <tr><td>　台中</td><td>449</td><td>442</td><td>391</td><td></td><td>375</td><td>365</td><td>314</td></tr>
+        <tr><td>　嘉義 <span style="color:#16a34a;font-weight:400">＊2025新設</span></td><td>0</td><td>9</td><td>47</td><td></td><td>0</td><td>5</td><td>18</td></tr>
+        <tr><td>　台南</td><td>220</td><td>236</td><td>147</td><td></td><td>180</td><td>180</td><td>113</td></tr>
+        <tr><td>　高雄</td><td>288</td><td>282</td><td>216</td><td></td><td>271</td><td>260</td><td>196</td></tr>
+        <tr style="background:#f1f5f9;font-weight:700"><td>分公司小計</td><td>1,334</td><td>1,337</td><td>1,072</td><td></td><td>1,059</td><td>1,011</td><td>788</td></tr>
+      </tbody>
+    </table>
+    <div style="font-size:11.5px;color:#94a3b8;margin-top:8px">＊2026 為 YTD（人頭至 9/8、營收至 9/10），2024／2025 為全年結算，故 2026 絕對值偏低（年度未完）。分公司為「分店」維度、與總部單位重疊，僅供對照。</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="dot" style="background:#16a34a"></span>全公司各單位近三年趨勢（人頭）</h2>
+    <div class="cap">總部單位（同業／專案企劃／直客）＋ 六家分店 三年並排。<b>2024→2025 全年成長率</b>：直客 <b>+29%（各單位最快）</b>、專案企劃 +9%、同業 +3%、分公司整體 -1%。分店之間差異大——台中、嘉義（新設）撐起分公司，桃園／新竹／高雄／台南多數持平或下滑。2026 為 YTD（至 9/8）尚未完整，故絕對值偏低。</div>
+    <div class="chart-wrap" style="height:330px"><canvas id="branchChart"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="dot" style="background:#0d9488"></span>全公司各單位近三年趨勢（營業額）</h2>
+    <div class="cap">同結構的營業額版（百萬元）。<b>2024→2025 全年成長率</b>：專案企劃 +34%、直客 <b>+26%</b>、同業 +8%、分公司持平。2026 為 YTD（至 9/10）尚未完整。＊專案企劃為專案／團體業務，規模小、波動大（2026 同期 -40%）；營業額為不含 TKT/HTL、會計已入帳。</div>
+    <div class="chart-wrap" style="height:330px"><canvas id="unitRevChart"></canvas></div>
+  </div>
+
+  <div class="verdict">
+    <div class="vhead">🫐 自我檢視與定位</div>
+    <div class="quote">直客是<b>穩定、大型、高價值</b>的主力部門：客單價全公司最高、三年穩定成長、2024→25 成長還是各單位最快。因此我們<b>不接受「成長率最慢＝表現差」的評斷</b>——成長率受基期規模影響，對大部門並不公平。但我們也<b>誠實面對</b>：2026 人頭成長動能較溫和，若要把規模再推上一階，需要新的客源／產品線；這是我們<b>主動要提升</b>的方向，而非被貼上「衰退」或「落後」的標籤。</div>
+    <ul>
+      <li><b>定位</b>：規模大（總部第 3 大）、客單價全公司最高、三年穩定 —— 可靠的高價值主力盤。</li>
+      <li><b>公平看成長</b>：2024→25 <b>+29%（當年最快）</b>、2026 同期 +5.1%（仍正成長）；成長率受基期影響，不宜與新設／小基期單位（嘉義 +518%）直接相比。</li>
+      <li><b>誠實面對</b>：2026 人頭成長動能較溫和，規模想再上一階，需開發新客源／高價值產品 —— 這是我們主動提速的方向。</li>
+      <li><b>守住優勢</b>：客單價領先（9.4 萬 vs 同業 4.7 萬），不為衝量而稀釋品質；質量並重才是直客的價值。</li>
+      <li><b>下一步：提對策</b> — 提出明確的成長主軸（新客源／高價值產品）與資源需求，與公司策略對齊。</li>
+    </ul>
+  </div>
+
+  <div class="foot">🫐 藍莓製表 ｜ 資料來源：2024-2026人頭數.pdf、近3年營業額(直售_同業).pdf、2026業績總表(0908)、2025業績總表(0909) ｜ 產出 2026/09/14</div>
+</div>
+
+<script>
+Chart.defaults.font.family="'Microsoft JhengHei','PingFang TC',sans-serif";
+Chart.defaults.color="#475569";
+
+// 各單位同期 YoY
+var uy=[['同業',17.4,'unit'],['台中',17.2,'br'],['全公司平均',11.9,'avg'],['高雄',5.9,'br'],['直客 🫐',5.1,'us'],['新竹',-0.1,'brn'],['桃園',-5.1,'brn'],['台南',-7.8,'brn'],['專案企劃',-40.0,'unit']];
+var uyC={us:'#0d9488',avg:'#f59e0b',unit:'#94a3b8',br:'#60a5fa',brn:'#f87171'};
+new Chart(document.getElementById('yoyChart'),{
+  type:'bar',
+  data:{labels:uy.map(x=>x[0]),datasets:[{label:'2026 同期 YoY %',data:uy.map(x=>x[1]),
+    backgroundColor:uy.map(x=>uyC[x[2]]),borderRadius:4}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},title:{display:true,text:'人頭 2026 同期 YoY（含 6 分店｜嘉義+518%新設另計）',color:'#0f172a',font:{size:12.5,weight:'700'}},
+      tooltip:{callbacks:{label:c=>'+'+c.parsed.x+'%'}}},
+    scales:{x:{title:{display:true,text:'YoY %'},grid:{color:'#eef2f7'},ticks:{callback:v=>v+'%'}},y:{grid:{display:false}}}}
+});
+// 直客 3年人頭
+new Chart(document.getElementById('hcChart'),{
+  type:'bar',
+  data:{labels:['2024 全年','2025 全年','2026 YTD'],datasets:[{data:[5073,6534,5813],
+    backgroundColor:['#94a3b8','#16a34a','#2563eb'],borderRadius:5}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
+    tooltip:{callbacks:{label:c=>c.parsed.y.toLocaleString()+' 人'}}},
+    scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'人'}},x:{grid:{display:false}}}}
+});
+// 直客 3年營收
+new Chart(document.getElementById('revChart'),{
+  type:'bar',
+  data:{labels:['2024 全年','2025 全年','2026 YTD'],datasets:[{data:[547,691,545],
+    backgroundColor:['#94a3b8','#0d9488','#0d9488'],borderRadius:5}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
+    tooltip:{callbacks:{label:c=>c.parsed.y+' 百萬元'}}},
+    scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'百萬元'}},x:{grid:{display:false}}}}
+});
+// 全公司各單位 3 年人頭
+new Chart(document.getElementById('branchChart'),{
+  type:'bar',
+  data:{labels:['同業','專案企劃','直客 🫐','桃園','新竹','台中','嘉義*','台南','高雄'],
+    datasets:[
+      {label:'2024 全年',data:[16481,1715,5073,3447,2521,5243,0,2453,2876],backgroundColor:'#cbd5e1',borderRadius:3},
+      {label:'2025 全年',data:[17056,1872,6534,3665,2377,4770,189,2778,2584],backgroundColor:'#94a3b8',borderRadius:3},
+      {label:'2026 YTD',data:[18688,1003,5813,3264,2156,5314,1137,2457,2665],backgroundColor:'#2563eb',borderRadius:3}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top'},title:{display:true,text:'總部單位 ＋ 六家分店 人頭 3 年（嘉義*為2025新設；2026為YTD）',color:'#0f172a',font:{size:12,weight:'700'}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+'：'+c.parsed.y.toLocaleString()+' 人'}}},
+    scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'人'}},x:{grid:{display:false}}}}
+});
+// 全公司各單位 3 年營業額
+new Chart(document.getElementById('unitRevChart'),{
+  type:'bar',
+  data:{labels:['同業','專案企劃','直客 🫐','桃園','新竹','台中','嘉義*','台南','高雄'],
+    datasets:[
+      {label:'2024 全年',data:[1117,143,547,200,176,449,0,220,288],backgroundColor:'#cbd5e1',borderRadius:3},
+      {label:'2025 全年',data:[1204,192,691,211,158,442,9,236,282],backgroundColor:'#94a3b8',borderRadius:3},
+      {label:'2026 YTD',data:[885,70,545,145,126,391,47,147,216],backgroundColor:'#0d9488',borderRadius:3}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top'},title:{display:true,text:'總部單位 ＋ 六家分店 營業額 3 年（百萬元；2026為YTD）',color:'#0f172a',font:{size:12,weight:'700'}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+'：'+c.parsed.y+' 百萬元'}}},
+    scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'百萬元'}},x:{grid:{display:false}}}}
+});
+// 客單價
+var cp=[['同業',4.73,'g'],['專案企劃',6.97,'g'],['直客 🫐',9.38,'us']];
+new Chart(document.getElementById('cpChart'),{
+  type:'bar',
+  data:{labels:cp.map(x=>x[0]),datasets:[{label:'客單價（萬元/人）',data:cp.map(x=>x[1]),
+    backgroundColor:cp.map(x=>x[2]==='us'?'#f59e0b':'#94a3b8'),borderRadius:4}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},title:{display:true,text:'客單價 2026（萬元/人）',color:'#0f172a',font:{size:13,weight:'700'}},
+      tooltip:{callbacks:{label:c=>c.parsed.x+' 萬元/人'}}},
+    scales:{x:{beginAtZero:true,title:{display:true,text:'萬元/人'},grid:{color:'#eef2f7'}},y:{grid:{display:false}}}}
+});
+</script>
+</body>
+</html>
