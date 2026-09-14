@@ -157,6 +157,18 @@
     <div class="chart-wrap" style="height:330px"><canvas id="unitRevChart"></canvas></div>
   </div>
 
+  <div class="card">
+    <h2><span class="dot" style="background:#10b981"></span>全公司各單位近三年趨勢（人頭·不含中國日本）</h2>
+    <div class="cap">同結構、剔除中國與日本兩條線後的人頭。<b>剔除中日後同業從 ~1.8 萬降到 ~6 千</b>，與直客（3,984）差距明顯收斂——因同業高度依賴中日；直客則相對不依賴，仍是規模前段的高價值單位。2026 為 YTD（至 9/8）。</div>
+    <div class="chart-wrap" style="height:330px"><canvas id="unitHcExChart"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="dot" style="background:#10b981"></span>全公司各單位近三年趨勢（營業額·不含中國日本）</h2>
+    <div class="cap">剔除中日後的營業額（百萬元）。同業對中日依賴高，剔除後由 ~885 降到 ~562 百萬，與直客（434）差距縮小。2026 為 YTD（至 9/10）。＊營業額為不含 TKT/HTL、會計已入帳。</div>
+    <div class="chart-wrap" style="height:330px"><canvas id="unitRevExChart"></canvas></div>
+  </div>
+
   <div class="verdict">
     <div class="vhead">🫐 自我檢視與定位</div>
     <div class="quote">直客是<b>穩定、大型、高價值</b>的主力部門：客單價全公司最高、三年穩定成長、2024→25 成長還是各單位最快。因此我們<b>不接受「成長率最慢＝表現差」的評斷</b>——成長率受基期規模影響，對大部門並不公平。但我們也<b>誠實面對</b>：2026 人頭成長動能較溫和，若要把規模再推上一階，需要新的客源／產品線；這是我們<b>主動要提升</b>的方向，而非被貼上「衰退」或「落後」的標籤。</div>
@@ -231,6 +243,34 @@ new Chart(document.getElementById('unitRevChart'),{
     ]},
   options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{position:'top'},title:{display:true,text:'總部單位 ＋ 六家分店 營業額 3 年（百萬元；2026為YTD）',color:'#0f172a',font:{size:12,weight:'700'}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+'：'+c.parsed.y+' 百萬元'}}},
+    scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'百萬元'}},x:{grid:{display:false}}}}
+});
+// 全公司各單位 3 年人頭（不含中日）
+new Chart(document.getElementById('unitHcExChart'),{
+  type:'bar',
+  data:{labels:['同業','專案企劃','直客 🫐','桃園','新竹','台中','嘉義*','台南','高雄'],
+    datasets:[
+      {label:'2024 全年',data:[7945,979,4112,1100,1219,3423,0,1638,2494],backgroundColor:'#cbd5e1',borderRadius:3},
+      {label:'2025 全年',data:[7627,1308,4228,917,902,3109,85,1564,2098],backgroundColor:'#94a3b8',borderRadius:3},
+      {label:'2026 YTD',data:[6293,656,3984,739,831,3103,157,1505,2134],backgroundColor:'#10b981',borderRadius:3}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top'},title:{display:true,text:'各單位＋分店 人頭 3 年（不含中國日本；2026為YTD）',color:'#0f172a',font:{size:12,weight:'700'}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+'：'+c.parsed.y.toLocaleString()+' 人'}}},
+    scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'人'}},x:{grid:{display:false}}}}
+});
+// 全公司各單位 3 年營業額（不含中日）
+new Chart(document.getElementById('unitRevExChart'),{
+  type:'bar',
+  data:{labels:['同業','專案企劃','直客 🫐','桃園','新竹','台中','嘉義*','台南','高雄'],
+    datasets:[
+      {label:'2024 全年',data:[811,109,488,105,127,375,0,180,271],backgroundColor:'#cbd5e1',borderRadius:3},
+      {label:'2025 全年',data:[860,161,560,98,102,365,5,180,260],backgroundColor:'#94a3b8',borderRadius:3},
+      {label:'2026 YTD',data:[562,60,434,64,82,314,18,113,196],backgroundColor:'#10b981',borderRadius:3}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top'},title:{display:true,text:'各單位＋分店 營業額 3 年（不含中國日本·百萬元；2026為YTD）',color:'#0f172a',font:{size:12,weight:'700'}},
       tooltip:{callbacks:{label:c=>c.dataset.label+'：'+c.parsed.y+' 百萬元'}}},
     scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'百萬元'}},x:{grid:{display:false}}}}
 });
