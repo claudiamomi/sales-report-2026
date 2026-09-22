@@ -33,18 +33,31 @@
   .wk.sat{background:#fee2e2;color:#b91c1c}
   .wk.wd{background:#e2e8f0;color:#475569}
   .time{color:#334155;white-space:nowrap;font-variant-numeric:tabular-nums}
-  .topic{font-weight:600;color:#0f172a}
+  .topic{font-weight:600;color:#0f172a;overflow-wrap:break-word;word-break:break-word}
   .lect{font-weight:700;color:#2563eb;white-space:nowrap}
+  .c-date{width:120px}.c-time{width:120px}.c-lect{width:90px}
 
   .note{font-size:12px;color:#64748b;margin-top:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;line-height:1.7}
   .foot{text-align:center;color:#94a3b8;font-size:12px;margin-top:20px;padding:12px}
 
   @media(max-width:720px){
-    body{padding:16px}
+    body{padding:14px}
     .kpis{grid-template-columns:repeat(2,1fr)}
     .cover h1{font-size:23px}
-    th,td{font-size:12.5px;padding:8px 8px}
-    .topic{font-size:12.5px}
+    th,td{font-size:12.5px;padding:8px 6px}
+    .topic{font-size:12.5px;line-height:1.4}
+    .c-date,td:nth-child(1){width:62px}
+    .c-time,td:nth-child(2){width:74px}
+    .c-lect,td:nth-child(4){width:44px}
+    .wk{width:20px;height:20px;line-height:20px;font-size:11px;margin-left:4px}
+    .date{font-size:12px}
+    .time{font-size:12px}
+  }
+  @media(max-width:400px){
+    th,td{padding:7px 5px}
+    .date{font-size:11.5px}
+    .c-date,td:nth-child(1){width:58px}
+    .c-time,td:nth-child(2){width:68px}
   }
 </style>
 </head>
@@ -66,7 +79,7 @@
 
   <table>
     <thead>
-      <tr><th style="width:120px">日期</th><th style="width:110px">時間</th><th>主題</th><th style="width:90px">講師</th></tr>
+      <tr><th class="c-date">日期</th><th class="c-time">時間</th><th>主題</th><th class="c-lect">講師</th></tr>
     </thead>
     <tbody>
       <tr class="mhdr"><td colspan="4">10 月（5 場）</td></tr>
