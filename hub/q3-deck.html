@@ -83,6 +83,12 @@
   .badge.good{background:#d1fae5;color:#065f46}.badge.warn{background:#fef3c7;color:#92400e}.badge.alert{background:#fee2e2;color:#991b1b}
   .rowus{background:#ccfbf1 !important;font-weight:800}
   .grouphdr td{background:#f8fafc;font-weight:700;color:#475569;font-size:12px;text-align:left;padding:6px 8px}
+  .rgnhdr td{background:#e0e7ff;font-weight:800;color:#1e3a8a;font-size:12px;text-align:left;padding:6px 10px;letter-spacing:.05em;border-top:2px solid #c7d2fe}
+  .subln td:first-child{padding-left:24px;font-weight:500}
+  .tbl-tight{font-size:11.5px}
+  .tbl-tight td{padding:3px 8px}
+  .tbl-tight .rgnhdr td{padding:2.5px 10px;font-size:11px}
+  .tbl-tight th{padding:5px 8px}
   .note{font-size:11.5px;color:#94a3b8;margin-top:8px}
 
   .alert{background:#fef3c7;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:6px;margin:14px 0 0;font-size:13px;color:#78350f;line-height:1.65}
@@ -240,27 +246,36 @@
     <div class="inner">
       <div class="kicker">02 · 量價維度（續）</div>
       <div class="stitle"><span class="dot" style="background:#0d9488"></span>逐線營業額 2026（YTD 至 9/10）vs 2025</div>
-      <div class="cap">單位：仟元。營業額為不含 TKT/HTL、會計已入帳數；2025 為抽取值、合計以官方 691,460 仟元為準。</div>
-      <table style="font-size:12.5px">
+      <div class="cap" style="margin:8px 0 10px">單位：仟元。營業額為不含 TKT/HTL、會計已入帳數；2025 為抽取值、合計以官方 691,460 仟元為準。</div>
+      <table class="tbl-tight">
         <thead><tr><th>線別</th><th>2026 (YTD)</th><th>2025</th><th>YoY %</th><th>觀察</th></tr></thead>
         <tbody>
-          <tr><td>南歐</td><td>89,480</td><td>142,771</td><td class="neg">-37.3%</td><td><span class="badge alert">缺口最大</span></td></tr>
-          <tr><td>東歐</td><td>80,133</td><td>91,112</td><td class="neg">-12.1%</td><td></td></tr>
-          <tr><td>中西歐</td><td>69,041</td><td>89,402</td><td class="neg">-22.8%</td><td></td></tr>
-          <tr><td>北歐</td><td>59,179</td><td>81,682</td><td class="neg">-27.6%</td><td></td></tr>
-          <tr><td>中國</td><td>57,070</td><td>57,594</td><td class="flat">-0.9%</td><td><span class="badge good">持平</span></td></tr>
-          <tr><td>日本</td><td>54,258</td><td>74,105</td><td class="neg">-26.8%</td><td></td></tr>
-          <tr><td>遊輪</td><td>37,161</td><td>30,413</td><td class="pos">+22.2%</td><td><span class="badge good">成長</span></td></tr>
-          <tr><td>紐西蘭．澳洲</td><td>30,901</td><td>33,652</td><td class="neg">-8.2%</td><td></td></tr>
-          <tr><td>美洲</td><td>18,979</td><td>31,014</td><td class="neg">-38.8%</td><td></td></tr>
-          <tr><td>非洲</td><td>16,140</td><td>13,066</td><td class="pos">+23.5%</td><td><span class="badge good">成長</span></td></tr>
-          <tr><td>俄羅斯．中亞．蒙古</td><td>11,854</td><td>6,026</td><td class="pos">+96.7%</td><td><span class="badge good">大幅回升</span></td></tr>
-          <tr><td>中東</td><td>9,541</td><td>20,384</td><td class="neg">-53.2%</td><td><span class="badge alert">深跌</span></td></tr>
-          <tr><td>南亞</td><td>5,034</td><td>8,944</td><td class="neg">-43.7%</td><td></td></tr>
-          <tr><td>東南亞</td><td>4,196</td><td>7,426</td><td class="neg">-43.5%</td><td></td></tr>
-          <tr><td>韓國</td><td>1,383</td><td>259</td><td class="pos">+433.6%</td><td><span class="badge warn">基數小</span></td></tr>
-          <tr><td>自由行</td><td>849</td><td>2,194</td><td class="neg">-61.3%</td><td></td></tr>
-          <tr style="background:#e0e7ff;font-weight:800"><td>直客合計</td><td>545,199</td><td>691,460</td><td class="neg">-21%</td><td></td></tr>
+          <tr class="rgnhdr"><td colspan="5">🇪🇺 歐洲</td></tr>
+          <tr class="subln"><td>南歐</td><td>89,480</td><td>142,771</td><td class="neg">-37.3%</td><td><span class="badge alert">缺口最大</span></td></tr>
+          <tr class="subln"><td>東歐</td><td>80,133</td><td>91,112</td><td class="neg">-12.1%</td><td></td></tr>
+          <tr class="subln"><td>中西歐</td><td>69,041</td><td>89,402</td><td class="neg">-22.8%</td><td></td></tr>
+          <tr class="subln"><td>北歐</td><td>59,179</td><td>81,682</td><td class="neg">-27.6%</td><td></td></tr>
+          <tr class="rgnhdr"><td colspan="5">🕌 中東</td></tr>
+          <tr class="subln"><td>中東</td><td>9,541</td><td>20,384</td><td class="neg">-53.2%</td><td><span class="badge alert">深跌</span></td></tr>
+          <tr class="rgnhdr"><td colspan="5">🚢 遊輪</td></tr>
+          <tr class="subln"><td>遊輪</td><td>37,161</td><td>30,413</td><td class="pos">+22.2%</td><td><span class="badge good">成長</span></td></tr>
+          <tr class="rgnhdr"><td colspan="5">🌎 美洲</td></tr>
+          <tr class="subln"><td>美洲</td><td>18,979</td><td>31,014</td><td class="neg">-38.8%</td><td></td></tr>
+          <tr class="rgnhdr"><td colspan="5">🌍 非洲</td></tr>
+          <tr class="subln"><td>非洲</td><td>16,140</td><td>13,066</td><td class="pos">+23.5%</td><td><span class="badge good">成長</span></td></tr>
+          <tr class="rgnhdr"><td colspan="5">🏔️ 中亞</td></tr>
+          <tr class="subln"><td>俄羅斯．中亞．蒙古</td><td>11,854</td><td>6,026</td><td class="pos">+96.7%</td><td><span class="badge good">大幅回升</span></td></tr>
+          <tr class="rgnhdr"><td colspan="5">🐨 紐澳</td></tr>
+          <tr class="subln"><td>紐西蘭．澳洲</td><td>30,901</td><td>33,652</td><td class="neg">-8.2%</td><td></td></tr>
+          <tr class="rgnhdr"><td colspan="5">🛕 南亞</td></tr>
+          <tr class="subln"><td>南亞</td><td>5,034</td><td>8,944</td><td class="neg">-43.7%</td><td></td></tr>
+          <tr class="rgnhdr"><td colspan="5">🌏 泛亞洲</td></tr>
+          <tr class="subln"><td>中國</td><td>57,070</td><td>57,594</td><td class="flat">-0.9%</td><td><span class="badge good">持平</span></td></tr>
+          <tr class="subln"><td>日本</td><td>54,258</td><td>74,105</td><td class="neg">-26.8%</td><td></td></tr>
+          <tr class="subln"><td>東南亞</td><td>4,196</td><td>7,426</td><td class="neg">-43.5%</td><td></td></tr>
+          <tr class="subln"><td>韓國</td><td>1,383</td><td>259</td><td class="pos">+433.6%</td><td><span class="badge warn">基數小</span></td></tr>
+          <tr class="subln"><td>自由行</td><td>849</td><td>2,194</td><td class="neg">-61.3%</td><td></td></tr>
+          <tr style="background:#c7d2fe;font-weight:800"><td>直客合計</td><td>545,199</td><td>691,460</td><td class="neg">-21%</td><td></td></tr>
         </tbody>
       </table>
       <div class="note">＊營業額目標（公司下達）：2026 一階 6.06／二階 6.39 億。2026 為 YTD（至 9/10・本週財務未更新），達成率＝已入帳營收÷目標，全年未完、最終可望更高。</div>
