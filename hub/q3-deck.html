@@ -38,6 +38,7 @@
   .stitle{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;display:flex;align-items:center;gap:10px}
   .stitle .dot{width:10px;height:26px;border-radius:3px;background:#2563eb;display:inline-block}
   .cap{font-size:13.5px;color:#475569;margin:10px 0 18px;max-width:960px;line-height:1.55}
+  .mini-h{font-size:14px;font-weight:700;color:#0f172a;margin-bottom:8px}
 
   /* ── 封面 ─────────────────────────────────── */
   .cover-slide{background:linear-gradient(135deg,#0f172a,#1e40af)!important}
@@ -68,6 +69,7 @@
   .chart-wrap{position:relative;height:min(52vh,430px)}
   .two{display:grid;grid-template-columns:1.15fr .85fr;gap:22px}
   .two2{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+  .twoeq{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
 
   table{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.05)}
   th{background:#f1f5f9;padding:9px 8px;text-align:right;font-weight:700;color:#334155;border-bottom:2px solid #cbd5e1}
@@ -78,9 +80,15 @@
   .pos{color:#16a34a;font-weight:700}.neg{color:#dc2626;font-weight:700}.zero{color:#94a3b8}
   .badge{display:inline-block;padding:2px 7px;border-radius:9px;font-size:11px;font-weight:700;margin-left:5px}
   .b-win{background:#d1fae5;color:#065f46}.b-lose{background:#fee2e2;color:#991b1b}.b-star{background:#fef3c7;color:#92400e}
+  .badge.good{background:#d1fae5;color:#065f46}.badge.warn{background:#fef3c7;color:#92400e}.badge.alert{background:#fee2e2;color:#991b1b}
   .rowus{background:#ccfbf1 !important;font-weight:800}
   .grouphdr td{background:#f8fafc;font-weight:700;color:#475569;font-size:12px;text-align:left;padding:6px 8px}
   .note{font-size:11.5px;color:#94a3b8;margin-top:8px}
+
+  .alert{background:#fef3c7;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:6px;margin:14px 0 0;font-size:13px;color:#78350f;line-height:1.65}
+  .alert.good{background:#d1fae5;border-color:#16a34a;color:#064e3b}
+  .alert.info{background:#e0e7ff;border-color:#2563eb;color:#1e3a8a}
+  .alert.bad{background:#fee2e2;border-color:#dc2626;color:#7f1d1d}
 
   .tri{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
   .tri .box{border-radius:10px;padding:14px 16px;text-align:center}
@@ -112,7 +120,7 @@
   .counter{position:fixed;top:20px;right:26px;z-index:30;font-size:14px;font-weight:700;color:#0f172a;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:6px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
   .counter b{color:#2563eb}
   .progress{position:fixed;top:0;left:0;height:4px;background:#2563eb;z-index:31;width:0;transition:width .25s}
-  .dots{position:fixed;top:50%;right:20px;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:11px}
+  .dots{position:fixed;top:50%;right:20px;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:10px}
   .dots button{width:11px;height:11px;border-radius:50%;border:none;padding:0;cursor:pointer;background:#cbd5e1;transition:all .2s;position:relative}
   .dots button:hover{background:#94a3b8;transform:scale(1.2)}
   .dots button.act{background:#2563eb;transform:scale(1.35)}
@@ -125,9 +133,9 @@
   @media(max-width:820px){
     .slide{padding:52px 18px 60px}
     .kpis{grid-template-columns:repeat(2,1fr)}
-    .two,.two2,.insights,.tri{grid-template-columns:1fr}
+    .two,.two2,.twoeq,.insights,.tri{grid-template-columns:1fr}
     .cover-slide h1{font-size:30px}
-    .stitle{font-size:21px}
+    .stitle{font-size:20px}
     .dots{display:none}
     table{font-size:12px}
   }
@@ -136,7 +144,7 @@
 <body>
 
 <div class="progress" id="prog"></div>
-<div class="counter"><b id="cur">1</b> / <span id="tot">11</span></div>
+<div class="counter"><b id="cur">1</b> / <span id="tot">1</span></div>
 <div class="dots" id="dots"></div>
 <div class="hint" id="hint">滑鼠滾輪 / <b>↓ →</b> / 空白鍵翻頁　·　右側圓點可跳頁</div>
 
@@ -176,10 +184,96 @@
     </div>
   </section>
 
-  <!-- 2 · 季度量能 + 佔比 -->
+  <!-- 2 · 現況＋目標達成總覽（順位一） -->
+  <section class="slide" data-label="目標進度">
+    <div class="inner">
+      <div class="kicker">01 · 目標進度</div>
+      <div class="stitle"><span class="dot" style="background:#16a34a"></span>🎯 現況＋目標達成總覽（含中國全區 · 2026 YTD）</div>
+      <div class="kpis">
+        <div class="kpi green"><div class="k-label">全年人頭（直客）</div><div class="k-val">5,901</div><div class="k-sub up">近 2 週 +88 ｜ YoY +4.0%</div></div>
+        <div class="kpi green"><div class="k-label">一階目標達成</div><div class="k-val">95.4<small>%</small></div><div class="k-sub flat">缺口 284 ｜ 剩 14 週</div></div>
+        <div class="kpi amber"><div class="k-label">二階目標達成</div><div class="k-val">90.3<small>%</small></div><div class="k-sub flat">缺口 632 ｜ 剩 14 週</div></div>
+        <div class="kpi green"><div class="k-label">H2 預售（7-12 月）</div><div class="k-val">2,721</div><div class="k-sub up">近 2 週 +88 ｜ YoY +2.0%</div></div>
+      </div>
+      <table style="margin-top:16px">
+        <thead><tr><th>維度</th><th>2026 YTD</th><th>一階目標</th><th>一階達成</th><th>二階目標</th><th>二階達成</th></tr></thead>
+        <tbody>
+          <tr><td>人頭（全年累計・至 9/21）</td><td>5,901</td><td>6,185</td><td class="pos">95.4%</td><td>6,533</td><td class="pos">90.3%</td></tr>
+          <tr><td>營業額（已入帳・億元・至 9/10）</td><td>5.45</td><td>6.06</td><td class="pos">89.9%</td><td>6.39</td><td class="flat">85.3%</td></tr>
+        </tbody>
+      </table>
+      <div class="twoeq" style="margin-top:16px">
+        <div>
+          <div class="mini-h">人頭目標達成（人）</div>
+          <div class="chart-wrap" style="height:min(22vh,150px)"><canvas id="goalChart"></canvas></div>
+        </div>
+        <div>
+          <div class="mini-h">營業額目標達成（億元）</div>
+          <div class="chart-wrap" style="height:min(22vh,150px)"><canvas id="revGoalCN"></canvas></div>
+        </div>
+      </div>
+      <div class="alert">剩 <b>14 週</b>。人頭一階週均只需 <b>+20.3</b>（近 2 週 +88、週均約 +44、<b>2.2×</b>，<b>達成篤定</b>）、二階需 +45.1（<b>0.98×</b> 貼線）；營業額為 YTD 至 9/10、全年未完、最終可望更高（2025 實績達當年一階目標 162%）。</div>
+    </div>
+  </section>
+
+  <!-- 3 · 直客量價維度：趨勢圖（順位二） -->
+  <section class="slide" data-label="量價維度">
+    <div class="inner">
+      <div class="kicker">02 · 量價維度</div>
+      <div class="stitle"><span class="dot" style="background:#0d9488"></span>💰 直客量價維度：人頭 × 營業額（含中國全區）</div>
+      <div class="cap">營業額統計至 9/10 · 不含 TKT/HTL · 會計已入帳。</div>
+      <div class="twoeq">
+        <div>
+          <div class="mini-h">近三年直客人頭（人）</div>
+          <div class="chart-wrap" style="height:min(38vh,290px)"><canvas id="hcTrendCN"></canvas></div>
+          <div class="note">2024／2025 全年結算，2026 為 YTD（至 9/21）。5,073 → 6,534 → 5,901（已達 2025 全年 90%、已超越 2024 全年）。</div>
+        </div>
+        <div>
+          <div class="mini-h">近三年直客營業額（百萬元）</div>
+          <div class="chart-wrap" style="height:min(38vh,290px)"><canvas id="revTrendCN"></canvas></div>
+          <div class="note">2024／2025 全年結算，2026 為 YTD（至 9/10・本週未更新）。547 → 691 → 545 百萬（已達 2025 全年 79%）。</div>
+        </div>
+      </div>
+      <div class="alert info">💡 <b>直客＝高單客價值</b>：佔全公司營收 20.0%、人頭僅 ~13%。近三年客單價（全年）：2024 約 10.8 萬/人 → 2025 約 10.6 萬/人（微降）。<b>2025 為量價雙高峰</b>（人頭 6,534、營收 6.91 億）。</div>
+    </div>
+  </section>
+
+  <!-- 4 · 逐線營業額明細（順位二・續） -->
+  <section class="slide" data-label="營業額明細">
+    <div class="inner">
+      <div class="kicker">02 · 量價維度（續）</div>
+      <div class="stitle"><span class="dot" style="background:#0d9488"></span>逐線營業額 2026（YTD 至 9/10）vs 2025</div>
+      <div class="cap">單位：仟元。營業額為不含 TKT/HTL、會計已入帳數；2025 為抽取值、合計以官方 691,460 仟元為準。</div>
+      <table style="font-size:12.5px">
+        <thead><tr><th>線別</th><th>2026 (YTD)</th><th>2025</th><th>YoY %</th><th>觀察</th></tr></thead>
+        <tbody>
+          <tr><td>南歐</td><td>89,480</td><td>142,771</td><td class="neg">-37.3%</td><td><span class="badge alert">缺口最大</span></td></tr>
+          <tr><td>東歐</td><td>80,133</td><td>91,112</td><td class="neg">-12.1%</td><td></td></tr>
+          <tr><td>中西歐</td><td>69,041</td><td>89,402</td><td class="neg">-22.8%</td><td></td></tr>
+          <tr><td>北歐</td><td>59,179</td><td>81,682</td><td class="neg">-27.6%</td><td></td></tr>
+          <tr><td>中國</td><td>57,070</td><td>57,594</td><td class="flat">-0.9%</td><td><span class="badge good">持平</span></td></tr>
+          <tr><td>日本</td><td>54,258</td><td>74,105</td><td class="neg">-26.8%</td><td></td></tr>
+          <tr><td>遊輪</td><td>37,161</td><td>30,413</td><td class="pos">+22.2%</td><td><span class="badge good">成長</span></td></tr>
+          <tr><td>紐西蘭．澳洲</td><td>30,901</td><td>33,652</td><td class="neg">-8.2%</td><td></td></tr>
+          <tr><td>美洲</td><td>18,979</td><td>31,014</td><td class="neg">-38.8%</td><td></td></tr>
+          <tr><td>非洲</td><td>16,140</td><td>13,066</td><td class="pos">+23.5%</td><td><span class="badge good">成長</span></td></tr>
+          <tr><td>俄羅斯．中亞．蒙古</td><td>11,854</td><td>6,026</td><td class="pos">+96.7%</td><td><span class="badge good">大幅回升</span></td></tr>
+          <tr><td>中東</td><td>9,541</td><td>20,384</td><td class="neg">-53.2%</td><td><span class="badge alert">深跌</span></td></tr>
+          <tr><td>南亞</td><td>5,034</td><td>8,944</td><td class="neg">-43.7%</td><td></td></tr>
+          <tr><td>東南亞</td><td>4,196</td><td>7,426</td><td class="neg">-43.5%</td><td></td></tr>
+          <tr><td>韓國</td><td>1,383</td><td>259</td><td class="pos">+433.6%</td><td><span class="badge warn">基數小</span></td></tr>
+          <tr><td>自由行</td><td>849</td><td>2,194</td><td class="neg">-61.3%</td><td></td></tr>
+          <tr style="background:#e0e7ff;font-weight:800"><td>直客合計</td><td>545,199</td><td>691,460</td><td class="neg">-21%</td><td></td></tr>
+        </tbody>
+      </table>
+      <div class="note">＊營業額目標（公司下達）：2026 一階 6.06／二階 6.39 億。2026 為 YTD（至 9/10・本週財務未更新），達成率＝已入帳營收÷目標，全年未完、最終可望更高。</div>
+    </div>
+  </section>
+
+  <!-- 5 · 季度量能 + 佔比 -->
   <section class="slide" data-label="量能趨勢">
     <div class="inner">
-      <div class="kicker">01 · 量能趨勢</div>
+      <div class="kicker">03 · 量能趨勢</div>
       <div class="stitle"><span class="dot"></span>季度量能與全公司結構</div>
       <div class="cap">三季穩定在每季約 1,600 人、逐季維持 YoY 正成長（三季累計 4,784 vs 2025 同期 4,525，+5.7%）；直客佔全公司 Q3 人頭 14.0%（去年 14.1%）。</div>
       <div class="two">
@@ -189,10 +283,10 @@
     </div>
   </section>
 
-  <!-- 3 · 含中國 vs 不含中國：核心洞察 -->
+  <!-- 6 · 含中國 vs 不含中國：核心洞察 -->
   <section class="slide" data-label="含/不含中國">
     <div class="inner">
-      <div class="kicker">02 · 口徑差異</div>
+      <div class="kicker">04 · 口徑差異</div>
       <div class="stitle"><span class="dot" style="background:#dc2626"></span>含中國 vs 不含中國：Q3 口徑差異</div>
       <div class="headline" style="border-left-color:#16a34a">
         <b>剔除中國後 Q3 直客反而更強</b>：不含中國 <span class="em">+9.4%</span> ＞ 含中國 +5.7%——因 <b>中國 Q3 衰退 -9.6%</b>（272 vs 301）拖累整體。非中國 15 線本季淨增 +115 人，是 Q3 真正的成長來源。
@@ -216,10 +310,10 @@
     </div>
   </section>
 
-  <!-- 4 · 含中國季度拆解表 -->
+  <!-- 7 · 含中國季度拆解表 -->
   <section class="slide" data-label="季度拆解表">
     <div class="inner">
-      <div class="kicker">02 · 口徑差異（續）</div>
+      <div class="kicker">04 · 口徑差異（續）</div>
       <div class="stitle"><span class="dot" style="background:#dc2626"></span>各季 YoY：含中國／中國單線／不含中國</div>
       <div class="cap">中國為直客最大單線且波動大，剔除後更能看清「非中國本體」的體質。</div>
       <table>
@@ -235,10 +329,10 @@
     </div>
   </section>
 
-  <!-- 5 · 各單位比較 圖 + 判讀 -->
+  <!-- 8 · 各單位比較 圖 + 判讀 -->
   <section class="slide" data-label="各單位比較">
     <div class="inner">
-      <div class="kicker">03 · 同儕比較</div>
+      <div class="kicker">05 · 同儕比較</div>
       <div class="stitle"><span class="dot" style="background:#0d9488"></span>全公司各單位 Q3 比較：直客算強還是弱？</div>
       <div class="cap">已排除獎勵旅遊、專案企劃、商務展覽及直售業務處（性質不同／小基期）；比較對象為同業業務處＋六家分公司。＊嘉義為極小基期，僅列表參考。</div>
       <div class="two2">
@@ -256,10 +350,10 @@
     </div>
   </section>
 
-  <!-- 6 · 各單位比較 表 -->
+  <!-- 9 · 各單位比較 表 -->
   <section class="slide" data-label="各單位明細">
     <div class="inner">
-      <div class="kicker">03 · 同儕比較（續）</div>
+      <div class="kicker">05 · 同儕比較（續）</div>
       <div class="stitle"><span class="dot" style="background:#0d9488"></span>各單位 Q3 人頭數明細</div>
       <table>
         <thead><tr><th>單位</th><th>Q3 2026</th><th>Q3 2025</th><th>YoY 人數</th><th>YoY %</th></tr></thead>
@@ -282,10 +376,10 @@
     </div>
   </section>
 
-  <!-- 7 · 各單位 含/不含中國 圖 -->
+  <!-- 10 · 各單位 含/不含中國 圖 -->
   <section class="slide" data-label="剔除中國比較">
     <div class="inner">
-      <div class="kicker">04 · 體質分析</div>
+      <div class="kicker">06 · 體質分析</div>
       <div class="stitle"><span class="dot" style="background:#0d9488"></span>各單位 Q3：含中國線 vs 不含中國線</div>
       <div class="headline" style="border-left-color:#0d9488">
         <b>剔除中國後，直客 <span class="em">+9.4%</span> 躍居全公司最強直售單位。</b>看似最強的同業（含中國 +19.1%）有 <b>53.6% 靠中國</b>，本體其實 <b>-3.8%</b>；直客對中國依賴低（僅 17.0%），成長來自分散的非中國市場，<b>體質最健康</b>。全公司不含中國 <b>-2.9%</b>——Q3 成長幾乎全靠中國線撐。
@@ -294,10 +388,10 @@
     </div>
   </section>
 
-  <!-- 8 · 各單位 含/不含中國 表 -->
+  <!-- 11 · 各單位 含/不含中國 表 -->
   <section class="slide" data-label="剔除中國明細">
     <div class="inner">
-      <div class="kicker">04 · 體質分析（續）</div>
+      <div class="kicker">06 · 體質分析（續）</div>
       <div class="stitle"><span class="dot" style="background:#0d9488"></span>各單位 不含中國 Q3 明細</div>
       <div class="cap">「不含中國」＝各單位 Q3 總量扣除該單位對中國目的地之銷售。中國佔比＝該單位 Q3 有多少比例賣往中國。</div>
       <table>
@@ -318,20 +412,20 @@
     </div>
   </section>
 
-  <!-- 9 · 線別 movers -->
+  <!-- 12 · 線別 movers -->
   <section class="slide" data-label="線別動能">
     <div class="inner">
-      <div class="kicker">05 · 線別動能</div>
+      <div class="kicker">07 · 線別動能</div>
       <div class="stitle"><span class="dot" style="background:#16a34a"></span>Q3 各線別 YoY 動能（贏家 / 輸家）</div>
       <div class="cap">依 Q3 vs 2025 同期人數增減排序。<b>遊輪 +184</b> 超過全季淨增幅（+86）；東歐、東南亞、北歐續強，南歐、中東、日本、中國為主要拖累。</div>
       <div class="chart-wrap" style="height:min(58vh,460px)"><canvas id="movers"></canvas></div>
     </div>
   </section>
 
-  <!-- 10 · 16 線別完整明細 -->
+  <!-- 13 · 16 線別完整明細 -->
   <section class="slide" data-label="16線別明細">
     <div class="inner">
-      <div class="kicker">05 · 線別動能（續）</div>
+      <div class="kicker">07 · 線別動能（續）</div>
       <div class="stitle"><span class="dot" style="background:#f59e0b"></span>Q3 16 線別完整明細</div>
       <div class="cap">2026（9/21 快照）vs 2025 同期（9/22），依本季人數排序。</div>
       <table style="font-size:12.5px">
@@ -359,10 +453,10 @@
     </div>
   </section>
 
-  <!-- 11 · 結構觀察 & Q4 展望 -->
+  <!-- 14 · 結構觀察 & Q4 展望 -->
   <section class="slide" data-label="Q4 展望">
     <div class="inner">
-      <div class="kicker">06 · 觀察與行動</div>
+      <div class="kicker">08 · 觀察與行動</div>
       <div class="stitle"><span class="dot" style="background:#7c3aed"></span>結構觀察 &amp; Q4 展望 / 行動建議</div>
       <div class="insights">
         <div class="ins-box obs">
@@ -384,7 +478,7 @@
           </ul>
         </div>
       </div>
-      <div class="note" style="text-align:center;margin-top:22px">🫐 藍莓製表 ｜ 資料來源：人資部 2026業績總表(0921).pdf、2025業績總表(0922).pdf ｜ 直客銷售·16 線別全年累計人頭數 ｜ 產出 2026/09/21</div>
+      <div class="note" style="text-align:center;margin-top:22px">🫐 藍莓製表 ｜ 資料來源：人資部 2026業績總表(0921).pdf、2025業績總表(0922).pdf、全公司營業額統計表（至 9/10）｜ 直客銷售·16 線別全年累計 ｜ 產出 2026/09/21</div>
     </div>
   </section>
 
@@ -420,7 +514,6 @@ function go(i){
   slides[i].scrollIntoView({behavior:'smooth'});
 }
 
-/* 觀察目前所在頁 */
 var io=new IntersectionObserver(function(entries){
   entries.forEach(function(e){
     if(e.isIntersecting&&e.intersectionRatio>=0.55){
@@ -430,7 +523,6 @@ var io=new IntersectionObserver(function(entries){
 },{root:scroll,threshold:[0.55]});
 slides.forEach(function(s){io.observe(s);});
 
-/* 鍵盤 */
 document.addEventListener('keydown',function(e){
   if(['ArrowDown','ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(idx+1);}
   else if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(idx-1);}
@@ -438,18 +530,67 @@ document.addEventListener('keydown',function(e){
   else if(e.key==='End'){e.preventDefault();go(slides.length-1);}
 });
 
-/* 提示列：滑動後自動淡出 */
 var hid=false;
 scroll.addEventListener('scroll',function(){if(!hid){hid=true;hint.classList.add('hide');}},{passive:true});
 setTimeout(function(){hint.classList.add('hide');},6000);
 
 setActive(0);
 
-/* ── 圖表（沿用原報告設定）────────────────── */
+/* ── 圖表 ─────────────────────────────────── */
 Chart.defaults.font.family="'Microsoft JhengHei','PingFang TC',sans-serif";
 Chart.defaults.font.size=12.5;
 Chart.defaults.color="#475569";
 
+/* 目標進度：人頭目標達成（stacked） */
+new Chart(document.getElementById('goalChart'),{
+  type:'bar',
+  data:{labels:['一階 6,185','二階 6,533'],
+    datasets:[{label:'已達成',data:[5901,5901],backgroundColor:'rgba(22,163,74,0.85)'},{label:'缺口',data:[284,632],backgroundColor:'rgba(245,158,11,0.6)'}]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},title:{display:true,text:'目標達成 vs 缺口（人）｜一階95.4% 二階90.3%',color:'#0f172a',font:{size:12,weight:'700'}}},
+    scales:{x:{stacked:true,beginAtZero:true,grid:{color:'#eef2f7'}},y:{stacked:true,grid:{display:false}}}}
+});
+
+/* 目標進度：營業額目標達成（stacked） */
+new Chart(document.getElementById('revGoalCN'),{
+  type:'bar',
+  data:{labels:['一階 6.06億','二階 6.39億'],
+    datasets:[
+      {label:'已達成（YTD 5.45億）',data:[5.45,5.45],backgroundColor:'#16a34a',borderRadius:3},
+      {label:'缺口',data:[0.61,0.94],backgroundColor:'#fbbf24',borderRadius:3}
+    ]},
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
+      title:{display:true,text:'目標達成（億元）｜一階89.9% 二階85.3%',color:'#0f172a',font:{size:12,weight:'700'}},
+      tooltip:{callbacks:{label:function(c){return c.dataset.label.split('（')[0]+'：'+c.parsed.x+' 億';}}}},
+    scales:{x:{stacked:true,beginAtZero:true,grid:{color:'#eef2f7'},ticks:{callback:function(v){return v+'億';}}},y:{stacked:true,grid:{display:false}}}}
+});
+
+/* 量價維度：近三年人頭 */
+new Chart(document.getElementById('hcTrendCN'),{
+  type:'bar',
+  data:{labels:['2024（全年）','2025（全年）','2026（YTD 至9/21）'],
+    datasets:[{label:'直客人頭（人）',data:[5073,6534,5901],
+      backgroundColor:['#94a3b8','#94a3b8','#2563eb'],borderRadius:5}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},title:{display:true,text:'直客人頭 3 年趨勢（含中國・人）',color:'#0f172a',font:{size:13,weight:'700'}},
+      tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' 人';}}}},
+    scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'人'}},x:{grid:{display:false}}}}
+});
+
+/* 量價維度：近三年營業額 */
+new Chart(document.getElementById('revTrendCN'),{
+  type:'bar',
+  data:{labels:['2024（全年）','2025（全年）','2026（YTD 至9/10）'],
+    datasets:[{label:'直客營業額（百萬元）',data:[547.4,691.5,545.2],
+      backgroundColor:['#94a3b8','#94a3b8','#0d9488'],borderRadius:5}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},title:{display:true,text:'直客營業額 3 年趨勢（含中國・百萬元）',color:'#0f172a',font:{size:13,weight:'700'}},
+      tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' 百萬元';}}}},
+    scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'百萬元'}},x:{grid:{display:false}}}}
+});
+
+/* 量能趨勢 grouped bar */
 new Chart(document.getElementById('trend'),{
   type:'bar',
   data:{labels:['Q1（1-3月）','Q2（4-6月）','Q3（7-9月）'],
