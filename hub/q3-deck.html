@@ -286,7 +286,7 @@
     <div class="inner">
       <div class="kicker">03 · 量能趨勢</div>
       <div class="stitle"><span class="dot"></span>季度量能與全公司結構</div>
-      <div class="cap">三季穩定在每季約 1,600 人、逐季維持 YoY 正成長（三季累計 4,784 vs 2025 同期 4,525，+5.7%）；直客佔全公司 Q3 人頭 14.0%（去年 14.1%）。</div>
+      <div class="cap">Q1–Q3 穩定在每季約 1,600 人、逐季維持 YoY 正成長（三季累計 4,784 vs 2025 同期 4,525，+5.7%）；Q4 預售目前 1,149，YoY -4.4%（去年同期基期墊高、非今年走弱）。直客佔全公司人頭：Q3 14.0%（去年 14.2%）、Q4 預售 10.2%（去年 11.7%）。</div>
       <div class="two">
         <div><div class="chart-wrap"><canvas id="trend"></canvas></div></div>
         <div><div class="chart-wrap"><canvas id="share"></canvas></div></div>
@@ -516,27 +516,31 @@ new Chart(document.getElementById('revTrendCN'),{
 /* 量能趨勢 grouped bar */
 new Chart(document.getElementById('trend'),{
   type:'bar',
-  data:{labels:['Q1（1-3月）','Q2（4-6月）','Q3（7-9月）'],
+  data:{labels:['Q1（1-3月）','Q2（4-6月）','Q3（7-9月）','Q4（10-12月・預售）'],
     datasets:[
-      {label:'2025 同期',data:[1423,1584,1518],backgroundColor:'#94a3b8',borderRadius:4,barPercentage:.68,categoryPercentage:.62},
-      {label:'2026',data:[1563,1617,1604],backgroundColor:'#2563eb',borderRadius:4,barPercentage:.68,categoryPercentage:.62}
+      {label:'2025 同期',data:[1423,1584,1518,1202],backgroundColor:'#94a3b8',borderRadius:4,barPercentage:.68,categoryPercentage:.62},
+      {label:'2026',data:[1563,1617,1604,1149],backgroundColor:'#2563eb',borderRadius:4,barPercentage:.68,categoryPercentage:.62}
     ]},
   options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{position:'top',align:'end'},
       title:{display:true,text:'季度量能趨勢（直客·2026 vs 2025 同期）',color:'#0f172a',font:{size:13.5,weight:'700'}},
       tooltip:{callbacks:{label:function(c){return c.dataset.label+'：'+c.parsed.y.toLocaleString()+' 人';},
-        afterBody:function(items){if(items.length){var i=items[0].dataIndex;var yoy=['+9.8%','+2.1%','+5.7%'];return '　YoY '+yoy[i];}return '';}}}},
+        afterBody:function(items){if(items.length){var i=items[0].dataIndex;var yoy=['+9.8%','+2.1%','+5.7%','-4.4%'];return '　YoY '+yoy[i];}return '';}}}},
     scales:{y:{beginAtZero:true,title:{display:true,text:'直客人頭數'},grid:{color:'#eef2f7'}},x:{grid:{display:false}}}}
 });
 
 new Chart(document.getElementById('share'),{
-  type:'doughnut',
-  data:{labels:['直客銷售','其他單位（同業/直售/分公司等）'],
-    datasets:[{data:[1604,9854],backgroundColor:['#0d9488','#e2e8f0'],borderColor:'#fff',borderWidth:3}]},
-  options:{responsive:true,maintainAspectRatio:false,cutout:'62%',
-    plugins:{legend:{position:'bottom'},
-      tooltip:{callbacks:{label:function(c){var t=11458;return c.label+'：'+c.parsed.toLocaleString()+' 人（'+(c.parsed/t*100).toFixed(1)+'%）';}}},
-      title:{display:true,text:'直客佔全公司 Q3（11,458 人）',color:'#0f172a',font:{size:13.5,weight:'700'}}}}
+  type:'bar',
+  data:{labels:['Q1（1-3月）','Q2（4-6月）','Q3（7-9月）','Q4（10-12月・預售）'],
+    datasets:[
+      {label:'2025 同期',data:[16.8,13.0,14.2,11.7],backgroundColor:'#94a3b8',borderRadius:4,barPercentage:.68,categoryPercentage:.62},
+      {label:'2026',data:[15.4,12.3,14.0,10.2],backgroundColor:'#0d9488',borderRadius:4,barPercentage:.68,categoryPercentage:.62}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top',align:'end'},
+      title:{display:true,text:'直客佔全公司人頭比重（%）',color:'#0f172a',font:{size:13.5,weight:'700'}},
+      tooltip:{callbacks:{label:function(c){return c.dataset.label+'：'+c.parsed.y.toFixed(1)+'%';}}}},
+    scales:{y:{beginAtZero:true,title:{display:true,text:'占比 %'},grid:{color:'#eef2f7'},ticks:{callback:function(v){return v+'%';}}},x:{grid:{display:false}}}}
 });
 
 new Chart(document.getElementById('cnex'),{
