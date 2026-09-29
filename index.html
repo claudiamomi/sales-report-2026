@@ -82,8 +82,8 @@
 </head>
 <body>
 <div class="container">
-  <h1>直客銷售週報 <span style="color:#2563eb;font-size:18px;font-weight:500">W37</span></h1>
-  <div class="subtitle">本期：<b>2026/9/8</b> ｜ 上期：2026/8/31 ｜ 去年同期：2025/9/9 ｜ 單位：人頭數（直客銷售·全年累計）｜ 由 🫐 藍莓產出</div>
+  <h1>直客銷售週報 <span style="color:#2563eb;font-size:18px;font-weight:500">W40</span></h1>
+  <div class="subtitle">本期：<b>2026/9/29</b> ｜ 上期：2026/9/21（W39・乾淨 1 週）｜ 去年同期：2025/9/30 ｜ 單位：人頭數（直客銷售·全年累計）｜ 由 🫐 藍莓產出</div>
 
   <div class="viewtabs">
     <div class="viewtab active" id="vt-cn" onclick="switchView('view-cn',this)">🌏 含中國（全區）<span class="sub">全公司口徑 · 對照公司目標</span></div>
@@ -94,12 +94,18 @@
   <div class="view active" id="view-cn">
 
     <div class="section" style="border-top:4px solid #2563eb">
-    <h2>🎯 目標達成總覽（含中國全區・2026 YTD）</h2>
+    <h2>🎯 現況＋目標達成總覽（含中國全區・2026 YTD）</h2>
+    <div class="grid">
+      <div class="card green"><div class="label">全年人頭（直客）</div><div class="value">5,933</div><div class="delta up">本週 +32 ｜ YoY +3.6%</div></div>
+      <div class="card green"><div class="label">一階目標達成</div><div class="value">95.9%</div><div class="delta flat">缺口 252 ｜ 剩 13 週</div></div>
+      <div class="card amber"><div class="label">二階目標達成</div><div class="value">90.8%</div><div class="delta flat">缺口 600 ｜ 剩 13 週</div></div>
+      <div class="card amber"><div class="label">H2 預售（7-12 月）</div><div class="value">2,753</div><div class="delta up">本週 +32 ｜ YoY +1.2%</div></div>
+    </div>
     <table>
       <thead><tr><th>維度</th><th>2026 YTD</th><th>一階目標</th><th>一階達成</th><th>二階目標</th><th>二階達成</th></tr></thead>
       <tbody>
-        <tr><td>人頭（全年累計）</td><td>5,813</td><td>6,185</td><td class="pos">94.0%</td><td>6,533</td><td class="pos">89.0%</td></tr>
-        <tr><td>營業額（已入帳・億元）</td><td>5.45</td><td>6.06</td><td class="pos">89.9%</td><td>6.39</td><td class="flat">85.3%</td></tr>
+        <tr><td>人頭（全年累計・至 9/29）</td><td>5,933</td><td>6,185</td><td class="pos">95.9%</td><td>6,533</td><td class="pos">90.8%</td></tr>
+        <tr><td>營業額（已入帳・億元・至 9/10）</td><td>5.45</td><td>6.06</td><td class="pos">89.9%</td><td>6.39</td><td class="flat">85.3%</td></tr>
       </tbody>
     </table>
     <div class="two-col" style="margin-top:14px">
@@ -112,7 +118,7 @@
         <div class="chart-wrap" style="height:160px"><canvas id="revGoalCN"></canvas></div>
       </div>
     </div>
-    <div class="alert">剩 <b>16 週</b>。人頭一階週均只需 <b>+23</b>（本週 +44、1.9×，<b>達成篤定</b>）、二階需 +45（本週 0.98× 貼線）；營業額為 YTD 至 9/10、全年未完、最終可望更高（2025 實績達當年一階目標 162%）。</div>
+    <div class="alert">剩 <b>13 週</b>。人頭一階週均只需 <b>+19.4</b>（本週 +32、<b>1.65×</b>，<b>達成篤定</b>）；二階週均需 <b>+46.2</b>（W39 為 +45.1）、本週 +32 僅 <b>0.69×，⚠️ 低於配速</b>——近 3 週（0908→0929）合計 +120、週均約 +40，需回到每週 +46 才追得上；營業額為 YTD 至 9/10（本週未更新）、全年未完、最終可望更高（2025 實績達當年一階目標 162%）。</div>
   </div>
 
     <div class="section" style="border-top:4px solid #0d9488">
@@ -121,16 +127,16 @@
       <div>
         <div style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">近三年直客人頭（人）</div>
         <div class="chart-wrap" style="height:250px"><canvas id="hcTrendCN"></canvas></div>
-        <div class="note">2024／2025 全年結算，2026 為 YTD（至 9/8）。5,073 → 6,534 → 5,813（已達 2025 全年 89%、已超越 2024 全年）。</div>
+        <div class="note">2024／2025 全年結算，2026 為 YTD（至 9/29）。5,073 → 6,534 → 5,933（已達 2025 全年 91%、已超越 2024 全年）。</div>
       </div>
       <div>
         <div style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">近三年直客營業額（百萬元）</div>
         <div class="chart-wrap" style="height:250px"><canvas id="revTrendCN"></canvas></div>
-        <div class="note">2024／2025 全年結算，2026 為 YTD（至 9/10）。547 → 691 → 545 百萬（已達 2025 全年 79%）。</div>
+        <div class="note">2024／2025 全年結算，2026 為 YTD（至 9/10・本週未更新）。547 → 691 → 545 百萬（已達 2025 全年 79%）。</div>
       </div>
     </div>
     <div class="alert info" style="margin-top:14px">💡 <b>直客＝高單客價值</b>：佔全公司營收 20.0%、人頭僅 ~13%。近三年客單價（全年）：2024 約 10.8 萬/人 → 2025 約 10.6 萬/人（微降）。<b>2025 為量價雙高峰</b>（人頭 6,534、營收 6.91 億）。</div>
-    <div style="font-size:15px;font-weight:700;color:#0f172a;margin:14px 0 8px">逐線營業額 2026（YTD）vs 2025　<span style="font-size:12px;font-weight:400;color:#64748b">單位：仟元</span></div>
+    <div style="font-size:15px;font-weight:700;color:#0f172a;margin:14px 0 8px">逐線營業額 2026（YTD 至9/10）vs 2025　<span style="font-size:12px;font-weight:400;color:#64748b">單位：仟元</span></div>
     <table>
       <thead><tr><th>線別</th><th>2026 (YTD)</th><th>2025</th><th>YoY %</th><th>觀察</th></tr></thead>
       <tbody>
@@ -153,7 +159,7 @@
         <tr style="background:#e0e7ff;font-weight:700"><td>直客合計</td><td>545,199</td><td>691,460</td><td class="neg">-21%</td><td></td></tr>
       </tbody>
     </table>
-    <div class="note">＊營業額目標（公司下達）：2025 一階 4.28／二階 4.85 億、2026 一階 6.06／二階 6.39 億（原提供單位「仟元」經對帳應為萬元，此處以億呈現）。2026 為 YTD（至9/10），達成率＝已入帳營收÷目標，全年未完、最終可望更高。逐線 2025 為抽取值、合計以官方 691,460 仟元為準；營業額為不含 TKT/HTL、會計已入帳數。</div>
+    <div class="note">＊營業額目標（公司下達）：2025 一階 4.28／二階 4.85 億、2026 一階 6.06／二階 6.39 億（原提供單位「仟元」經對帳應為萬元，此處以億呈現）。2026 為 YTD（至9/10・本週財務未更新），達成率＝已入帳營收÷目標，全年未完、最終可望更高。逐線 2025 為抽取值、合計以官方 691,460 仟元為準；營業額為不含 TKT/HTL、會計已入帳數。</div>
   </div>
 
 
@@ -161,30 +167,32 @@
   <div class="summary">
     <h2>本週結論（給主管）</h2>
     <ul>
-      <li>全年累計 <b>5,813</b> 人，週增 <b>+44</b>（<b>全數落在 Q4 預售</b>，Q3 本週持平）。YoY <b>+5.1%</b>（官方同期 5,533），較上期 W36 +5.7% 略收——係去年同期基期本週加速（+75）、今年 +44 所致，<b>非動能反轉</b>，絕對水位續創高。</li>
-      <li>一階目標 6,185 完成 <b>94.0%</b>，缺口縮至 372，剩 16 週週均只需 <b>+23.2</b>，本週 +44 達 <b>1.9 倍</b>，<b>一階達成高度篤定</b>。</li>
-      <li>二階目標 6,533 完成 <b>89.0%</b>，缺口 720，剩 16 週週均需 <b>+45.0</b>，本週 +44 為 <b>0.98 倍</b>（貼近但略低於二階配速），仍具前段累積緩衝。</li>
-      <li><b>Q4 預售持續</b>：Q4 直客 1,031 vs 2025 同期 1,007，YoY <b>+2.4%</b>（本週 +44 全在 Q4）；Q3 +5.5%、H2 整體 +4.2%，全年風險窗口維持關閉。</li>
-      <li>本週動能<b>高度集中於東歐 +24</b>（近半週增、且 H2 +39.6% 為歐洲最強）；其餘 南歐 +6、中國 +6、遊輪 +4、日本 +4；唯一微降 <b>北歐 -2</b>。</li>
-      <li>歐洲四線 YoY：<b>東歐 +11.8%（唯一翻正、且本週最強）</b>、中西歐 -16.7%、北歐 -21.5%、南歐 -24.1%，仍為主要衰退區。</li>
+      <li>全年累計 <b>5,933</b> 人，本週增 <b>+32</b>（<b>全數落在 Q4</b>，Q3 與 H1 已定型持平）。YoY <b>+3.6%</b>（官方同期 5,727），較 W39 +4.0% 再收斂——去年同期（0922→0930）這一週基期又墊高 <b>+53</b>，今年僅 +32，屬<b>基期效應、非動能反轉</b>，絕對水位續創高。</li>
+      <li>一階目標 6,185 完成 <b>95.9%</b>，缺口 252，剩 <b>13 週</b>週均只需 <b>+19.4</b>，本週 +32（<b>1.65×</b>），<b>一階達成高度篤定</b>。</li>
+      <li><b>⚠️ 二階配速轉緊</b>：二階目標 6,533 完成 <b>90.8%</b>，缺口 600，剩 13 週週均需 <b>+46.2</b>，本週 +32 僅 <b>0.69×</b>（W39 貼線 0.98×）；若維持近 3 週週均約 +40，年底約差 80 人，須拉回每週 +46 以上。</li>
+      <li><b>⚠️ Q4 預售 YoY 續降</b>：Q4 直客 1,149 vs 2025 同期 1,202，YoY <b>-4.4%</b>（W39 -2.8%、W37 +2.4%）——係去年 Q4 基期於 9 月底再墊高（1,149→1,202、+53）所致，今年 Q4 本週 +32。H2 整體 <b>+1.2%</b>、Q3 +5.7%（已定型）、全年 +3.6%，絕對水位皆續增。</li>
+      <li>動能：<b>東歐 +15</b>（近半、全年 YoY +18.3%、H2 +52.0%）、中國 +9、日本 +6、南歐 +4、遊輪 +2；小幅回落 <b>中東 -3</b>、非洲 -1（皆 Q4 調整）。</li>
+      <li><b>日本 YoY 續擴大為 -6.8%</b>（W39 -3.6%；今年 839 vs 去年同期 900，去年這一週基期 +36、今年 +6）。歐洲四線僅東歐翻正，中西歐 -15.4%、北歐 -21.2%、南歐 -24.5% 仍為主要衰退區。</li>
     </ul>
   </div>
 
   <div class="section">
-    <h2>本週 TOP 動能線別</h2>
+    <h2>本週 TOP 動能線別（0921→0929）</h2>
     <div class="two-col">
       <div>
         <table>
-          <thead><tr><th>排名</th><th>線別</th><th>週淨變化</th><th>本期全年</th></tr></thead>
+          <thead><tr><th>排名</th><th>線別</th><th>淨變化</th><th>本期全年</th></tr></thead>
           <tbody>
-            <tr><td>🥇 1</td><td>東歐</td><td class="pos">+24</td><td>882</td></tr>
-            <tr><td>🥈 2</td><td>南歐 / 中國</td><td class="pos">+6</td><td>822 / 999</td></tr>
-            <tr><td>🥉 3</td><td>遊輪 / 日本</td><td class="pos">+4</td><td>412 / 830</td></tr>
-            <tr><td>4</td><td>紐西蘭．澳洲</td><td class="pos">+2</td><td>222</td></tr>
-            <tr><td>—</td><td>北歐</td><td class="neg">-2</td><td>325</td></tr>
+            <tr><td>🥇 1</td><td>東歐</td><td class="pos">+15</td><td>946</td></tr>
+            <tr><td>🥈 2</td><td>中國</td><td class="pos">+9</td><td>1,023</td></tr>
+            <tr><td>🥉 3</td><td>日本</td><td class="pos">+6</td><td>839</td></tr>
+            <tr><td>4</td><td>南歐</td><td class="pos">+4</td><td>828</td></tr>
+            <tr><td>5</td><td>遊輪</td><td class="pos">+2</td><td>414</td></tr>
+            <tr><td>—</td><td>中東</td><td class="neg">-3</td><td>129</td></tr>
+            <tr><td>—</td><td>非洲</td><td class="neg">-1</td><td>157</td></tr>
           </tbody>
         </table>
-        <div class="note">本週淨 +44，<b>東歐 +24 獨強</b>（占近半週增、且落在 Q4/H2）；南歐、中國各 +6，遊輪、日本各 +4。16 線僅北歐 -2 微降。</div>
+        <div class="note">本週淨 +32（全數落在 Q4）；<b>東歐 +15</b> 領先、中國 +9、日本 +6。中東 -3、非洲 -1 微降，其餘 9 線持平。</div>
       </div>
       <div><div class="chart-wrap"><canvas id="topMoversChartCN"></canvas></div></div>
     </div>
@@ -193,28 +201,28 @@
   <div class="section">
     <h2>16 線別完整週度變化表</h2>
     <table>
-      <thead><tr><th>線別</th><th>本期</th><th>上期</th><th>週淨變化</th><th>去年同期</th><th>YoY %</th><th>提醒</th></tr></thead>
+      <thead><tr><th>線別</th><th>本期</th><th>上期(0921)</th><th>週淨變化</th><th>去年同期</th><th>YoY %</th><th>提醒</th></tr></thead>
       <tbody>
-        <tr><td>中西歐</td><td>490</td><td>490</td><td class="flat">0</td><td>588</td><td class="neg">-16.7%</td><td><span class="badge warn">歐洲承壓</span></td></tr>
-        <tr><td>東歐</td><td>882</td><td>858</td><td class="pos">+24</td><td>789</td><td class="pos">+11.8%</td><td><span class="badge good">本週主引擎</span></td></tr>
-        <tr><td>南歐</td><td>822</td><td>816</td><td class="pos">+6</td><td>1,083</td><td class="neg">-24.1%</td><td><span class="badge alert">YoY 深跌</span></td></tr>
-        <tr><td>北歐</td><td>325</td><td>327</td><td class="neg">-2</td><td>414</td><td class="neg">-21.5%</td><td><span class="badge alert">YoY 深跌</span></td></tr>
-        <tr><td>中東</td><td>130</td><td>130</td><td class="flat">0</td><td>235</td><td class="neg">-44.7%</td><td><span class="badge alert">基期高</span></td></tr>
-        <tr><td>非洲</td><td>155</td><td>155</td><td class="flat">0</td><td>92</td><td class="pos">+68.5%</td><td><span class="badge good">維持亮點</span></td></tr>
-        <tr><td>美洲</td><td>154</td><td>154</td><td class="flat">0</td><td>150</td><td class="pos">+2.7%</td><td></td></tr>
-        <tr><td>遊輪</td><td>412</td><td>408</td><td class="pos">+4</td><td>180</td><td class="pos">+128.9%</td><td><span class="badge good">結構性成長</span></td></tr>
-        <tr><td>紐西蘭．澳洲</td><td>222</td><td>220</td><td class="pos">+2</td><td>228</td><td class="neg">-2.6%</td><td></td></tr>
-        <tr><td>南亞</td><td>89</td><td>89</td><td class="flat">0</td><td>141</td><td class="neg">-36.9%</td><td><span class="badge alert">基期高</span></td></tr>
-        <tr><td>俄羅斯．中亞．蒙古</td><td>106</td><td>106</td><td class="flat">0</td><td>37</td><td class="pos">+186.5%</td><td><span class="badge good">大幅回升</span></td></tr>
-        <tr><td>中國</td><td>999</td><td>993</td><td class="pos">+6</td><td>649</td><td class="pos">+53.9%</td><td><span class="badge good">結構性強勢</span></td></tr>
-        <tr><td>日本</td><td>830</td><td>826</td><td class="pos">+4</td><td>751</td><td class="pos">+10.5%</td><td><span class="badge good">結構性強勢</span></td></tr>
+        <tr><td>中西歐</td><td>498</td><td>498</td><td class="flat">0</td><td>589</td><td class="neg">-15.4%</td><td><span class="badge warn">歐洲承壓</span></td></tr>
+        <tr><td>東歐</td><td>946</td><td>931</td><td class="pos">+15</td><td>800</td><td class="pos">+18.3%</td><td><span class="badge good">本週主引擎</span></td></tr>
+        <tr><td>南歐</td><td>828</td><td>824</td><td class="pos">+4</td><td>1,097</td><td class="neg">-24.5%</td><td><span class="badge alert">YoY 深跌</span></td></tr>
+        <tr><td>北歐</td><td>327</td><td>327</td><td class="flat">0</td><td>415</td><td class="neg">-21.2%</td><td><span class="badge alert">YoY 深跌</span></td></tr>
+        <tr><td>中東</td><td>129</td><td>132</td><td class="neg">-3</td><td>234</td><td class="neg">-44.9%</td><td><span class="badge alert">基期高</span></td></tr>
+        <tr><td>非洲</td><td>157</td><td>158</td><td class="neg">-1</td><td>94</td><td class="pos">+67.0%</td><td><span class="badge good">維持亮點</span></td></tr>
+        <tr><td>美洲</td><td>157</td><td>157</td><td class="flat">0</td><td>150</td><td class="pos">+4.7%</td><td></td></tr>
+        <tr><td>遊輪</td><td>414</td><td>412</td><td class="pos">+2</td><td>183</td><td class="pos">+126.2%</td><td><span class="badge good">結構性成長</span></td></tr>
+        <tr><td>紐西蘭．澳洲</td><td>222</td><td>222</td><td class="flat">0</td><td>230</td><td class="neg">-3.5%</td><td></td></tr>
+        <tr><td>南亞</td><td>85</td><td>85</td><td class="flat">0</td><td>140</td><td class="neg">-39.3%</td><td><span class="badge alert">基期高</span></td></tr>
+        <tr><td>俄羅斯．中亞．蒙古</td><td>111</td><td>111</td><td class="flat">0</td><td>37</td><td class="pos">+200.0%</td><td><span class="badge good">大幅回升</span></td></tr>
+        <tr><td>中國</td><td>1,023</td><td>1,014</td><td class="pos">+9</td><td>664</td><td class="pos">+54.1%</td><td><span class="badge good">結構性強勢</span></td></tr>
+        <tr><td>日本</td><td>839</td><td>833</td><td class="pos">+6</td><td>900</td><td class="neg">-6.8%</td><td><span class="badge warn">YoY 擴大轉負</span></td></tr>
         <tr><td>韓國</td><td>49</td><td>49</td><td class="flat">0</td><td>9</td><td class="pos">+444.4%</td><td><span class="badge warn">基數小</span></td></tr>
-        <tr><td>東南亞</td><td>142</td><td>142</td><td class="flat">0</td><td>165</td><td class="neg">-13.9%</td><td></td></tr>
+        <tr><td>東南亞</td><td>142</td><td>142</td><td class="flat">0</td><td>163</td><td class="neg">-12.9%</td><td></td></tr>
         <tr><td>自由行</td><td>6</td><td>6</td><td class="flat">0</td><td>13</td><td class="neg">-53.8%</td><td></td></tr>
-        <tr style="background:#e0e7ff;font-weight:700"><td>合計</td><td>5,813</td><td>5,769</td><td class="pos">+44</td><td>5,533</td><td class="pos">+5.1%</td><td></td></tr>
+        <tr style="background:#e0e7ff;font-weight:700"><td>合計</td><td>5,933</td><td>5,901</td><td class="pos">+32</td><td>5,727</td><td class="pos">+3.6%</td><td></td></tr>
       </tbody>
     </table>
-    <div class="note">＊去年同期以官方直客總計 5,533 計（含河輪／海島等未列入 16 線之殘差 9 人，16 線明細加總為 5,524）。本期 2026 無此類殘差，明細加總即等於 5,813。</div>
+    <div class="note">＊去年同期以官方直客總計 5,727 計（含河輪／海島等未列入 16 線之殘差 9 人，16 線明細加總為 5,718）。本期 2026 無此類殘差，明細加總即等於 5,933。上期為 0921（W39），本週為乾淨 1 週對照；去年同期為 2025/9/30。</div>
   </div>
 
   <div class="section">
@@ -225,25 +233,44 @@
     </div>
     <div id="cn-h1h2" class="tab-content active">
       <table>
-        <thead><tr><th>期別</th><th>本期</th><th>上期</th><th>週淨變化</th><th>2025 同期</th><th>YoY</th></tr></thead>
+        <thead><tr><th>期別</th><th>本期</th><th>上期(0921)</th><th>週淨變化</th><th>2025 同期</th><th>YoY</th></tr></thead>
         <tbody>
           <tr><td>H1（1-6 月）</td><td>3,180</td><td>3,180</td><td class="flat">0</td><td>3,007</td><td class="pos">+5.8%</td></tr>
-          <tr><td>H2（7-12 月）預售</td><td>2,633</td><td>2,589</td><td class="pos">+44</td><td>2,526</td><td class="pos">+4.2%</td></tr>
-          <tr style="background:#e0e7ff;font-weight:700"><td>全年</td><td>5,813</td><td>5,769</td><td class="pos">+44</td><td>5,533</td><td class="pos">+5.1%</td></tr>
+          <tr><td>H2（7-12 月）預售</td><td>2,753</td><td>2,721</td><td class="pos">+32</td><td>2,720</td><td class="pos">+1.2%</td></tr>
+          <tr style="background:#e0e7ff;font-weight:700"><td>全年</td><td>5,933</td><td>5,901</td><td class="pos">+32</td><td>5,727</td><td class="pos">+3.6%</td></tr>
         </tbody>
       </table>
-      <div class="alert good">H1 已定型（週變化 0），本週 +44 全數落在 H2 預售，H2 YoY 維持 <b>+4.2%</b>，下半年預售持續領先去年同期。</div>
+      <div class="alert good">H1 已定型（變化 0），本週 +32 全數落在 Q4 預售，H2 YoY <b>+1.2%</b>（W39 +2.0%、W37 +4.2%，續收斂係去年同期 H2 基期墊高）；下半年預售絕對水位仍領先去年。</div>
     </div>
     <div id="cn-q4" class="tab-content">
       <table>
         <thead><tr><th>期別</th><th>2026 目前預售</th><th>2025 同期</th><th>YoY</th><th>風險判讀</th></tr></thead>
         <tbody>
-          <tr><td>Q3（7-9 月）</td><td>1,602</td><td>1,519</td><td class="pos">+5.5%</td><td><span class="badge good">領先去年</span></td></tr>
-          <tr><td>Q4（10-12 月）</td><td>1,031</td><td>1,007</td><td class="pos">+2.4%</td><td><span class="badge good">轉正持穩</span></td></tr>
-          <tr style="background:#e0e7ff;font-weight:700"><td>H2 合計</td><td>2,633</td><td>2,526</td><td class="pos">+4.2%</td><td></td></tr>
+          <tr><td>Q3（7-9 月）</td><td>1,604</td><td>1,518</td><td class="pos">+5.7%</td><td><span class="badge good">領先去年・已定型</span></td></tr>
+          <tr><td>Q4（10-12 月）</td><td>1,149</td><td>1,202</td><td class="neg">-4.4%</td><td><span class="badge alert">YoY 續降</span></td></tr>
+          <tr style="background:#e0e7ff;font-weight:700"><td>H2 合計</td><td>2,753</td><td>2,720</td><td class="pos">+1.2%</td><td></td></tr>
         </tbody>
       </table>
-      <div class="alert good">本週 +44 <b>全數進 Q4</b>，Q4 維持 +2.4% 正成長（YoY 較上期略收係去年同期 Q4 基期走高）；Q3 +5.5%，全年最大風險窗口維持關閉。後續維持東歐／中國／日本動能即可穩守達標。</div>
+      <div class="alert"><b>Q4 YoY 由 W39 -2.8% 再降至 -4.4%</b>：去年同期 Q4 基期於 9 月底續墊高（2025 Q4 1,149→1,202、本週 +53），今年 Q4 僅 +32，差距由 32 人擴大至 53 人；並非今年 Q4 走弱（絕對數仍在增）。Q3 +5.7% 已定型續領先，H2 合計 +1.2%。後續須靠東歐／中國 Q4 動能追補去年基期。</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🇪🇺 歐洲主力線＋中東專區（中西歐／東歐／南歐／北歐／中東）</h2>
+    <table>
+      <thead><tr><th>線別</th><th>本期</th><th>週淨</th><th>去年同期</th><th>全年 YoY</th><th>H1 YoY</th><th>H2 YoY</th><th>判讀</th></tr></thead>
+      <tbody>
+        <tr><td>東歐</td><td>946</td><td class="pos">+15</td><td>800</td><td class="pos">+18.3%</td><td class="neg">-14.2%</td><td class="pos">+52.0%</td><td><span class="badge good">H2 強勢</span></td></tr>
+        <tr><td>南歐</td><td>828</td><td class="pos">+4</td><td>1,097</td><td class="neg">-24.5%</td><td class="neg">-25.8%</td><td class="neg">-22.4%</td><td><span class="badge alert">缺口最大</span></td></tr>
+        <tr><td>中西歐</td><td>498</td><td class="flat">0</td><td>589</td><td class="neg">-15.4%</td><td class="neg">-0.3%</td><td class="neg">-32.8%</td><td><span class="badge alert">H2 反弱</span></td></tr>
+        <tr><td>北歐</td><td>327</td><td class="flat">0</td><td>415</td><td class="neg">-21.2%</td><td class="neg">-37.3%</td><td class="pos">+3.0%</td><td><span class="badge good">H2 已翻正</span></td></tr>
+        <tr><td>中東</td><td>129</td><td class="neg">-3</td><td>234</td><td class="neg">-44.9%</td><td class="neg">-23.0%</td><td class="neg">-61.2%</td><td><span class="badge alert">全區最弱</span></td></tr>
+        <tr style="background:#e0e7ff;font-weight:700"><td>五線合計</td><td>2,728</td><td class="pos">+16</td><td>3,135</td><td class="neg">-13.0%</td><td class="neg">-20.0%</td><td class="neg">-3.9%</td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="chart-wrap"><canvas id="europeChartCN"></canvas></div>
+    <div class="alert">
+      <b>主力線解讀：</b>五線全年 -13.0%，缺口<b>主要在已定型的 H1（-20.0%）</b>；H2 -3.9%（W39 -4.3%，小幅改善），其中 <b>東歐 H2 +52.0%、北歐 H2 +3.0% 已翻正</b>。仍需攻堅：<b>南歐（H2 -22.4%、絕對缺口最大）</b>、<b>中西歐（H2 -32.8%、暑後轉弱）</b>，以及 <b>中東（全年 -44.9%、H2 -61.2% 全區最弱、本週再 -3）</b>；北歐則聚焦 Q4 極光季補位。本週東歐 +15、南歐 +4。
     </div>
   </div>
 
@@ -252,12 +279,13 @@
     <table>
       <thead><tr><th>線別</th><th>本期累計</th><th>2025 同期</th><th>YoY</th><th>風險</th><th>主要觀察</th></tr></thead>
       <tbody>
-        <tr><td>中東</td><td>130</td><td>235</td><td class="neg">-44.7%</td><td><span class="badge alert">🔴 高</span></td><td>2025 高基期，本週持平，動能仍弱</td></tr>
-        <tr><td>南亞</td><td>89</td><td>141</td><td class="neg">-36.9%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，多週低速</td></tr>
-        <tr><td>南歐</td><td>822</td><td>1,083</td><td class="neg">-24.1%</td><td><span class="badge alert">🔴 高</span></td><td>本週 +6，絕對缺口仍最大（H2 -21.1%）</td></tr>
-        <tr><td>北歐</td><td>325</td><td>414</td><td class="neg">-21.5%</td><td><span class="badge warn">🟡 中</span></td><td>本週 -2，H2 已翻正 +2.4%，缺口在 H1</td></tr>
-        <tr><td>中西歐</td><td>490</td><td>588</td><td class="neg">-16.7%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，H2 -35.5% 暑後轉弱</td></tr>
-        <tr><td>東南亞</td><td>142</td><td>165</td><td class="neg">-13.9%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，Q4 仍空窗</td></tr>
+        <tr><td>中東</td><td>129</td><td>234</td><td class="neg">-44.9%</td><td><span class="badge alert">🔴 高</span></td><td>2025 高基期，本週 -3（Q4 調整），動能仍弱</td></tr>
+        <tr><td>南亞</td><td>85</td><td>140</td><td class="neg">-39.3%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，多週低速</td></tr>
+        <tr><td>南歐</td><td>828</td><td>1,097</td><td class="neg">-24.5%</td><td><span class="badge alert">🔴 高</span></td><td>本週 +4，絕對缺口仍最大（H2 -22.4%）</td></tr>
+        <tr><td>北歐</td><td>327</td><td>415</td><td class="neg">-21.2%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，H2 已翻正 +3.0%，缺口在 H1／Q4 極光季</td></tr>
+        <tr><td>中西歐</td><td>498</td><td>589</td><td class="neg">-15.4%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，H2 -32.8% 暑後轉弱</td></tr>
+        <tr><td>東南亞</td><td>142</td><td>163</td><td class="neg">-12.9%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，Q4 仍空窗</td></tr>
+        <tr><td>日本</td><td>839</td><td>900</td><td class="neg">-6.8%</td><td><span class="badge warn">🟡 觀察</span></td><td>YoY 由 W39 -3.6% 擴大至 -6.8%，去年 Q4 基期高；絕對數仍增（本週 +6）</td></tr>
       </tbody>
     </table>
   </div>
@@ -265,25 +293,25 @@
   <div class="section">
     <h2>決策摘要</h2>
     <ul style="list-style:none;padding:0">
-      <li style="padding:10px;margin-bottom:8px;background:#d1fae5;border-left:4px solid #16a34a;border-radius:6px"><b>✅ 續攻</b>：東歐（本週 +24、H2 +39.6%）、中國、日本、遊輪 — YoY 正向且本週動能最強，維持行銷資源配置</li>
-      <li style="padding:10px;margin-bottom:8px;background:#fef3c7;border-left:4px solid #f59e0b;border-radius:6px"><b>⚠️ 觀察</b>：南歐、中西歐 — YoY 仍雙位數衰退、H2 偏弱；二階配速本週 0.98× 貼線，需回到 +45 以上週均</li>
-      <li style="padding:10px;margin-bottom:8px;background:#fee2e2;border-left:4px solid #dc2626;border-radius:6px"><b>🚨 補救</b>：中東、南亞、北歐 — YoY 雙位數衰退且本週動能弱</li>
-      <li style="padding:10px;background:#e0e7ff;border-left:4px solid #2563eb;border-radius:6px"><b>🎯 全年關鍵</b>：一階 94.0% 達成篤定、二階 89.0% 需守每週 +45、Q4 +2.4%、H2 +4.2%，剩 16 週；東歐續強帶動，歐洲三線（南歐/中西歐）與中東為僅存待補區</li>
+      <li style="padding:10px;margin-bottom:8px;background:#d1fae5;border-left:4px solid #16a34a;border-radius:6px"><b>✅ 續攻</b>：東歐（本週 +15、H2 +52.0%、YoY +18.3%）、中國、遊輪 — YoY 正向且動能最強，維持行銷資源配置</li>
+      <li style="padding:10px;margin-bottom:8px;background:#fef3c7;border-left:4px solid #f59e0b;border-radius:6px"><b>⚠️ 觀察</b>：<b>二階配速本週僅 0.69×</b>（需週均 +46.2）；日本（YoY 擴大至 -6.8%）、Q4 預售（YoY -4.4%、去年基期高）</li>
+      <li style="padding:10px;margin-bottom:8px;background:#fee2e2;border-left:4px solid #dc2626;border-radius:6px"><b>🚨 補救</b>：中東、南亞、南歐、北歐、中西歐 — YoY 雙位數衰退，歐洲三線與中東為僅存待補區</li>
+      <li style="padding:10px;background:#e0e7ff;border-left:4px solid #2563eb;border-radius:6px"><b>🎯 全年關鍵</b>：一階 95.9% 達成篤定（缺 252、週均需 19.4）、二階 90.8% 需拉回每週 +46；YoY 收斂係去年同期基期墊高（Q4/日本），非動能反轉，絕對水位續創高。剩 13 週需東歐續強＋Q4 追補</li>
     </ul>
   </div>
 
   </div><!-- /view-cn -->
 
-  <!-- ================= 不含中國 ================= -->
+  <!-- ================= 不含中國、日本 ================= -->
   <div class="view ex" id="view-ex">
 
     <div class="section" style="border-top:4px solid #2563eb">
     <h2>📊 現況總覽（不含中國、日本・2026 YTD）</h2>
     <div class="grid">
-      <div class="card amber"><div class="label">全年人頭（不含中國日本）</div><div class="value">3,984</div><div class="delta up">本週 +34 ｜ YoY -3.4%</div></div>
-      <div class="card amber"><div class="label">營業額 YTD</div><div class="value">4.34 億</div><div class="delta down">2025：5.60 億 ｜ YoY -22.5%</div></div>
-      <div class="card green"><div class="label">H2 預售（7-12 月）</div><div class="value">1,854</div><div class="delta up">本週 +34 ｜ YoY +4.4%</div></div>
-      <div class="card amber"><div class="label">歐洲四線（主力）</div><div class="value">2,519</div><div class="delta down">佔 63.2% ｜ YoY -12.4%</div></div>
+      <div class="card amber"><div class="label">全年人頭（不含中國日本）</div><div class="value">4,071</div><div class="delta up">本週 +17 ｜ YoY -2.0%</div></div>
+      <div class="card amber"><div class="label">營業額 YTD（至9/10）</div><div class="value">4.34 億</div><div class="delta down">2025：5.60 億 ｜ YoY -22.5%</div></div>
+      <div class="card green"><div class="label">H2 預售（7-12 月）</div><div class="value">1,941</div><div class="delta up">本週 +17 ｜ YoY +7.5%</div></div>
+      <div class="card amber"><div class="label">歐洲四線（主力）</div><div class="value">2,599</div><div class="delta down">佔 63.8% ｜ YoY -10.4%</div></div>
     </div>
     <div class="alert info">⚠️ 公司目標（人頭 6,185／6,533、營業額 6.06／6.39 億）為<b>含中國全區口徑</b>，本頁（不含中國、日本）<b>不套用達成率</b>，僅呈現核心 14 線體質；達成率請見「含中國（全區）」分頁。</div>
   </div>
@@ -294,16 +322,16 @@
       <div>
         <div style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">近三年直客人頭・不含中國日本（人）</div>
         <div class="chart-wrap" style="height:250px"><canvas id="hcTrendEX"></canvas></div>
-        <div class="note">不含中國、日本＝16 線扣除中國與日本。4,106 → 4,219 → 3,984（2026 為 YTD 至 9/8）。</div>
+        <div class="note">不含中國、日本＝16 線扣除中國與日本。4,106 → 4,219 → 4,071（2026 為 YTD 至 9/29）。</div>
       </div>
       <div>
         <div style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">近三年直客營業額・不含中國日本（百萬元）</div>
         <div class="chart-wrap" style="height:250px"><canvas id="revTrendEX"></canvas></div>
-        <div class="note">扣除中國與日本。488 → 560 → 434 百萬（2026 為 YTD 至 9/10）。</div>
+        <div class="note">扣除中國與日本。488 → 560 → 434 百萬（2026 為 YTD 至 9/10・本週未更新）。</div>
       </div>
     </div>
-    <div class="alert info">💡 剔除中國、日本後 <b>營收 YoY -22.5%</b>、<b>人頭 -3.4%</b>；核心為歐洲（佔 14 線營收 68.6%）。惟直客單客價值仍高，非中國/日本客群仍具品質。</div>
-    <div style="font-size:15px;font-weight:700;color:#0f172a;margin:14px 0 8px">逐線營業額 2026（YTD）vs 2025・不含中國、日本 14 線　<span style="font-size:12px;font-weight:400;color:#64748b">單位：仟元</span></div>
+    <div class="alert info">💡 剔除中國、日本後 <b>營收 YoY -22.5%</b>、<b>人頭 -2.0%</b>；核心為歐洲（佔 14 線營收 68.6%）。人頭 YoY 較 W37（-3.4%）改善，主因東歐 H2 動能帶動；本週東歐再 +15。</div>
+    <div style="font-size:15px;font-weight:700;color:#0f172a;margin:14px 0 8px">逐線營業額 2026（YTD 至9/10）vs 2025・不含中國、日本 14 線　<span style="font-size:12px;font-weight:400;color:#64748b">單位：仟元</span></div>
     <table>
       <thead><tr><th>線別</th><th>2026 (YTD)</th><th>2025</th><th>YoY %</th><th>觀察</th></tr></thead>
       <tbody>
@@ -324,7 +352,7 @@
         <tr style="background:#ecfdf5;font-weight:700"><td>不含中國日本合計</td><td>433,871</td><td>559,761</td><td class="neg">-22.5%</td><td></td></tr>
       </tbody>
     </table>
-    <div class="note">＊不含中國、日本＝16 線扣除中國（2026 57,070／2025 57,594 仟元）與日本（2026 54,258／2025 74,105 仟元）。逐線 2025 為抽取值；營業額為不含 TKT/HTL、會計已入帳數。</div>
+    <div class="note">＊不含中國、日本＝16 線扣除中國（2026 57,070／2025 57,594 仟元）與日本（2026 54,258／2025 74,105 仟元）。營業額統計至 9/10（本週未更新）；逐線 2025 為抽取值；營業額為不含 TKT/HTL、會計已入帳數。</div>
   </div>
 
 
@@ -332,30 +360,30 @@
   <div class="summary">
     <h2>本週結論（給主管）</h2>
     <ul>
-      <li>不含中國、日本 全年累計 <b>3,984</b> 人，週增 <b>+34</b>。YoY <b>-3.4%</b>（同期 4,124）。〔再剔除日本後 YoY 由不含中國的 -1.3% 降至 -3.4%——因<b>日本為正貢獻線</b>（人頭 YoY +10.5%）。〕</li>
-      <li><b>疲弱全在已定型的 H1（-9.3%）</b>；H2 預售 1,854、YoY <b>+4.4%</b>（Q3 +15.9%、Q4 -13.3%）。</li>
-      <li><b>歐洲四線（主力，佔 63.2%）</b>：全年 2,519、YoY -12.4%；H1 -19.9% 拖累、H2 <b>-2.1%</b>；本週 +28。東歐 +11.8%（H2 +39.6%）、北歐 H2 +2.4% 續正、南歐/中西歐 H2 仍弱。</li>
-      <li>本週動能：<b>東歐 +24 獨強</b>、南歐 +6、遊輪 +4、紐澳 +2；本週僅北歐 -2 微降。</li>
-      <li>結構性亮點：遊輪 YoY <b>+128.9%</b>、俄中亞蒙 +186.5%、非洲 +68.5%。</li>
-      <li>需補救：中東 -44.7%、南亞 -36.9%（本週持平）；北歐 H2 已翻正、缺口聚焦 Q4 極光季。</li>
+      <li>不含中國、日本 全年累計 <b>4,071</b> 人，本週增 <b>+17</b>（全落 Q4）。YoY <b>-2.0%</b>（同期 4,154），較 W39（-2.1%）<b>小幅改善</b>——去年同期這一週非中日線僅 +14、今年 +17。</li>
+      <li><b>疲弱全在已定型的 H1（-9.3%）</b>；H2 預售 1,941、YoY <b>+7.5%</b>（Q3 +15.8%、Q4 -4.8%）。</li>
+      <li><b>歐洲四線（主力，佔 63.8%）</b>：全年 2,599、YoY -10.4%；H1 -19.9% 拖累、H2 <b>+2.3% 已翻正</b>（W39 +1.7%）；本週 +19。東歐 +18.3%（H2 +52.0%）、北歐 H2 +3.0% 續正、南歐/中西歐 H2 仍弱。</li>
+      <li>動能：<b>東歐 +15 獨強</b>、南歐 +4、遊輪 +2；本週僅中東 -3、非洲 -1 微降。</li>
+      <li>結構性亮點：遊輪 YoY <b>+126.2%</b>、俄中亞蒙 +200.0%、非洲 +67.0%。</li>
+      <li>需補救：中東 -44.9%（本週 -3）、南亞 -39.3%；北歐 H2 已翻正、缺口聚焦 H1／Q4 極光季。</li>
     </ul>
   </div>
 
   <div class="section">
-    <h2>本週 TOP 動能線別</h2>
+    <h2>本週 TOP 動能線別（0921→0929）</h2>
     <div class="two-col">
       <div>
         <table>
-          <thead><tr><th>排名</th><th>線別</th><th>週淨變化</th><th>本期全年</th></tr></thead>
+          <thead><tr><th>排名</th><th>線別</th><th>淨變化</th><th>本期全年</th></tr></thead>
           <tbody>
-            <tr><td>🥇 1</td><td>東歐</td><td class="pos">+24</td><td>882</td></tr>
-            <tr><td>🥈 2</td><td>南歐</td><td class="pos">+6</td><td>822</td></tr>
-            <tr><td>🥉 3</td><td>遊輪</td><td class="pos">+4</td><td>412</td></tr>
-            <tr><td>4</td><td>紐西蘭．澳洲</td><td class="pos">+2</td><td>222</td></tr>
-            <tr><td>—</td><td>北歐</td><td class="neg">-2</td><td>325</td></tr>
+            <tr><td>🥇 1</td><td>東歐</td><td class="pos">+15</td><td>946</td></tr>
+            <tr><td>🥈 2</td><td>南歐</td><td class="pos">+4</td><td>828</td></tr>
+            <tr><td>🥉 3</td><td>遊輪</td><td class="pos">+2</td><td>414</td></tr>
+            <tr><td>—</td><td>中東</td><td class="neg">-3</td><td>129</td></tr>
+            <tr><td>—</td><td>非洲</td><td class="neg">-1</td><td>157</td></tr>
           </tbody>
         </table>
-        <div class="note">不含中國、日本本週 +34；<b>東歐 +24 為絕對主力</b>，南歐 +6、遊輪 +4、紐澳 +2。本週僅北歐 -2 微降。</div>
+        <div class="note">不含中國、日本本週 +17；<b>東歐 +15 為絕對主力</b>，南歐 +4、遊輪 +2；中東 -3、非洲 -1 微降，其餘持平。</div>
       </div>
       <div><div class="chart-wrap"><canvas id="topMoversChartEX"></canvas></div></div>
     </div>
@@ -364,26 +392,26 @@
   <div class="section">
     <h2>14 線別完整週度變化表（不含中國、日本）</h2>
     <table>
-      <thead><tr><th>線別</th><th>本期</th><th>上期</th><th>週淨變化</th><th>去年同期</th><th>YoY %</th><th>提醒</th></tr></thead>
+      <thead><tr><th>線別</th><th>本期</th><th>上期(0921)</th><th>週淨變化</th><th>去年同期</th><th>YoY %</th><th>提醒</th></tr></thead>
       <tbody>
-        <tr><td>東歐</td><td>882</td><td>858</td><td class="pos">+24</td><td>789</td><td class="pos">+11.8%</td><td><span class="badge good">本週主引擎</span></td></tr>
-        <tr><td>南歐</td><td>822</td><td>816</td><td class="pos">+6</td><td>1,083</td><td class="neg">-24.1%</td><td><span class="badge alert">缺口最大</span></td></tr>
-        <tr><td>中西歐</td><td>490</td><td>490</td><td class="flat">0</td><td>588</td><td class="neg">-16.7%</td><td><span class="badge warn">歐洲承壓</span></td></tr>
-        <tr><td>遊輪</td><td>412</td><td>408</td><td class="pos">+4</td><td>180</td><td class="pos">+128.9%</td><td><span class="badge good">結構性成長</span></td></tr>
-        <tr><td>北歐</td><td>325</td><td>327</td><td class="neg">-2</td><td>414</td><td class="neg">-21.5%</td><td><span class="badge warn">H2 已翻正</span></td></tr>
-        <tr><td>紐西蘭．澳洲</td><td>222</td><td>220</td><td class="pos">+2</td><td>228</td><td class="neg">-2.6%</td><td></td></tr>
-        <tr><td>非洲</td><td>155</td><td>155</td><td class="flat">0</td><td>92</td><td class="pos">+68.5%</td><td><span class="badge good">維持亮點</span></td></tr>
-        <tr><td>美洲</td><td>154</td><td>154</td><td class="flat">0</td><td>150</td><td class="pos">+2.7%</td><td></td></tr>
-        <tr><td>東南亞</td><td>142</td><td>142</td><td class="flat">0</td><td>165</td><td class="neg">-13.9%</td><td></td></tr>
-        <tr><td>中東</td><td>130</td><td>130</td><td class="flat">0</td><td>235</td><td class="neg">-44.7%</td><td><span class="badge alert">基期高</span></td></tr>
-        <tr><td>俄羅斯．中亞．蒙古</td><td>106</td><td>106</td><td class="flat">0</td><td>37</td><td class="pos">+186.5%</td><td><span class="badge good">大幅回升</span></td></tr>
-        <tr><td>南亞</td><td>89</td><td>89</td><td class="flat">0</td><td>141</td><td class="neg">-36.9%</td><td><span class="badge alert">基期高</span></td></tr>
+        <tr><td>東歐</td><td>946</td><td>931</td><td class="pos">+15</td><td>800</td><td class="pos">+18.3%</td><td><span class="badge good">本週主引擎</span></td></tr>
+        <tr><td>南歐</td><td>828</td><td>824</td><td class="pos">+4</td><td>1,097</td><td class="neg">-24.5%</td><td><span class="badge alert">缺口最大</span></td></tr>
+        <tr><td>中西歐</td><td>498</td><td>498</td><td class="flat">0</td><td>589</td><td class="neg">-15.4%</td><td><span class="badge warn">歐洲承壓</span></td></tr>
+        <tr><td>遊輪</td><td>414</td><td>412</td><td class="pos">+2</td><td>183</td><td class="pos">+126.2%</td><td><span class="badge good">結構性成長</span></td></tr>
+        <tr><td>北歐</td><td>327</td><td>327</td><td class="flat">0</td><td>415</td><td class="neg">-21.2%</td><td><span class="badge warn">H2 已翻正</span></td></tr>
+        <tr><td>紐西蘭．澳洲</td><td>222</td><td>222</td><td class="flat">0</td><td>230</td><td class="neg">-3.5%</td><td></td></tr>
+        <tr><td>非洲</td><td>157</td><td>158</td><td class="neg">-1</td><td>94</td><td class="pos">+67.0%</td><td><span class="badge good">維持亮點</span></td></tr>
+        <tr><td>美洲</td><td>157</td><td>157</td><td class="flat">0</td><td>150</td><td class="pos">+4.7%</td><td></td></tr>
+        <tr><td>東南亞</td><td>142</td><td>142</td><td class="flat">0</td><td>163</td><td class="neg">-12.9%</td><td></td></tr>
+        <tr><td>中東</td><td>129</td><td>132</td><td class="neg">-3</td><td>234</td><td class="neg">-44.9%</td><td><span class="badge alert">基期高</span></td></tr>
+        <tr><td>俄羅斯．中亞．蒙古</td><td>111</td><td>111</td><td class="flat">0</td><td>37</td><td class="pos">+200.0%</td><td><span class="badge good">大幅回升</span></td></tr>
+        <tr><td>南亞</td><td>85</td><td>85</td><td class="flat">0</td><td>140</td><td class="neg">-39.3%</td><td><span class="badge alert">基期高</span></td></tr>
         <tr><td>韓國</td><td>49</td><td>49</td><td class="flat">0</td><td>9</td><td class="pos">+444.4%</td><td><span class="badge warn">基數小</span></td></tr>
         <tr><td>自由行</td><td>6</td><td>6</td><td class="flat">0</td><td>13</td><td class="neg">-53.8%</td><td></td></tr>
-        <tr style="background:#ecfdf5;font-weight:700"><td>合計（不含中國、日本）</td><td>3,984</td><td>3,950</td><td class="pos">+34</td><td>4,124</td><td class="neg">-3.4%</td><td></td></tr>
+        <tr style="background:#ecfdf5;font-weight:700"><td>合計（不含中國、日本）</td><td>4,071</td><td>4,054</td><td class="pos">+17</td><td>4,154</td><td class="neg">-2.0%</td><td></td></tr>
       </tbody>
     </table>
-    <div class="note">＊依本期 2026 由高到低排列。不含中國、日本＝16 線扣除中國（999）與日本（830）。2025 同期＝16 線 5,524 − 中國 649 − 日本 751 = 4,124。</div>
+    <div class="note">＊依本期 2026 由高到低排列。不含中國、日本＝16 線扣除中國（1,023）與日本（839）。2025 同期＝16 線 5,718 − 中國 664 − 日本 900 = 4,154。上期為 0921（W39），本週為乾淨 1 週對照。</div>
   </div>
 
   <div class="section">
@@ -394,25 +422,25 @@
     </div>
     <div id="ex-h1h2" class="tab-content active">
       <table>
-        <thead><tr><th>期別</th><th>本期</th><th>上期</th><th>週淨變化</th><th>2025 同期</th><th>YoY</th></tr></thead>
+        <thead><tr><th>期別</th><th>本期</th><th>上期(0921)</th><th>週淨變化</th><th>2025 同期</th><th>YoY</th></tr></thead>
         <tbody>
           <tr><td>H1（1-6 月）</td><td>2,130</td><td>2,130</td><td class="flat">0</td><td>2,348</td><td class="neg">-9.3%</td></tr>
-          <tr><td>H2（7-12 月）預售</td><td>1,854</td><td>1,820</td><td class="pos">+34</td><td>1,776</td><td class="pos">+4.4%</td></tr>
-          <tr style="background:#ecfdf5;font-weight:700"><td>全年</td><td>3,984</td><td>3,950</td><td class="pos">+34</td><td>4,124</td><td class="neg">-3.4%</td></tr>
+          <tr><td>H2（7-12 月）預售</td><td>1,941</td><td>1,924</td><td class="pos">+17</td><td>1,806</td><td class="pos">+7.5%</td></tr>
+          <tr style="background:#ecfdf5;font-weight:700"><td>全年</td><td>4,071</td><td>4,054</td><td class="pos">+17</td><td>4,154</td><td class="neg">-2.0%</td></tr>
         </tbody>
       </table>
-      <div class="alert good">不含中國、日本的疲弱<b>集中在已定型的 H1（-9.3%）</b>；本週 +34 全落在 H2，H2 YoY <b>+4.4%</b>，下半年動能仍領先去年。全年 -3.4%（較不含中國的 -1.3% 更低，因日本原為正貢獻）。</div>
+      <div class="alert good">不含中國、日本的疲弱<b>集中在已定型的 H1（-9.3%）</b>；本週 +17 全落在 H2（Q4），H2 YoY <b>+7.5%</b>，下半年動能領先去年。全年 -2.0% 較 W39（-2.1%）小幅改善。</div>
     </div>
     <div id="ex-q4" class="tab-content">
       <table>
         <thead><tr><th>期別</th><th>2026 目前預售</th><th>2025 同期</th><th>YoY</th><th>風險判讀</th></tr></thead>
         <tbody>
-          <tr><td>Q3（7-9 月）</td><td>1,246</td><td>1,075</td><td class="pos">+15.9%</td><td><span class="badge good">明顯領先</span></td></tr>
-          <tr><td>Q4（10-12 月）</td><td>608</td><td>701</td><td class="neg">-13.3%</td><td><span class="badge alert">轉負</span></td></tr>
-          <tr style="background:#ecfdf5;font-weight:700"><td>H2 合計</td><td>1,854</td><td>1,776</td><td class="pos">+4.4%</td><td></td></tr>
+          <tr><td>Q3（7-9 月）</td><td>1,244</td><td>1,074</td><td class="pos">+15.8%</td><td><span class="badge good">明顯領先・已定型</span></td></tr>
+          <tr><td>Q4（10-12 月）</td><td>697</td><td>732</td><td class="neg">-4.8%</td><td><span class="badge alert">轉負</span></td></tr>
+          <tr style="background:#ecfdf5;font-weight:700"><td>H2 合計</td><td>1,941</td><td>1,806</td><td class="pos">+7.5%</td><td></td></tr>
         </tbody>
       </table>
-      <div class="alert">剔除中國、日本後，Q3 <b>+15.9%</b> 明顯領先，但 <b>Q4 轉負 -13.3%</b>——日本 Q4 原為非中國區的主力預售，剔除後 Q4 缺口顯現；H2 合計仍 +4.4%。後續需靠歐洲（東歐）Q4 動能補位。</div>
+      <div class="alert">剔除中國、日本後，Q3 <b>+15.8%</b> 明顯領先，但 <b>Q4 -4.8%</b>（W39 -5.3%，略改善）——去年同期 Q4 基期墊高，非中日核心線 Q4 追補仍不足；H2 合計仍 +7.5%。後續需靠歐洲（東歐）Q4 動能補位。</div>
     </div>
   </div>
 
@@ -421,17 +449,17 @@
     <table>
       <thead><tr><th>線別</th><th>本期</th><th>週淨</th><th>去年同期</th><th>全年 YoY</th><th>H1 YoY</th><th>H2 YoY</th><th>判讀</th></tr></thead>
       <tbody>
-        <tr><td>東歐</td><td>882</td><td class="pos">+24</td><td>789</td><td class="pos">+11.8%</td><td class="neg">-14.2%</td><td class="pos">+39.6%</td><td><span class="badge good">H2 強勢</span></td></tr>
-        <tr><td>南歐</td><td>822</td><td class="pos">+6</td><td>1,083</td><td class="neg">-24.1%</td><td class="neg">-25.8%</td><td class="neg">-21.1%</td><td><span class="badge alert">缺口最大</span></td></tr>
-        <tr><td>中西歐</td><td>490</td><td class="flat">0</td><td>588</td><td class="neg">-16.7%</td><td class="flat">-0.3%</td><td class="neg">-35.5%</td><td><span class="badge alert">H2 反弱</span></td></tr>
-        <tr><td>北歐</td><td>325</td><td class="neg">-2</td><td>414</td><td class="neg">-21.5%</td><td class="neg">-37.3%</td><td class="pos">+2.4%</td><td><span class="badge good">H2 已翻正</span></td></tr>
-        <tr><td>中東</td><td>130</td><td class="flat">0</td><td>235</td><td class="neg">-44.7%</td><td class="neg">-23.0%</td><td class="neg">-60.7%</td><td><span class="badge alert">全區最弱</span></td></tr>
-        <tr style="background:#ecfdf5;font-weight:700"><td>五線合計</td><td>2,649</td><td class="pos">+28</td><td>3,109</td><td class="neg">-14.8%</td><td class="neg">-20.0%</td><td class="neg">-7.9%</td><td></td></tr>
+        <tr><td>東歐</td><td>946</td><td class="pos">+15</td><td>800</td><td class="pos">+18.3%</td><td class="neg">-14.2%</td><td class="pos">+52.0%</td><td><span class="badge good">H2 強勢</span></td></tr>
+        <tr><td>南歐</td><td>828</td><td class="pos">+4</td><td>1,097</td><td class="neg">-24.5%</td><td class="neg">-25.8%</td><td class="neg">-22.4%</td><td><span class="badge alert">缺口最大</span></td></tr>
+        <tr><td>中西歐</td><td>498</td><td class="flat">0</td><td>589</td><td class="neg">-15.4%</td><td class="neg">-0.3%</td><td class="neg">-32.8%</td><td><span class="badge alert">H2 反弱</span></td></tr>
+        <tr><td>北歐</td><td>327</td><td class="flat">0</td><td>415</td><td class="neg">-21.2%</td><td class="neg">-37.3%</td><td class="pos">+3.0%</td><td><span class="badge good">H2 已翻正</span></td></tr>
+        <tr><td>中東</td><td>129</td><td class="neg">-3</td><td>234</td><td class="neg">-44.9%</td><td class="neg">-23.0%</td><td class="neg">-61.2%</td><td><span class="badge alert">全區最弱</span></td></tr>
+        <tr style="background:#ecfdf5;font-weight:700"><td>五線合計</td><td>2,728</td><td class="pos">+16</td><td>3,135</td><td class="neg">-13.0%</td><td class="neg">-20.0%</td><td class="neg">-3.9%</td><td></td></tr>
       </tbody>
     </table>
     <div class="chart-wrap"><canvas id="europeChart"></canvas></div>
     <div class="alert">
-      <b>主力線解讀：</b>五線全年 -14.8%，缺口<b>主要在已定型的 H1（-20.0%）</b>；H2 -7.9%，其中 <b>東歐 H2 +39.6%、北歐 H2 +2.4% 已翻正</b>。仍需攻堅：<b>南歐（H2 -21.1%、絕對缺口最大）</b>、<b>中西歐（H2 -35.5%、暑後轉弱）</b>，以及新增觀察的 <b>中東（全年 -44.7%、H2 -60.7% 全區最弱）</b>；北歐則聚焦 Q4 極光季補位。本週東歐 +24 獨強、南歐 +6、北歐 -2，中東持平。
+      <b>主力線解讀：</b>五線全年 -13.0%，缺口<b>主要在已定型的 H1（-20.0%）</b>；H2 -3.9%（W39 -4.3%，小幅改善），其中 <b>東歐 H2 +52.0%、北歐 H2 +3.0% 已翻正</b>。仍需攻堅：<b>南歐（H2 -22.4%、絕對缺口最大）</b>、<b>中西歐（H2 -32.8%、暑後轉弱）</b>，以及 <b>中東（全年 -44.9%、H2 -61.2% 全區最弱、本週再 -3）</b>；北歐則聚焦 Q4 極光季補位。本週東歐 +15、南歐 +4。
     </div>
   </div>
 
@@ -440,12 +468,12 @@
     <table>
       <thead><tr><th>線別</th><th>本期累計</th><th>2025 同期</th><th>YoY</th><th>風險</th><th>主要觀察</th></tr></thead>
       <tbody>
-        <tr><td>中東</td><td>130</td><td>235</td><td class="neg">-44.7%</td><td><span class="badge alert">🔴 高</span></td><td>2025 高基期，本週持平，動能仍弱</td></tr>
-        <tr><td>南亞</td><td>89</td><td>141</td><td class="neg">-36.9%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，多週低速</td></tr>
-        <tr><td>南歐</td><td>822</td><td>1,083</td><td class="neg">-24.1%</td><td><span class="badge alert">🔴 高</span></td><td>本週 +6，絕對缺口最大（H2 -21.1%）</td></tr>
-        <tr><td>北歐</td><td>325</td><td>414</td><td class="neg">-21.5%</td><td><span class="badge warn">🟡 中</span></td><td>本週 -2，H2 已翻正 +2.4%，缺口在 H1／Q4 極光季</td></tr>
-        <tr><td>中西歐</td><td>490</td><td>588</td><td class="neg">-16.7%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，H2 -35.5% 暑後轉弱</td></tr>
-        <tr><td>東南亞</td><td>142</td><td>165</td><td class="neg">-13.9%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，Q4 仍空窗</td></tr>
+        <tr><td>中東</td><td>129</td><td>234</td><td class="neg">-44.9%</td><td><span class="badge alert">🔴 高</span></td><td>2025 高基期，本週 -3（Q4 調整），動能仍弱</td></tr>
+        <tr><td>南亞</td><td>85</td><td>140</td><td class="neg">-39.3%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，多週低速</td></tr>
+        <tr><td>南歐</td><td>828</td><td>1,097</td><td class="neg">-24.5%</td><td><span class="badge alert">🔴 高</span></td><td>本週 +4，絕對缺口仍最大（H2 -22.4%）</td></tr>
+        <tr><td>北歐</td><td>327</td><td>415</td><td class="neg">-21.2%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，H2 已翻正 +3.0%，缺口在 H1／Q4 極光季</td></tr>
+        <tr><td>中西歐</td><td>498</td><td>589</td><td class="neg">-15.4%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，H2 -32.8% 暑後轉弱</td></tr>
+        <tr><td>東南亞</td><td>142</td><td>163</td><td class="neg">-12.9%</td><td><span class="badge warn">🟡 中</span></td><td>本週持平，Q4 仍空窗</td></tr>
       </tbody>
     </table>
     <div class="alert info">💡 <b>目標口徑提醒</b>：公司一階 6,185／二階 6,533 為含中國全公司口徑，本頁（不含中國、日本）不套用達成率，僅呈現核心 14 線的 YoY 與動能體質。</div>
@@ -454,17 +482,18 @@
   <div class="section">
     <h2>決策摘要</h2>
     <ul style="list-style:none;padding:0">
-      <li style="padding:10px;margin-bottom:8px;background:#d1fae5;border-left:4px solid #16a34a;border-radius:6px"><b>✅ 續攻</b>：東歐（本週 +24、H2 +39.6%）、遊輪（YoY +128.9%）— 中國、日本以外的核心動能來源，維持行銷資源</li>
-      <li style="padding:10px;margin-bottom:8px;background:#fef3c7;border-left:4px solid #f59e0b;border-radius:6px"><b>⚠️ 歐洲攻堅</b>：南歐（H2 -21.1%、缺口最大）＋中西歐（H2 -35.5%、暑後轉弱）為主力線最大機會點，建議產品/定價專案介入</li>
-      <li style="padding:10px;margin-bottom:8px;background:#fee2e2;border-left:4px solid #dc2626;border-radius:6px"><b>🚨 補救</b>：中東、南亞 — 深跌且本週低速（需進一步確認內部銷售資料）；北歐聚焦 Q4 極光季（H2 已翻正，缺口在 H1）</li>
-      <li style="padding:10px;background:#e0e7ff;border-left:4px solid #2563eb;border-radius:6px"><b>🎯 結構觀察</b>：不含中國、日本全年 -3.4%、H2 +4.4%；核心風險是 <b>Q4 轉負 -13.3%</b>（少了日本 Q4 主力）。重點是把歐洲 H2 動能（東歐續強、北歐翻正）延續到 Q4，並讓南歐/中西歐止血</li>
+      <li style="padding:10px;margin-bottom:8px;background:#d1fae5;border-left:4px solid #16a34a;border-radius:6px"><b>✅ 續攻</b>：東歐（本週 +15、H2 +52.0%）、遊輪（YoY +126.2%）— 中國、日本以外的核心動能來源，維持行銷資源</li>
+      <li style="padding:10px;margin-bottom:8px;background:#fef3c7;border-left:4px solid #f59e0b;border-radius:6px"><b>⚠️ 歐洲攻堅</b>：南歐（H2 -22.4%、缺口最大）＋中西歐（H2 -32.8%、暑後轉弱）為主力線最大機會點，建議產品/定價專案介入</li>
+      <li style="padding:10px;margin-bottom:8px;background:#fee2e2;border-left:4px solid #dc2626;border-radius:6px"><b>🚨 補救</b>：中東（本週再 -3）、南亞 — 深跌且低速（需進一步確認內部銷售資料）；北歐聚焦 Q4 極光季（H2 已翻正，缺口在 H1）</li>
+      <li style="padding:10px;background:#e0e7ff;border-left:4px solid #2563eb;border-radius:6px"><b>🎯 結構觀察</b>：不含中國、日本全年 -2.0%、H2 +7.5%；核心風險是 <b>Q4 -4.8%</b>（去年基期墊高）。重點是把歐洲 H2 動能（東歐續強、北歐翻正）延續到 Q4，並讓南歐/中西歐止血</li>
     </ul>
   </div>
+
 
   </div><!-- /view-ex -->
 
   <div class="footer">
-    🫐 藍莓 v1.0 產出 ｜ 資料來源：人資部 2026業績總表(0908).pdf（對照 0831 / 2025同期 0909）、全公司營業額統計表（統計至9/10）、2024-2026人頭數（統計至9/8）｜ 產出時間 2026/09/08（財務維度 2026/09/10、近三年人頭 2026/09/14 補入）｜ 統籌：Claudia ｜ 本檔含「含中國 / 不含中國」雙分頁 ＋ 財務維度
+    🫐 藍莓 v1.0 產出 ｜ 資料來源：人資部 2026業績總表(0929).pdf（對照 0921／2025同期 0930）、全公司營業額統計表（統計至9/10・本週未更新）、近三年人頭（2024/2025 全年結算，2026 為週報 YTD 至9/29）｜ 產出時間 2026/09/29 ｜ 統籌：Claudia ｜ 本檔含「含中國 / 不含中國、日本」雙分頁 ＋ 財務維度
   </div>
 </div>
 
@@ -487,28 +516,35 @@ function switchTab(evt,id){
 
 var topMoversChartCN = new Chart(document.getElementById('topMoversChartCN'),{
   type:'bar',
-  data:{labels:['東歐','南歐','中國','遊輪','日本','紐澳','北歐'],
-    datasets:[{label:'本週淨變化（人）',data:[24,6,6,4,4,2,-2],backgroundColor:'rgba(37,99,235,0.75)',borderColor:'#1e40af',borderWidth:1}]},
+  data:{labels:["東歐", "中國", "日本", "南歐", "遊輪", "非洲", "中東"],
+    datasets:[{label:'本週淨變化（人）',data:[15, 9, 6, 4, 2, -1, -3],backgroundColor:'rgba(37,99,235,0.75)',borderColor:'#1e40af',borderWidth:1}]},
   options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'本週 TOP 動能（含中國）'}},scales:{x:{beginAtZero:true}}}
 });
 var goalChart = new Chart(document.getElementById('goalChart'),{
   type:'bar',
   data:{labels:['一階目標 6,185','二階目標 6,533'],
-    datasets:[{label:'已達成',data:[5813,5813],backgroundColor:'rgba(22,163,74,0.85)'},{label:'缺口',data:[372,720],backgroundColor:'rgba(245,158,11,0.6)'}]},
+    datasets:[{label:'已達成',data:[5933,5933],backgroundColor:'rgba(22,163,74,0.85)'},{label:'缺口',data:[252,600],backgroundColor:'rgba(245,158,11,0.6)'}]},
   options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'},title:{display:true,text:'目標達成 vs 缺口'}},scales:{x:{stacked:true,beginAtZero:true},y:{stacked:true}}}
 });
 var topMoversChartEX = new Chart(document.getElementById('topMoversChartEX'),{
   type:'bar',
-  data:{labels:['東歐','南歐','遊輪','紐澳','北歐'],
-    datasets:[{label:'本週淨變化（人）',data:[24,6,4,2,-2],backgroundColor:'rgba(16,185,129,0.75)',borderColor:'#065f46',borderWidth:1}]},
+  data:{labels:["東歐", "南歐", "遊輪", "非洲", "中東"],
+    datasets:[{label:'本週淨變化（人）',data:[15, 4, 2, -1, -3],backgroundColor:'rgba(16,185,129,0.75)',borderColor:'#065f46',borderWidth:1}]},
   options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'本週 TOP 動能（不含中國、日本）'}},scales:{x:{beginAtZero:true}}}
 });
 var europeChart = new Chart(document.getElementById('europeChart'),{
   type:'bar',
-  data:{labels:['東歐','南歐','中西歐','北歐','中東'],
-    datasets:[{label:'2025 同期',data:[789,1083,588,414,235],backgroundColor:'rgba(148,163,184,0.7)'},{label:'2026 本期',data:[882,822,490,325,130],backgroundColor:'rgba(16,185,129,0.85)'}]},
+  data:{labels:["東歐", "南歐", "中西歐", "北歐", "中東"],
+    datasets:[{label:'2025 同期',data:[800, 1097, 589, 415, 234],backgroundColor:'rgba(148,163,184,0.7)'},{label:'2026 本期',data:[946, 828, 498, 327, 129],backgroundColor:'rgba(16,185,129,0.85)'}]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},title:{display:true,text:'歐洲四線＋中東 2026 vs 2025 同期'}},scales:{y:{beginAtZero:true,title:{display:true,text:'直客人頭數'}}}}
 });
+var europeChartCN = new Chart(document.getElementById('europeChartCN'),{
+  type:'bar',
+  data:{labels:["東歐", "南歐", "中西歐", "北歐", "中東"],
+    datasets:[{label:'2025 同期',data:[800, 1097, 589, 415, 234],backgroundColor:'rgba(148,163,184,0.7)'},{label:'2026 本期',data:[946, 828, 498, 327, 129],backgroundColor:'rgba(37,99,235,0.85)'}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},title:{display:true,text:'歐洲四線＋中東 2026 vs 2025 同期'}},scales:{y:{beginAtZero:true,title:{display:true,text:'直客人頭數'}}}}
+});
+
 
 var revGoalCN = new Chart(document.getElementById('revGoalCN'),{
   type:'bar',
@@ -548,8 +584,8 @@ var revTrendEX = new Chart(document.getElementById('revTrendEX'),{
 
 var hcTrendCN = new Chart(document.getElementById('hcTrendCN'),{
   type:'bar',
-  data:{labels:['2024（全年）','2025（全年）','2026（YTD 至9/8）'],
-    datasets:[{label:'直客人頭（人）',data:[5073,6534,5813],
+  data:{labels:['2024（全年）','2025（全年）','2026（YTD 至9/29）'],
+    datasets:[{label:'直客人頭（人）',data:[5073,6534,5933],
       backgroundColor:['#94a3b8','#94a3b8','#2563eb'],borderRadius:5}]},
   options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{display:false},title:{display:true,text:'直客人頭 3 年趨勢（含中國・人）'},
@@ -559,8 +595,8 @@ var hcTrendCN = new Chart(document.getElementById('hcTrendCN'),{
 
 var hcTrendEX = new Chart(document.getElementById('hcTrendEX'),{
   type:'bar',
-  data:{labels:['2024（全年）','2025（全年）','2026（YTD 至9/8）'],
-    datasets:[{label:'直客人頭・不含中國日本（人）',data:[4106,4219,3984],
+  data:{labels:['2024（全年）','2025（全年）','2026（YTD 至9/29）'],
+    datasets:[{label:'直客人頭・不含中國日本（人）',data:[4106,4219,4071],
       backgroundColor:['#94a3b8','#94a3b8','#10b981'],borderRadius:5}]},
   options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{display:false},title:{display:true,text:'直客人頭 3 年趨勢（不含中國、日本・人）'},
@@ -568,7 +604,7 @@ var hcTrendEX = new Chart(document.getElementById('hcTrendEX'),{
     scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'人'}},x:{grid:{display:false}}}}
 });
 
-var cnCharts = [topMoversChartCN, goalChart, revGoalCN, revTrendCN, hcTrendCN];
+var cnCharts = [topMoversChartCN, goalChart, revGoalCN, revTrendCN, hcTrendCN, europeChartCN];
 var exCharts = [topMoversChartEX, europeChart, revTrendEX, hcTrendEX];
 </script>
 </body>
