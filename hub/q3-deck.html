@@ -220,73 +220,10 @@
     </div>
   </section>
 
-  <!-- 3 · 直客量價維度：趨勢圖（順位二） -->
-  <section class="slide" data-label="量價維度">
-    <div class="inner">
-      <div class="kicker">02 · 量價維度</div>
-      <div class="stitle"><span class="dot" style="background:#0d9488"></span>💰 直客量價維度：人頭 × 營業額</div>
-      <div class="cap">營業額統計至 9/29 · 不含 TKT/HTL · 會計已入帳。</div>
-      <div class="twoeq">
-        <div>
-          <div class="mini-h">近三年直客人頭（人）</div>
-          <div class="chart-wrap" style="height:min(38vh,290px)"><canvas id="hcTrendCN"></canvas></div>
-          <div class="note">2024／2025 全年結算，2026 為 YTD（至 9/29）。5,073 → 6,534 → 6,133（已達 2025 全年 94%、已超越 2024 全年）。</div>
-        </div>
-        <div>
-          <div class="mini-h">近三年直客營業額（百萬元）</div>
-          <div class="chart-wrap" style="height:min(38vh,290px)"><canvas id="revTrendCN"></canvas></div>
-          <div class="note">2024／2025 全年結算，2026 為 YTD（至 9/29）。547 → 658 → 562 百萬（已達 2025 全年 85%）。</div>
-        </div>
-      </div>
-      <div class="alert info">💡 <b>直客＝高單客價值</b>：人頭僅佔全公司約 13%。近三年客單價：2024 約 10.8 萬/人 → 2025 約 10.1 萬/人 → 2026 YTD 約 9.2 萬/人（下降）。<b>2025 為量價雙高峰</b>（人頭 6,534、營收 6.58 億）。</div>
-    </div>
-  </section>
-
-  <!-- 4 · 逐線營業額明細（順位二・續） -->
-  <section class="slide" data-label="營業額明細">
-    <div class="inner">
-      <div class="kicker">02 · 量價維度（續）</div>
-      <div class="stitle"><span class="dot" style="background:#0d9488"></span>逐線營業額＆人頭數 2026（YTD 至 9/29）vs 2025（全年）</div>
-      <div class="cap" style="margin:8px 0 10px">營業額單位：仟元；人頭數＝直客銷售全年累計人頭（2026 至 9/29，2025 全年，合計為官方總計、16 線加總 6,525；2026 日本已更正為 1,039，+200 計入 H1）。營業額為不含 TKT/HTL、會計已入帳數；YoY＝2026 YTD 對 2025 全年（非同期）；2025 全年合計 657,892 仟元。</div>
-      <table class="tbl-tight">
-        <thead><tr><th rowspan="2">線別</th><th colspan="3">營業額（仟元）</th><th colspan="3">人頭數（人）</th><th rowspan="2">觀察</th></tr><tr><th>2026 YTD</th><th>2025</th><th>YoY %</th><th>2026 YTD</th><th>2025</th><th>YoY %</th></tr></thead>
-        <tbody>
-          <tr class="rgnhdr"><td colspan="8">🇪🇺 歐洲</td></tr>
-          <tr class="subln"><td>南歐</td><td>102,427</td><td>142,771</td><td class="neg">-28.3%</td><td>828</td><td>1,102</td><td class="neg">-24.9%</td><td><span class="badge alert">缺口最大</span></td></tr>
-          <tr class="subln"><td>東歐</td><td>89,634</td><td>91,112</td><td class="neg">-1.6%</td><td>946</td><td>816</td><td class="pos">+15.9%</td><td></td></tr>
-          <tr class="subln"><td>中西歐</td><td>72,165</td><td>89,402</td><td class="neg">-19.3%</td><td>498</td><td>590</td><td class="neg">-15.6%</td><td></td></tr>
-          <tr class="subln"><td>北歐</td><td>62,248</td><td>81,682</td><td class="neg">-23.8%</td><td>327</td><td>420</td><td class="neg">-22.1%</td><td></td></tr>
-          <tr class="rgnhdr"><td colspan="8">🕌 中東</td></tr>
-          <tr class="subln"><td>中東</td><td>11,278</td><td>20,384</td><td class="neg">-44.7%</td><td>129</td><td>234</td><td class="neg">-44.9%</td><td><span class="badge alert">深跌</span></td></tr>
-          <tr class="rgnhdr"><td colspan="8">🚢 遊輪</td></tr>
-          <tr class="subln"><td>遊輪</td><td>38,023</td><td>30,413</td><td class="pos">+25.0%</td><td>414</td><td>183</td><td class="pos">+126.2%</td><td><span class="badge good">成長</span></td></tr>
-          <tr class="rgnhdr"><td colspan="8">🌎 美洲</td></tr>
-          <tr class="subln"><td>美洲</td><td>26,526</td><td>31,014</td><td class="neg">-14.5%</td><td>157</td><td>183</td><td class="neg">-14.2%</td><td></td></tr>
-          <tr class="rgnhdr"><td colspan="8">🌍 非洲</td></tr>
-          <tr class="subln"><td>非洲</td><td>16,319</td><td>13,066</td><td class="pos">+24.9%</td><td>157</td><td>92</td><td class="pos">+70.7%</td><td><span class="badge good">成長</span></td></tr>
-          <tr class="rgnhdr"><td colspan="8">🏔️ 中亞</td></tr>
-          <tr class="subln"><td>俄羅斯．中亞．蒙古</td><td>12,668</td><td>6,026</td><td class="pos">+110.2%</td><td>111</td><td>37</td><td class="pos">+200.0%</td><td><span class="badge good">大幅回升</span></td></tr>
-          <tr class="rgnhdr"><td colspan="8">🐨 紐澳</td></tr>
-          <tr class="subln"><td>紐西蘭．澳洲</td><td>31,294</td><td>33,652</td><td class="neg">-7.0%</td><td>222</td><td>237</td><td class="neg">-6.3%</td><td></td></tr>
-          <tr class="rgnhdr"><td colspan="8">🛕 南亞</td></tr>
-          <tr class="subln"><td>南亞</td><td>5,004</td><td>8,944</td><td class="neg">-44.1%</td><td>85</td><td>142</td><td class="neg">-40.1%</td><td><span class="badge alert">深跌</span></td></tr>
-          <tr class="rgnhdr"><td colspan="8">🌏 泛亞洲</td></tr>
-          <tr class="subln"><td>中國</td><td>61,606</td><td>57,594</td><td class="pos">+7.0%</td><td>1,023</td><td>705</td><td class="pos">+45.1%</td><td><span class="badge good">成長</span></td></tr>
-          <tr class="subln"><td>日本</td><td>25,767</td><td>40,537</td><td class="neg">-36.4%</td><td>1,039</td><td>1,601</td><td class="neg">-35.1%</td><td><span class="badge alert">深跌</span></td></tr>
-          <tr class="subln"><td>東南亞</td><td>4,789</td><td>7,426</td><td class="neg">-35.5%</td><td>142</td><td>161</td><td class="neg">-11.8%</td><td><span class="badge warn">衰退</span></td></tr>
-          <tr class="subln"><td>韓國</td><td>1,383</td><td>259</td><td class="pos">+433.6%</td><td>49</td><td>9</td><td class="pos">+444.4%</td><td><span class="badge warn">基數小</span></td></tr>
-          <tr class="subln"><td>自由行</td><td>849</td><td>2,194</td><td class="neg">-61.3%</td><td>6</td><td>13</td><td class="neg">-53.8%</td><td><span class="badge warn">基數小</span></td></tr>
-          <tr style="background:#c7d2fe;font-weight:800"><td>直客合計</td><td>561,980</td><td>657,892</td><td class="neg">-14.6%</td><td>6,133</td><td>6,534</td><td class="neg">-6.1%</td><td></td></tr>
-        </tbody>
-      </table>
-      <div class="note">＊營業額目標（公司下達）：2026 一階 6.06／二階 6.39 億。2026 為 YTD（至 9/29），達成率＝已入帳營收÷目標（一階 92.7%、二階 87.9%），全年未完、最終可望更高。資料來源：近3年-直客銷售一二部(1).xlsx。</div>
-    </div>
-  </section>
-
   <!-- 5 · 季度量能 + 佔比 -->
   <section class="slide" data-label="量能趨勢">
     <div class="inner">
-      <div class="kicker">03 · 量能趨勢</div>
+      <div class="kicker">02 · 量能趨勢</div>
       <div class="stitle"><span class="dot"></span>季度量能與全公司結構</div>
       <div class="cap">Q1–Q3 穩定在每季約 1,600 人、逐季維持 YoY 正成長（三季累計 4,984 vs 2025 同期 4,525，+10.1%，已含日本人頭更正 +200；圖中 Q1/Q2 為 PDF 原值、+200 未拆季）；Q4 預售目前 1,149，YoY -4.4%（去年同期基期墊高、非今年走弱）。直客佔全公司人頭：Q3 14.0%（去年 14.2%）、Q4 預售 10.2%（去年 11.7%）。</div>
       <div class="two">
@@ -299,7 +236,7 @@
   <!-- 6 · 含中國 vs 不含中國：核心洞察 -->
   <section class="slide" data-label="含/不含中國">
     <div class="inner">
-      <div class="kicker">04 · 口徑差異</div>
+      <div class="kicker">03 · 口徑差異</div>
       <div class="stitle"><span class="dot" style="background:#dc2626"></span>含中國 vs 不含中國：Q3 口徑差異</div>
       <div class="headline" style="border-left-color:#16a34a">
         <b>剔除中國後 Q3 直客反而更強</b>：不含中國 <span class="em">+9.4%</span> ＞ 含中國 +5.7%——因 <b>中國 Q3 衰退 -9.6%</b>（272 vs 301）拖累整體。非中國 15 線本季淨增 +115 人，是 Q3 真正的成長來源。
@@ -326,7 +263,7 @@
   <!-- 7 · 含中國季度拆解表 -->
   <section class="slide" data-label="季度拆解表">
     <div class="inner">
-      <div class="kicker">04 · 口徑差異（續）</div>
+      <div class="kicker">03 · 口徑差異（續）</div>
       <div class="stitle"><span class="dot" style="background:#dc2626"></span>各季 YoY：含中國／中國單線／不含中國</div>
       <div class="cap">中國為直客最大單線且波動大，剔除後更能看清「非中國本體」的體質。</div>
       <table>
@@ -345,7 +282,7 @@
   <!-- 8 · 各單位 含/不含中國 圖 -->
   <section class="slide" data-label="剔除中國比較">
     <div class="inner">
-      <div class="kicker">05 · 體質分析</div>
+      <div class="kicker">04 · 體質分析</div>
       <div class="stitle"><span class="dot" style="background:#0d9488"></span>各單位 Q3：含中國線 vs 不含中國線</div>
       <div class="headline" style="border-left-color:#0d9488">
         <b>剔除中國後，直客 <span class="em">+9.4%</span> 躍居全公司最強直售單位。</b>看似最強的同業（含中國 +19.5%）有 <b>53.6% 靠中國</b>，本體其實 <b>-4.5%</b>；直客對中國依賴低（僅 17.0%），成長來自分散的非中國市場，<b>體質最健康</b>。全公司不含中國 <b>-3.1%</b>——Q3 成長幾乎全靠中國線撐。
@@ -357,7 +294,7 @@
   <!-- 11 · 各單位 含/不含中國 表 -->
   <section class="slide" data-label="剔除中國明細">
     <div class="inner">
-      <div class="kicker">05 · 體質分析（續）</div>
+      <div class="kicker">04 · 體質分析（續）</div>
       <div class="stitle"><span class="dot" style="background:#0d9488"></span>各單位 不含中國 Q3 明細</div>
       <div class="cap">「不含中國」＝各單位 Q3 總量扣除該單位對中國目的地之銷售。中國佔比＝該單位 Q3 有多少比例賣往中國。</div>
       <table>
@@ -381,7 +318,7 @@
   <!-- 8 · 結構觀察 & Q4 展望 -->
   <section class="slide" data-label="Q4 展望">
     <div class="inner">
-      <div class="kicker">06 · 觀察與行動</div>
+      <div class="kicker">05 · 觀察與行動</div>
       <div class="stitle"><span class="dot" style="background:#7c3aed"></span>結構觀察 &amp; Q4 展望 / 行動建議</div>
       <div class="insights">
         <div class="ins-box obs">
@@ -489,30 +426,6 @@ new Chart(document.getElementById('revGoalCN'),{
       title:{display:true,text:'目標達成（億元）｜一階92.7% 二階87.9%',color:'#0f172a',font:{size:12,weight:'700'}},
       tooltip:{callbacks:{label:function(c){return c.dataset.label.split('（')[0]+'：'+c.parsed.x+' 億';}}}},
     scales:{x:{stacked:true,beginAtZero:true,grid:{color:'#eef2f7'},ticks:{callback:function(v){return v+'億';}}},y:{stacked:true,grid:{display:false}}}}
-});
-
-/* 量價維度：近三年人頭 */
-new Chart(document.getElementById('hcTrendCN'),{
-  type:'bar',
-  data:{labels:['2024（全年）','2025（全年）','2026（YTD 至9/29）'],
-    datasets:[{label:'直客人頭（人）',data:[5073,6534,6133],
-      backgroundColor:['#94a3b8','#94a3b8','#2563eb'],borderRadius:5}]},
-  options:{responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},title:{display:true,text:'直客人頭 3 年趨勢（含中國・人）',color:'#0f172a',font:{size:13,weight:'700'}},
-      tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' 人';}}}},
-    scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'人'}},x:{grid:{display:false}}}}
-});
-
-/* 量價維度：近三年營業額 */
-new Chart(document.getElementById('revTrendCN'),{
-  type:'bar',
-  data:{labels:['2024（全年）','2025（全年）','2026（YTD 至9/29）'],
-    datasets:[{label:'直客營業額（百萬元）',data:[547.4,657.9,562.0],
-      backgroundColor:['#94a3b8','#94a3b8','#0d9488'],borderRadius:5}]},
-  options:{responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},title:{display:true,text:'直客營業額 3 年趨勢（含中國・百萬元）',color:'#0f172a',font:{size:13,weight:'700'}},
-      tooltip:{callbacks:{label:function(c){return c.parsed.y.toLocaleString()+' 百萬元';}}}},
-    scales:{y:{beginAtZero:true,grid:{color:'#eef2f7'},title:{display:true,text:'百萬元'}},x:{grid:{display:false}}}}
 });
 
 /* 量能趨勢 grouped bar */
