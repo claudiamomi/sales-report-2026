@@ -178,21 +178,7 @@
     </div>
   </section>
 
-  <!-- 3 評價觀察 -->
-  <section class="slide" data-label="評價觀察">
-    <div class="inner">
-      <div class="kicker">01 · Google 五星商家評價</div>
-      <div class="stitle"><span class="dot"></span>評價筆數分布</div>
-      <div class="cap">台北總公司評價量占全台過半，其餘分站筆數差距大。</div>
-      <div class="chart-wrap"><canvas id="cntChart"></canvas></div>
-      <div class="alert"><ul>
-        <li><b>台北總公司</b>評價 1,590 筆，占全台 55%，星等 4.7 為七站最低；因筆數基數大，是拉高整體平均最有影響力的分站。</li>
-        <li><b>嘉義</b>雖為 5.0 滿分，但僅 42 筆，是七站中評價量最少的分站。</li>
-      </ul></div>
-    </div>
-  </section>
-
-  <!-- 4 禮券 -->
+  <!-- 3 禮券 -->
   <section class="slide" data-label="口碑禮券">
     <div class="inner">
       <div class="kicker">02 · 旅客口碑行銷</div>
@@ -214,7 +200,7 @@
     </div>
   </section>
 
-  <!-- 5 季度追蹤 -->
+  <!-- 4 季度追蹤 -->
   <section class="slide" data-label="季度追蹤">
     <div class="inner">
       <div class="kicker">Quarterly Tracking</div>
@@ -307,19 +293,6 @@ setActive(0);
 Chart.defaults.font.family="'Microsoft JhengHei','PingFang TC',sans-serif";
 Chart.defaults.font.size=12.5;
 Chart.defaults.color="#475569";
-
-var sorted=BRANCHES.slice().sort(function(a,b){return b.cnt-a.cnt;});
-new Chart(document.getElementById('cntChart'),{
-  type:'bar',
-  data:{labels:sorted.map(function(b){return b.name;}),
-    datasets:[{label:'評價筆數',data:sorted.map(function(b){return b.cnt;}),
-      backgroundColor:sorted.map(function(b){return b.name==='台北總公司'?'#db2777':'#f9a8d4';}),borderRadius:6,barPercentage:.7}]},
-  options:{responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{display:false},
-      title:{display:true,text:'各分站 Google 評價筆數（統計至 2026/09/30）',color:'#0f172a',font:{size:13.5,weight:'700'}},
-      tooltip:{callbacks:{label:function(c){var b=sorted[c.dataIndex];return c.parsed.y.toLocaleString()+' 筆 · 星等 '+b.star.toFixed(1)+' · 占 '+(c.parsed.y/2911*100).toFixed(1)+'%';}}}},
-    scales:{y:{beginAtZero:true,grid:{color:'#f1f5f9'}},x:{grid:{display:false}}}}
-});
 
 new Chart(document.getElementById('giftChart'),{
   type:'doughnut',
