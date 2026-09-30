@@ -101,6 +101,9 @@
   .track-tbl th.cur{background:#be185d;color:#fff}
   .track-tbl .grp td{background:#f8fafc;color:#475569;font-size:12.5px;font-weight:700;text-align:left}
   .track-tbl .tbd{color:#cbd5e1}
+  .track-tbl .yr{background:#0f172a;color:#fff;font-weight:700}
+  .track-tbl th.yr{background:#db2777}
+  .track-tbl .yr.tbd{color:#475569}
 
   /* ── 導覽 UI ─────────────────────────────── */
   .counter{position:fixed;top:20px;right:26px;z-index:30;font-size:14px;font-weight:700;color:#0f172a;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:6px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
@@ -207,25 +210,25 @@
     <div class="inner">
       <div class="kicker">Quarterly Tracking</div>
       <div class="stitle"><span class="dot"></span>季度追蹤總表</div>
-      <div class="cap">每季主管會議固定追蹤，每季補入新數據比較。</div>
+      <div class="cap">每季主管會議固定追蹤，每季補入新數據比較。<b style="color:#0f172a">2026 年度累計（Q1–Q3）禮券總金額 $307,400。</b></div>
       <div class="tbl-scroll">
       <table class="track-tbl">
-        <thead><tr><th>指標</th><th>Q1</th><th>Q2</th><th class="cur">Q3 ※</th><th>Q4</th></tr></thead>
+        <thead><tr><th>指標</th><th>Q1</th><th>Q2</th><th class="cur">Q3 ※</th><th>Q4</th><th class="yr">2026 年度累計</th></tr></thead>
         <tbody>
-          <tr class="grp"><td colspan="5">Google 五星商家評價</td></tr>
-          <tr><td>加權平均星等</td><td>4.81</td><td>4.81</td><td class="cur">4.81</td><td class="tbd">—</td></tr>
-          <tr><td>評價總筆數</td><td>2,656</td><td>2,908</td><td class="cur">2,911</td><td class="tbd">—</td></tr>
-          <tr><td>滿分 5.0 星分站數</td><td>4 / 7</td><td>4 / 7</td><td class="cur">4 / 7</td><td class="tbd">—</td></tr>
-          <tr class="grp"><td colspan="5">旅客口碑行銷（7-11 禮券）</td></tr>
-          <tr><td>Google 5 星評價</td><td>98 筆</td><td>261 筆 · $78,300</td><td class="cur">64 筆 · $19,200</td><td class="tbd">—</td></tr>
-          <tr><td>一般旅客 — 部落格</td><td>32 筆</td><td>79 筆 · $82,300</td><td class="cur">21 筆 · $21,000</td><td class="tbd">—</td></tr>
-          <tr><td>部落客 / YT 主</td><td class="tbd">—</td><td>1 筆 · $2,000</td><td class="cur">0 筆 · $0</td><td class="tbd">—</td></tr>
-          <tr><td>8 月（明細遺失）</td><td class="tbd">—</td><td class="tbd">—</td><td class="cur">$40,900</td><td class="tbd">—</td></tr>
-          <tr><td><b>禮券總金額</b></td><td><b>130 筆 · $63,700</b></td><td><b>341 筆 · $162,600</b></td><td class="cur">$81,100</td><td class="tbd">—</td></tr>
+          <tr class="grp"><td colspan="6">Google 五星商家評價</td></tr>
+          <tr><td>加權平均星等</td><td>4.81</td><td>4.81</td><td class="cur">4.81</td><td class="tbd">—</td><td class="yr tbd">—</td></tr>
+          <tr><td>評價總筆數</td><td>2,656</td><td>2,908</td><td class="cur">2,911</td><td class="tbd">—</td><td class="yr">+255 筆</td></tr>
+          <tr><td>滿分 5.0 星分站數</td><td>4 / 7</td><td>4 / 7</td><td class="cur">4 / 7</td><td class="tbd">—</td><td class="yr tbd">—</td></tr>
+          <tr class="grp"><td colspan="6">旅客口碑行銷（7-11 禮券）</td></tr>
+          <tr><td>Google 5 星評價</td><td>98 筆</td><td>261 筆 · $78,300</td><td class="cur">64 筆 · $19,200</td><td class="tbd">—</td><td class="yr">423 筆</td></tr>
+          <tr><td>一般旅客 — 部落格</td><td>32 筆</td><td>79 筆 · $82,300</td><td class="cur">21 筆 · $21,000</td><td class="tbd">—</td><td class="yr">132 筆</td></tr>
+          <tr><td>部落客 / YT 主</td><td class="tbd">—</td><td>1 筆 · $2,000</td><td class="cur">0 筆 · $0</td><td class="tbd">—</td><td class="yr">1 筆 · $2,000</td></tr>
+          <tr><td>8 月（明細遺失）</td><td class="tbd">—</td><td class="tbd">—</td><td class="cur">$40,900</td><td class="tbd">—</td><td class="yr">$40,900</td></tr>
+          <tr><td><b>禮券總金額</b></td><td><b>130 筆 · $63,700</b></td><td><b>341 筆 · $162,600</b></td><td class="cur">$81,100</td><td class="tbd">—</td><td class="yr"><b>$307,400</b></td></tr>
         </tbody>
       </table>
       </div>
-      <div class="note">資料來源：Q1＝2026 第一季主管會議報告（分項金額未拆列）；Q2＝直客口碑行銷禮卷投入分析（2026/07/08 主管會議）；Q3＝Google 五星商家評價成果報告。※ 評價筆數為各季季末（3/31、6/30、9/30）累計；Q3 禮券 7、9 月為明細紀錄，8 月明細遺失，Q3 總額依庫存差額推算（6/30 剩 $96,500 − 9/23 剩 $15,400 ＝ $81,100）。</div>
+      <div class="note">資料來源：Q1＝2026 第一季主管會議報告（分項金額未拆列）；Q2＝直客口碑行銷禮卷投入分析（2026/07/08 主管會議）；Q3＝Google 五星商家評價成果報告。※ 評價筆數為各季季末（3/31、6/30、9/30）累計；Q3 禮券 7、9 月為明細紀錄，8 月明細遺失，Q3 總額依庫存差額推算（6/30 剩 $96,500 − 9/23 剩 $15,400 ＝ $81,100）。年度累計的分項筆數不含 8 月；評價年度累計為 Q3 較 Q1 增加筆數。</div>
     </div>
   </section>
 
