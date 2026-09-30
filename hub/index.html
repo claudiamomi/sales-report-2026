@@ -10,9 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Barlow+Condensed:wght@600;700;800&family=Noto+Sans+TC:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bone:#E2DCC9; --paper:#F4EFE0; --ink:#0A0A0A;
-    --sienna:#A06A3C; --magenta:#C73B7A; --orange:#EE7A2E;
-    --teal:#2D7E73; --blue:#3F73B7; --mustard:#D8A93B; --olive:#6F7A2E;
+    --bone:#F5F7FB; --paper:#FFFFFF; --ink:#0F172A; --sub:#475569; --onc:#FFFFFF;
+    --sienna:#4F46E5; --magenta:#DB2777; --orange:#F97316;
+    --teal:#0D9488; --blue:#0EA5E9; --mustard:#F59E0B; --olive:#65A30D;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bone);color:var(--ink);
@@ -22,14 +22,15 @@
 
   .eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:800;
     font-size:16px;letter-spacing:.16em;text-transform:uppercase;color:var(--sienna)}
-  .cover{position:relative;border-bottom:4px solid var(--ink);padding-bottom:22px;margin-bottom:26px}
+  .cover .mark{background:linear-gradient(135deg,#6366F1,#EC4899)!important}
+  .cover{position:relative;border-bottom:1px solid #E2E8F0;padding-bottom:22px;margin-bottom:26px}
   .cover .mark{width:44px;height:44px;border-radius:11px;background:var(--orange);position:absolute;top:2px;right:0}
   h1{font-family:"Noto Sans TC",sans-serif;font-weight:900;
     font-size:46px;line-height:1.04;letter-spacing:.01em;margin:12px 0 6px}
   h1 .yr{font-family:"Stardos Stencil",serif;font-weight:700;letter-spacing:-.01em;margin-right:8px}
   h1 em{font-style:normal;color:var(--magenta)}
   .unit{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:22px;
-    letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+    letter-spacing:.06em;text-transform:uppercase;color:var(--sub)}
   .unit b{color:var(--teal)}
 
   .stats{display:flex;gap:26px;flex-wrap:wrap;margin:20px 0 26px;
@@ -46,20 +47,22 @@
   .tablet .pill{align-self:flex-start;margin-top:14px;font-family:"Barlow Condensed",sans-serif;
     font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:5px 13px;border-radius:20px}
 
-  .tablet{transition:transform .15s}
+  .tablet{transition:transform .15s,box-shadow .15s;box-shadow:0 4px 14px rgba(15,23,42,.08)}
   .t-done{cursor:pointer}
-  .t-done:hover{transform:translateY(-4px)}
-  .c-sienna{background:var(--sienna);color:var(--bone)}
-  .c-magenta{background:var(--magenta);color:var(--bone)}
-  .c-teal{background:var(--teal);color:var(--bone)}
-  .c-blue{background:var(--blue);color:var(--bone)}
-  .c-sienna .num,.c-magenta .num,.c-teal .num,.c-blue .num{color:var(--bone);opacity:.9}
+  .t-done:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(15,23,42,.16)}
+  .c-sienna{background:linear-gradient(135deg,#6366F1,#4338CA);color:var(--onc)}
+  .c-magenta{background:linear-gradient(135deg,#EC4899,#BE185D);color:var(--onc)}
+  .c-teal{background:linear-gradient(135deg,#14B8A6,#0F766E);color:var(--onc)}
+  .c-blue{background:var(--paper);color:var(--ink);border:1.5px dashed #CBD5E1;box-shadow:none}
+  .c-blue .num{color:#CBD5E1!important;opacity:1!important}
+  .c-blue p{color:var(--sub)}
+  .c-sienna .num,.c-magenta .num,.c-teal .num{color:var(--onc);opacity:.35}
   .pill-go{background:rgba(255,255,255,.22)}
   .pill-plan{background:transparent;border:1.5px solid currentColor;opacity:.9}
 
-  .foot{margin-top:26px;padding-top:16px;border-top:2px solid var(--ink);
+  .foot{margin-top:26px;padding-top:16px;border-top:1px solid #E2E8F0;
     display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
-    font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+    font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--sub)}
   @media(max-width:720px){.grid{grid-template-columns:1fr}h1{font-size:34px}body{padding:20px 16px}}
 </style>
 </head>
