@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<title>口碑行銷 · Deck</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:#0f172a;color:#1f2937;overflow:hidden}
+
+  /* ── 翻頁滾動容器 ───────────────────────────── */
+  .scroll{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth;scrollbar-width:none}
+  .scroll::-webkit-scrollbar{display:none}
+  .slide{min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:56px 40px 64px;background:#f5f7fb;position:relative}
+  .slide:nth-child(odd){background:#fdf2f8}
+  .inner{max-width:1120px;width:100%;margin:0 auto}
+
+  .slide .inner>*{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .slide.on .inner>*{opacity:1;transform:none}
+  .slide.on .inner>*:nth-child(2){transition-delay:.06s}
+  .slide.on .inner>*:nth-child(3){transition-delay:.12s}
+  .slide.on .inner>*:nth-child(4){transition-delay:.18s}
+  .slide.on .inner>*:nth-child(5){transition-delay:.24s}
+
+  .kicker{font-size:13px;letter-spacing:2px;color:#db2777;font-weight:700;margin-bottom:10px;text-transform:uppercase}
+  .stitle{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+  .stitle .dot{width:10px;height:26px;border-radius:3px;background:#db2777;display:inline-block}
+  .cap{font-size:13.5px;color:#475569;margin:10px 0 18px;max-width:960px;line-height:1.55}
+
+  /* ── 封面 ─────────────────────────────────── */
+  .cover-slide{background:linear-gradient(135deg,#0f172a 0%,#831843 100%)!important}
+  .cover-slide .kicker{color:#f9a8d4}
+  .cover-slide h1{font-size:44px;font-weight:800;letter-spacing:1px;color:#fff;line-height:1.2;margin-bottom:14px}
+  .cover-slide .meta{font-size:14px;color:#cbd5e1;line-height:1.8;max-width:820px}
+  .cover-slide .kpis{margin-top:30px}
+  .cover-slide .kpi{background:rgba(255,255,255,.08);border-top:4px solid #f472b6;box-shadow:none}
+  .cover-slide .kpi .k-label{color:#cbd5e1}
+  .cover-slide .kpi .k-val{color:#fff}
+  .cover-slide .kpi .k-val small{color:#f9a8d4}
+  .cover-slide .kpi .k-sub{color:#94a3b8;font-weight:500}
+
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .kpi{background:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-top:4px solid #db2777}
+  .kpi .k-label{font-size:12.5px;color:#64748b;margin-bottom:6px}
+  .kpi .k-val{font-size:30px;font-weight:800;color:#0f172a;line-height:1.1}
+  .kpi .k-val small{font-size:14px;font-weight:600;color:#64748b;margin-left:3px}
+  .kpi .k-sub{font-size:12px;margin-top:7px;color:#64748b}
+
+  /* ── 分站評價表 ───────────────────────────── */
+  table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  th{background:#0f172a;color:#fff;padding:11px 14px;text-align:left;font-weight:700;font-size:13px}
+  td{padding:10px 14px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
+  tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:#fdf2f8}
+  td.br{font-weight:700;white-space:nowrap}
+  .star{white-space:nowrap}
+  .star b{font-size:16px;margin-right:6px}
+  .star .s{color:#f59e0b;letter-spacing:1px}
+  .star .s .off{color:#e2e8f0}
+  .s50 b{color:#db2777}.s49 b,.s47 b{color:#b45309}
+  .bar{display:flex;align-items:center;gap:10px}
+  .bar .track{flex:1;height:10px;background:#f1f5f9;border-radius:6px;overflow:hidden;min-width:80px}
+  .bar .fill{height:100%;background:linear-gradient(90deg,#f472b6,#db2777);border-radius:6px}
+  .bar .n{width:52px;text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+  .lnk{color:#2563eb;text-decoration:none;font-size:13px;font-weight:600;white-space:nowrap}
+  .lnk:hover{text-decoration:underline}
+  tfoot td{background:#f8fafc;font-weight:800;border-top:2px solid #e2e8f0}
+  .note{font-size:12px;color:#94a3b8;margin-top:10px}
+
+  .alert{background:#fff;border-left:5px solid #db2777;padding:14px 18px;border-radius:8px;margin-top:16px;font-size:14px;color:#334155;line-height:1.7;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .alert b{color:#0f172a}
+  .alert ul{list-style:none}
+  .alert li{padding-left:16px;position:relative}
+  .alert li::before{content:"▸";position:absolute;left:0;color:#db2777;font-weight:800}
+
+  /* ── 禮券 ─────────────────────────────────── */
+  .two{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+  .items{display:flex;flex-direction:column;gap:12px}
+  .item{background:#fff;border-radius:12px;padding:16px 20px;box-shadow:0 2px 8px rgba(0,0,0,.06);display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center;border-left:6px solid var(--c)}
+  .item .nm{font-size:16px;font-weight:800;color:#0f172a}
+  .item .amt{font-size:26px;font-weight:800;color:var(--c);text-align:right;font-variant-numeric:tabular-nums}
+  .item .dt{font-size:13px;color:#64748b}
+  .item .pct{font-size:13px;color:#64748b;text-align:right}
+  .item.zero{opacity:.6}
+  .total{display:flex;justify-content:space-between;align-items:baseline;background:#0f172a;color:#fff;border-radius:12px;padding:14px 20px}
+  .total span{font-size:14px;color:#cbd5e1}
+  .total b{font-size:28px;color:#f9a8d4}
+  .chart-wrap{position:relative;height:min(46vh,360px)}
+
+  /* ── 季度追蹤 ───────────────────────────── */
+  .track-tbl th,.track-tbl td{text-align:right}
+  .track-tbl th:first-child,.track-tbl td:first-child{text-align:left}
+  .track-tbl td{font-variant-numeric:tabular-nums}
+  .track-tbl .cur{background:#fdf2f8;font-weight:800;color:#be185d}
+  .track-tbl th.cur{background:#be185d;color:#fff}
+  .track-tbl .grp td{background:#f8fafc;color:#475569;font-size:12.5px;font-weight:700;text-align:left}
+  .track-tbl .tbd{color:#cbd5e1}
+
+  /* ── 導覽 UI ─────────────────────────────── */
+  .counter{position:fixed;top:20px;right:26px;z-index:30;font-size:14px;font-weight:700;color:#0f172a;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:6px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  .counter b{color:#db2777}
+  .home{position:fixed;top:20px;left:26px;z-index:30;font-size:13px;font-weight:700;color:#0f172a;text-decoration:none;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:6px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  .home:hover{color:#db2777}
+  .progress{position:fixed;top:0;left:0;height:4px;background:#db2777;z-index:31;width:0;transition:width .25s}
+  .dots{position:fixed;top:50%;right:20px;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:10px}
+  .dots button{width:11px;height:11px;border-radius:50%;border:none;padding:0;cursor:pointer;background:#cbd5e1;transition:all .2s;position:relative}
+  .dots button:hover{background:#94a3b8;transform:scale(1.2)}
+  .dots button.act{background:#db2777;transform:scale(1.35)}
+  .dots button::after{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:12px;font-weight:600;color:#fff;background:#0f172a;padding:3px 9px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .18s}
+  .dots button:hover::after{opacity:1}
+  .hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:30;font-size:12.5px;color:#64748b;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:7px 15px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:opacity .5s}
+  .hint b{color:#0f172a}
+  .hint.hide{opacity:0}
+
+  @media(max-width:820px){
+    .slide{padding:60px 16px 60px}
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .two{grid-template-columns:1fr}
+    .two>*{min-width:0}
+    .item{padding:12px 14px}
+    .item .amt{font-size:21px}
+    .item .nm{font-size:14.5px}
+    .total b{font-size:22px}
+    .cover-slide h1{font-size:30px}
+    .stitle{font-size:20px}
+    .dots{display:none}
+    table{font-size:12.5px}
+    th,td{padding:8px 8px}
+    .hide-m{display:none}
+    .tbl-scroll{overflow-x:auto}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<a class="home" href="index.html">← 報告首頁</a>
+<div class="counter"><b id="cur">1</b> / <span id="tot">1</span></div>
+<div class="dots" id="dots"></div>
+<div class="hint" id="hint">滑鼠滾輪 / <b>↓ →</b> / 空白鍵翻頁　·　右側圓點可跳頁</div>
+
+<main class="scroll" id="scroll">
+
+  <!-- 1 封面 -->
+  <section class="slide cover-slide on" data-label="總覽">
+    <div class="inner">
+      <div class="kicker">Word of Mouth · 季度追蹤</div>
+      <h1>2026 Q3 口碑行銷成果報告</h1>
+      <div class="meta">一、Google 五星商家評價成果　·　二、旅客口碑行銷（7-11 禮券獎勵）<br>單位：直客銷售部<br><span style="color:#fbbf24">※ 8 月禮券紀錄遺失（雲端共用紀錄疑遭誤刪），Q3 禮券數據僅含 7、9 月。</span></div>
+      <div class="kpis">
+        <div class="kpi"><div class="k-label">全台加權平均星等</div><div class="k-val">4.81<small>★</small></div><div class="k-sub">7 家分站，依評價筆數加權</div></div>
+        <div class="kpi"><div class="k-label">Google 評價總筆數</div><div class="k-val">2,908<small>筆</small></div><div class="k-sub">統計至 2026/06/30</div></div>
+        <div class="kpi"><div class="k-label">滿分 5.0 星分站</div><div class="k-val">4<small>/ 7 家</small></div><div class="k-sub">桃園、新竹、嘉義、台南</div></div>
+        <div class="kpi"><div class="k-label">Q3 禮券發放總額</div><div class="k-val">$40,200</div><div class="k-sub">共 85 筆 · 僅含 7、9 月 ※</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 各分站評價 -->
+  <section class="slide" data-label="各分站評價">
+    <div class="inner">
+      <div class="kicker">01 · Google 五星商家評價</div>
+      <div class="stitle"><span class="dot"></span>各分站評價一覽</div>
+      <div class="cap">七家分站 Google 商家星等與評價筆數，點「查看」可開啟該分站的 Google 商家頁面。</div>
+      <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>分站</th><th>星等</th><th>評價筆數</th><th class="hide-m">Google 商家</th></tr></thead>
+        <tbody id="brTbl"></tbody>
+        <tfoot><tr><td>合計 / 加權平均</td><td class="star"><b style="color:#0f172a">4.81</b></td><td><div class="bar"><span class="n" style="width:auto">2,908</span></div></td><td class="hide-m"></td></tr></tfoot>
+      </table>
+      </div>
+      <div class="note">備註：星等為 Google 商家實際顯示分數；評價筆數統計至 2026/06/30。</div>
+    </div>
+  </section>
+
+  <!-- 3 評價觀察 -->
+  <section class="slide" data-label="評價觀察">
+    <div class="inner">
+      <div class="kicker">01 · Google 五星商家評價</div>
+      <div class="stitle"><span class="dot"></span>評價筆數分布</div>
+      <div class="cap">台北總公司評價量占全台過半，其餘分站筆數差距大。</div>
+      <div class="chart-wrap"><canvas id="cntChart"></canvas></div>
+      <div class="alert"><ul>
+        <li><b>台北總公司</b>評價 1,553 筆，占全台 53%，星等 4.7 為七站最低；因筆數基數大，是拉高整體平均最有影響力的分站。</li>
+        <li><b>嘉義</b>雖為 5.0 滿分，但僅 32 筆，是七站中評價量最少的分站。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- 4 禮券 -->
+  <section class="slide" data-label="口碑禮券">
+    <div class="inner">
+      <div class="kicker">02 · 旅客口碑行銷</div>
+      <div class="stitle"><span class="dot"></span>Q3 7-11 禮券發放</div>
+      <div class="cap">旅客完成口碑分享即發放 7-11 禮券，Q3 依項目統計如下。<b style="color:#b45309">※ 本頁僅含 7、9 月，8 月紀錄遺失，實際發放應高於此數。</b></div>
+      <div class="two">
+        <div class="items">
+          <div class="item" style="--c:#f59e0b"><div class="nm">Google 5 星評價</div><div class="amt">$19,200</div><div class="dt">64 筆 · 每筆 $300</div><div class="pct">占 47.8%</div></div>
+          <div class="item" style="--c:#db2777"><div class="nm">一般旅客 — 部落格</div><div class="amt">$21,000</div><div class="dt">21 筆 · 每筆 $1,000</div><div class="pct">占 52.2%</div></div>
+          <div class="item zero" style="--c:#94a3b8"><div class="nm">部落客 / YT 主</div><div class="amt">$0</div><div class="dt">0 筆</div><div class="pct">占 0%</div></div>
+          <div class="total"><span>Q3 禮券總金額（共 85 筆，7、9 月）</span><b>$40,200</b></div>
+        </div>
+        <div class="chart-wrap"><canvas id="giftChart"></canvas></div>
+      </div>
+      <div class="alert"><ul>
+        <li>Google 評價筆數多（64 筆）但單價低；部落格筆數少（21 筆）但金額占比最高。</li>
+        <li><b>部落客 / YT 主</b>本季 0 筆，尚無產出。</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- 5 季度追蹤 -->
+  <section class="slide" data-label="季度追蹤">
+    <div class="inner">
+      <div class="kicker">Quarterly Tracking</div>
+      <div class="stitle"><span class="dot"></span>季度追蹤總表</div>
+      <div class="cap">每季主管會議固定追蹤。Q3 為首次建立的基準，之後每季補入新數據比較。</div>
+      <div class="tbl-scroll">
+      <table class="track-tbl">
+        <thead><tr><th>指標</th><th>Q1</th><th>Q2</th><th class="cur">Q3 ※</th><th>Q4</th></tr></thead>
+        <tbody>
+          <tr class="grp"><td colspan="5">Google 五星商家評價</td></tr>
+          <tr><td>加權平均星等</td><td class="tbd">—</td><td class="tbd">—</td><td class="cur">4.81</td><td class="tbd">—</td></tr>
+          <tr><td>評價總筆數</td><td class="tbd">—</td><td class="tbd">—</td><td class="cur">2,908</td><td class="tbd">—</td></tr>
+          <tr><td>滿分 5.0 星分站數</td><td class="tbd">—</td><td class="tbd">—</td><td class="cur">4 / 7</td><td class="tbd">—</td></tr>
+          <tr class="grp"><td colspan="5">旅客口碑行銷（7-11 禮券）</td></tr>
+          <tr><td>Google 5 星評價</td><td class="tbd">—</td><td class="tbd">—</td><td class="cur">64 筆 · $19,200</td><td class="tbd">—</td></tr>
+          <tr><td>一般旅客 — 部落格</td><td class="tbd">—</td><td class="tbd">—</td><td class="cur">21 筆 · $21,000</td><td class="tbd">—</td></tr>
+          <tr><td>部落客 / YT 主</td><td class="tbd">—</td><td class="tbd">—</td><td class="cur">0 筆 · $0</td><td class="tbd">—</td></tr>
+          <tr><td><b>禮券總金額</b></td><td class="tbd">—</td><td class="tbd">—</td><td class="cur">85 筆 · $40,200</td><td class="tbd">—</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="note">資料來源：Google 五星商家評價成果報告（2026 Q3）。※ Q3 評價筆數統計至 6/30；Q3 禮券僅含 7、9 月（8 月紀錄遺失）。</div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+/* ── 分站資料（每季更新這裡） ─────────────── */
+var BRANCHES=[
+  {name:'台北總公司',star:4.7,cnt:1553,url:'https://share.google/rH1k1aXhRwA97UuNm'},
+  {name:'桃園',star:5.0,cnt:116,url:'https://share.google/FX1xJl5lvoHxbadYN'},
+  {name:'新竹',star:5.0,cnt:172,url:'https://share.google/VJqDI6HrCunW3KYVq'},
+  {name:'台中',star:4.9,cnt:406,url:'https://share.google/P6j71opvEI1tEcZi8'},
+  {name:'嘉義',star:5.0,cnt:32,url:'https://share.google/sCHCLtvVHBfmX4L11'},
+  {name:'台南',star:5.0,cnt:164,url:'https://share.google/tYhxwKCtLegDYx9Ck'},
+  {name:'高雄',star:4.9,cnt:465,url:'https://share.google/dJiLmiFLqJpWlgXjH'}
+];
+(function(){
+  var max=Math.max.apply(null,BRANCHES.map(function(b){return b.cnt;}));
+  var html=BRANCHES.map(function(b){
+    var full=Math.round(b.star);
+    var st='★★★★★'.slice(0,full)+'<span class="off">'+'★★★★★'.slice(full)+'</span>';
+    return '<tr><td class="br">凱旋旅行社（'+b.name+'）</td>'+
+      '<td class="star s'+String(b.star.toFixed(1)).replace('.','')+'"><b>'+b.star.toFixed(1)+'</b><span class="s">'+st+'</span></td>'+
+      '<td><div class="bar"><div class="track"><div class="fill" style="width:'+(b.cnt/max*100)+'%"></div></div><span class="n">'+b.cnt.toLocaleString()+'</span></div></td>'+
+      '<td class="hide-m"><a class="lnk" href="'+b.url+'" target="_blank" rel="noopener">查看 ↗</a></td></tr>';
+  }).join('');
+  document.getElementById('brTbl').innerHTML=html;
+})();
+
+/* ── 導覽邏輯 ─────────────────────────────── */
+var scroll=document.getElementById('scroll');
+var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+var dotsWrap=document.getElementById('dots');
+var curEl=document.getElementById('cur'),totEl=document.getElementById('tot');
+var prog=document.getElementById('prog'),hint=document.getElementById('hint');
+var idx=0;
+totEl.textContent=slides.length;
+slides.forEach(function(s,i){
+  var b=document.createElement('button');
+  b.setAttribute('data-label',(i+1)+' · '+(s.dataset.label||''));
+  b.addEventListener('click',function(){go(i);});
+  dotsWrap.appendChild(b);
+});
+var dots=Array.prototype.slice.call(dotsWrap.children);
+function setActive(i){
+  idx=i;curEl.textContent=i+1;
+  prog.style.width=((i+1)/slides.length*100)+'%';
+  dots.forEach(function(d,j){d.classList.toggle('act',j===i);});
+  slides[i].classList.add('on');
+}
+function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({behavior:'smooth'});}
+var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting&&e.intersectionRatio>=0.55){setActive(slides.indexOf(e.target));}});
+},{root:scroll,threshold:[0.55]});
+slides.forEach(function(s){io.observe(s);});
+document.addEventListener('keydown',function(e){
+  if(['ArrowDown','ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(idx+1);}
+  else if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(idx-1);}
+  else if(e.key==='Home'){e.preventDefault();go(0);}
+  else if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+});
+var hid=false;
+scroll.addEventListener('scroll',function(){if(!hid){hid=true;hint.classList.add('hide');}},{passive:true});
+setTimeout(function(){hint.classList.add('hide');},6000);
+setActive(0);
+
+/* ── 圖表 ─────────────────────────────────── */
+Chart.defaults.font.family="'Microsoft JhengHei','PingFang TC',sans-serif";
+Chart.defaults.font.size=12.5;
+Chart.defaults.color="#475569";
+
+var sorted=BRANCHES.slice().sort(function(a,b){return b.cnt-a.cnt;});
+new Chart(document.getElementById('cntChart'),{
+  type:'bar',
+  data:{labels:sorted.map(function(b){return b.name;}),
+    datasets:[{label:'評價筆數',data:sorted.map(function(b){return b.cnt;}),
+      backgroundColor:sorted.map(function(b){return b.name==='台北總公司'?'#db2777':'#f9a8d4';}),borderRadius:6,barPercentage:.7}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      title:{display:true,text:'各分站 Google 評價筆數（統計至 2026/06/30）',color:'#0f172a',font:{size:13.5,weight:'700'}},
+      tooltip:{callbacks:{label:function(c){var b=sorted[c.dataIndex];return c.parsed.y.toLocaleString()+' 筆 · 星等 '+b.star.toFixed(1)+' · 占 '+(c.parsed.y/2908*100).toFixed(1)+'%';}}}},
+    scales:{y:{beginAtZero:true,grid:{color:'#f1f5f9'}},x:{grid:{display:false}}}}
+});
+
+new Chart(document.getElementById('giftChart'),{
+  type:'doughnut',
+  data:{labels:['Google 5 星評價','一般旅客 — 部落格','部落客 / YT 主'],
+    datasets:[{data:[19200,21000,0],backgroundColor:['#f59e0b','#db2777','#cbd5e1'],borderWidth:3,borderColor:'#fff'}]},
+  options:{responsive:true,maintainAspectRatio:false,cutout:'62%',
+    plugins:{legend:{position:'bottom'},
+      title:{display:true,text:'Q3 禮券金額占比',color:'#0f172a',font:{size:13.5,weight:'700'}},
+      tooltip:{callbacks:{label:function(c){return c.label+'：$'+c.parsed.toLocaleString()+'（'+(c.parsed/40200*100).toFixed(1)+'%）';}}}}}
+});
+</script>
+</body>
+</html>
