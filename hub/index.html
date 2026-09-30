@@ -61,6 +61,16 @@
   .foot{margin-top:26px;padding-top:16px;border-top:1px solid #E2E8F0;
     display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
     font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--sub)}
+  .t-wide{grid-column:1/-1;min-height:0}
+  .subs{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:14px}
+  .sub{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;
+    font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;font-weight:700;font-size:15px;color:inherit;text-decoration:none}
+  .sub .k{font-size:17px}
+  .sub small{font-weight:500;font-size:12.5px;opacity:.8}
+  .sub .go{margin-left:auto;font-weight:900}
+  .sub-go{background:rgba(255,255,255,.2);transition:background .15s,transform .15s}
+  .sub-go:hover{background:rgba(255,255,255,.32);transform:translateX(3px)}
+  .sub-plan{border:1.5px dashed rgba(255,255,255,.55);opacity:.8;font-weight:500}
   @media(max-width:720px){.grid{grid-template-columns:1fr}h1{font-size:34px}body{padding:20px 16px}}
 </style>
 </head>
@@ -89,18 +99,14 @@
       <span class="pill pill-go">檢視報告 →</span>
     </a>
 
-    <a class="tablet t-done c-teal" href="seminars.html">
+    <div class="tablet c-teal t-wide">
       <div class="num">03</div>
-      <h2>講座規劃</h2>
-      <p>2026 Q4 講座時程：10–12 月共 11 場，依日期排序，含主題與講師。</p>
-      <span class="pill pill-go">檢視時程 →</span>
-    </a>
-
-    <div class="tablet t-plan c-blue">
-      <div class="num">04</div>
       <h2>業務精進計畫</h2>
-      <p>直客業務團隊能力提升與銷售流程優化計畫（尚未開始）。</p>
-      <span class="pill pill-plan">規劃中</span>
+      <p>直客業務團隊能力提升與銷售流程優化計畫。</p>
+      <ol class="subs">
+        <li><a class="sub sub-go" href="seminars.html"><span class="k">①</span>講座規劃<small>2026 Q4 共 11 場</small><span class="go">→</span></a></li>
+        <li><span class="sub sub-plan"><span class="k">②</span>（待規劃）</span></li>
+      </ol>
     </div>
 
   </div>
