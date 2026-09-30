@@ -265,12 +265,9 @@
   <section class="slide" data-label="量能趨勢">
     <div class="inner">
       <div class="kicker">03 · 量能趨勢</div>
-      <div class="stitle"><span class="dot"></span>季度量能與全公司結構</div>
-      <div class="cap">Q1–Q3 穩定在每季約 1,600 人、逐季維持 YoY 正成長（三季累計 4,984 vs 2025 同期 4,525，+10.1%，已含日本人頭更正 +200；圖中 Q1/Q2 為 PDF 原值、+200 未拆季）；Q4 預售目前 1,149，YoY -4.4%（去年同期基期墊高、非今年走弱）。直客佔全公司人頭：Q3 14.0%（去年 14.2%）、Q4 預售 10.2%（去年 11.7%）。</div>
-      <div class="two">
-        <div><div class="chart-wrap"><canvas id="trend"></canvas></div></div>
-        <div><div class="chart-wrap"><canvas id="share"></canvas></div></div>
-      </div>
+      <div class="stitle"><span class="dot"></span>季度量能趨勢（直客·2026 vs 2025 同期）</div>
+      <div class="cap">Q1–Q3 穩定在每季約 1,600 人、逐季維持 YoY 正成長（三季累計 4,984 vs 2025 同期 4,525，+10.1%，已含日本人頭更正 +200；圖中 Q1/Q2 為 PDF 原值、+200 未拆季）；Q4 預售目前 1,149，YoY -4.4%（去年同期基期墊高、非今年走弱）。（直客約佔全公司 Q3 人頭 14.0%。）</div>
+      <div class="chart-wrap"><canvas id="trend"></canvas></div>
     </div>
   </section>
 
@@ -449,19 +446,6 @@ new Chart(document.getElementById('trend'),{
     scales:{y:{beginAtZero:true,title:{display:true,text:'直客人頭數'},grid:{color:'#eef2f7'}},x:{grid:{display:false}}}}
 });
 
-new Chart(document.getElementById('share'),{
-  type:'bar',
-  data:{labels:['Q1（1-3月）','Q2（4-6月）','Q3（7-9月）','Q4（10-12月・預售）'],
-    datasets:[
-      {label:'2025 同期',data:[16.8,13.0,14.2,11.7],backgroundColor:'#94a3b8',borderRadius:4,barPercentage:.68,categoryPercentage:.62},
-      {label:'2026',data:[15.4,12.3,14.0,10.2],backgroundColor:'#0d9488',borderRadius:4,barPercentage:.68,categoryPercentage:.62}
-    ]},
-  options:{responsive:true,maintainAspectRatio:false,
-    plugins:{legend:{position:'top',align:'end'},
-      title:{display:true,text:'直客佔全公司人頭比重（%）',color:'#0f172a',font:{size:13.5,weight:'700'}},
-      tooltip:{callbacks:{label:function(c){return c.dataset.label+'：'+c.parsed.y.toFixed(1)+'%';}}}},
-    scales:{y:{beginAtZero:true,title:{display:true,text:'占比 %'},grid:{color:'#eef2f7'},ticks:{callback:function(v){return v+'%';}}},x:{grid:{display:false}}}}
-});
 
 new Chart(document.getElementById('cnex'),{
   type:'bar',
