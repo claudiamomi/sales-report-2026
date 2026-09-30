@@ -50,6 +50,18 @@
   .foot{text-align:center;color:#94a3b8;font-size:12px;margin-top:22px;padding:16px;border-top:1px solid #e5e7eb}
   .foot a{color:#2563eb}
   @media(max-width:720px){.two{grid-template-columns:1fr}h1{font-size:22px}}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+  .stat{background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px}
+  .stat .l{font-size:12px;color:#64748b}
+  .stat .v{font-size:24px;font-weight:800;color:#0f172a;line-height:1.2}
+  .stat .v small{font-size:13px;color:#64748b;font-weight:600;margin-left:2px}
+  .tbl-x{overflow-x:auto}
+  .sub-tbl{font-size:13px;min-width:760px}
+  .sub-tbl td,.sub-tbl th{white-space:nowrap}
+  .st{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:10px}
+  .st-wait{background:#fef3c7;color:#92400e}.st-none{background:#f1f5f9;color:#475569}
+  .asof{font-size:12px;color:#94a3b8;margin-top:10px}
+  @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 <style>.hub-home{position:fixed;top:20px;left:26px;z-index:40;font-family:"Microsoft JhengHei","PingFang TC",sans-serif;font-size:13px;font-weight:700;color:#0f172a;text-decoration:none;background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:6px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.12);line-height:1.4}.hub-home:hover{color:#db2777}@media(max-width:820px){.hub-home{top:12px;left:12px}}</style>
 </head>
@@ -61,6 +73,28 @@
     <div class="eyebrow">行銷推廣獎勵計畫 · 2026.9.17</div>
     <h1>凱旋旅行社 × 巨匠旅遊<br>同仁・領隊 行銷推廣計畫</h1>
     <div class="meta">對象：<b>參與推廣之同仁與領隊</b> ｜ 投稿審核：宛宜／Emma ｜ 🫐 藍莓彙整</div>
+  </div>
+
+  <div class="section" style="border-top:4px solid #db2777">
+    <h2><span class="dot" style="background:#db2777"></span>投稿報名數據</h2>
+    <div class="stats">
+      <div class="stat"><div class="l">投稿件數</div><div class="v">3<small>件</small></div></div>
+      <div class="stat"><div class="l">申請項目（含場次）</div><div class="v">4<small>筆</small></div></div>
+      <div class="stat"><div class="l">核定金額合計</div><div class="v">$10,000</div></div>
+      <div class="stat"><div class="l">審核／請款</div><div class="v">4<small>待審 · 0 已請款</small></div></div>
+    </div>
+    <div class="tbl-x">
+    <table class="sub-tbl">
+      <thead><tr><th>投稿日期</th><th>投稿編號</th><th>姓名</th><th>身分</th><th>活動類型</th><th>主題</th><th>場次</th><th>審核人</th><th>審核狀態</th><th>核定金額</th><th>請款</th></tr></thead>
+      <tbody>
+        <tr><td>9/22</td><td>PM260922-001</td><td>王子云</td><td>同仁</td><td>線控錄製影片</td><td>西澳</td><td>—</td><td>Emma</td><td><span class="st st-wait">待審</span></td><td class="money">$2,000</td><td><span class="st st-none">未請款</span></td></tr>
+        <tr><td>9/26</td><td>PM260926-002</td><td>陳奕安</td><td>領隊</td><td>旅遊講座</td><td>紐西蘭北南島</td><td>11/20</td><td>宛宜</td><td><span class="st st-wait">待審</span></td><td class="money">$3,000</td><td><span class="st st-none">未請款</span></td></tr>
+        <tr><td>9/26</td><td>PM260926-002</td><td>陳奕安</td><td>領隊</td><td>旅遊講座</td><td>紐西蘭北南島</td><td>12/18</td><td>宛宜</td><td><span class="st st-wait">待審</span></td><td class="money">$3,000</td><td><span class="st st-none">未請款</span></td></tr>
+        <tr><td>9/29</td><td>PM260929-003</td><td>李躍雲</td><td>同仁</td><td>線控錄製影片</td><td>北歐五國15天</td><td>—</td><td>Emma</td><td><span class="st st-wait">待審</span></td><td class="money">$2,000</td><td><span class="st st-none">未請款</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="asof">資料來源：行銷推廣_投稿與請款主控表（截至 2026/09/30）。</div>
   </div>
 
   <div class="section" style="border-top:4px solid #16a34a">
