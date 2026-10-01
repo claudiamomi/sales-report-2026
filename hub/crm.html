@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<title>業務精進計畫 · Deck</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:#0f172a;color:#1f2937;overflow:hidden}
+
+  /* ── 翻頁滾動容器 ───────────────────────────── */
+  .scroll{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth;scrollbar-width:none}
+  .scroll::-webkit-scrollbar{display:none}
+  .slide{min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:56px 40px 64px;background:#f5f7fb;position:relative}
+  .slide:nth-child(odd){background:#f0fdfa}
+  .inner{max-width:1120px;width:100%;margin:0 auto}
+
+  .slide .inner>*{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .slide.on .inner>*{opacity:1;transform:none}
+  .slide.on .inner>*:nth-child(2){transition-delay:.06s}
+  .slide.on .inner>*:nth-child(3){transition-delay:.12s}
+  .slide.on .inner>*:nth-child(4){transition-delay:.18s}
+  .slide.on .inner>*:nth-child(5){transition-delay:.24s}
+
+  .kicker{font-size:13px;letter-spacing:2px;color:#0d9488;font-weight:700;margin-bottom:10px;text-transform:uppercase}
+  .stitle{font-size:28px;font-weight:800;color:#0f172a;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+  .stitle .dot{width:10px;height:28px;border-radius:3px;background:#0d9488;display:inline-block}
+  .cap{font-size:16px;color:#475569;margin:10px 0 24px;max-width:960px;line-height:1.6}
+  .note{font-size:12px;color:#94a3b8;margin-top:14px}
+
+  /* ── 封面 ─────────────────────────────────── */
+  .cover-slide{background:linear-gradient(135deg,#0f172a 0%,#115e59 100%)!important}
+  .cover-slide .kicker{color:#5eead4}
+  .cover-slide h1{font-size:46px;font-weight:800;letter-spacing:1px;color:#fff;line-height:1.25;margin-bottom:16px}
+  .cover-slide h1 em{font-style:normal;color:#5eead4}
+  .cover-slide .meta{font-size:16px;color:#cbd5e1;line-height:1.8;max-width:820px}
+  .goals{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+  .goal{background:rgba(255,255,255,.08);border-top:4px solid #2dd4bf;border-radius:12px;padding:22px 22px;display:flex;align-items:center;gap:14px}
+  .goal .n{font-size:30px;font-weight:800;color:#5eead4;line-height:1}
+  .goal .t{font-size:21px;font-weight:800;color:#fff}
+
+  /* ── 成果 ─────────────────────────────────── */
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .kpi{background:#fff;border-radius:12px;padding:20px 22px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-top:4px solid #0d9488}
+  .kpi .k-label{font-size:14px;color:#64748b;margin-bottom:8px}
+  .kpi .k-val{font-size:40px;font-weight:800;color:#0f172a;line-height:1.1;font-variant-numeric:tabular-nums}
+  .kpi .k-val small{font-size:16px;font-weight:600;color:#64748b;margin-left:4px}
+  .feat-h{font-size:15px;font-weight:800;color:#0f172a;margin:30px 0 12px}
+  .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .feat{background:#fff;border-radius:10px;padding:14px 16px;font-size:16px;font-weight:700;color:#0f172a;
+    border-left:5px solid #14b8a6;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+
+  /* ── 生命週期 ─────────────────────────────── */
+  .life{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+  .stage{background:#fff;border-radius:14px;padding:22px 20px;box-shadow:0 2px 10px rgba(0,0,0,.06);position:relative;border-top:5px solid var(--c)}
+  .stage .no{width:34px;height:34px;border-radius:50%;background:var(--c);color:#fff;font-weight:800;
+    display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px}
+  .stage h3{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px}
+  .stage p{font-size:15px;color:#334155;line-height:1.7}
+  .stage .tag{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:700;color:var(--c);border:1.5px solid var(--c);border-radius:20px;padding:2px 10px}
+  .stage:not(:last-child)::after{content:"›";position:absolute;right:-13px;top:50%;transform:translateY(-50%);
+    font-size:30px;font-weight:800;color:#94a3b8;z-index:2}
+
+  /* ── 人氣商品 ─────────────────────────────── */
+  .two{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:start}
+  .shot-h{font-size:15px;font-weight:800;color:#0f172a;margin-bottom:10px}
+  .shot-h small{display:block;font-size:13px;font-weight:500;color:#64748b;margin-top:2px}
+  .shot{display:block;background:#fff;border-radius:12px;padding:8px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+  .shot img{display:block;width:100%;height:auto;border-radius:6px}
+  .box{background:#fff;border-radius:12px;padding:20px 22px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  .box+.box{margin-top:16px}
+  .box h4{font-size:16px;font-weight:800;color:#0f766e;margin-bottom:14px}
+  .flow{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .flow li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#1f2937;line-height:1.55}
+  .flow li .s{flex:none;width:26px;height:26px;border-radius:50%;background:#0d9488;color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .flow li.arrow{color:#94a3b8;font-size:14px;padding-left:7px;line-height:1}
+  .flow li small{display:block;font-size:13px;color:#64748b}
+  .sugg{border-left:5px solid #f59e0b}
+  .sugg h4{color:#b45309}
+  .sugg p{font-size:15px;color:#334155;line-height:1.75}
+  .sugg ul{list-style:none;margin-top:8px}
+  .sugg li{padding-left:16px;position:relative;font-size:14.5px;color:#334155;line-height:1.75}
+  .sugg li::before{content:"▸";position:absolute;left:0;color:#f59e0b;font-weight:800}
+
+  /* ── 導覽 UI ─────────────────────────────── */
+  .counter{position:fixed;top:20px;right:26px;z-index:30;font-size:14px;font-weight:700;color:#0f172a;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:6px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  .counter b{color:#0d9488}
+  .home{position:fixed;top:20px;left:26px;z-index:30;font-size:13px;font-weight:700;color:#0f172a;text-decoration:none;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:6px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  .home:hover{color:#0d9488}
+  .progress{position:fixed;top:0;left:0;height:4px;background:#0d9488;z-index:31;width:0;transition:width .25s}
+  .dots{position:fixed;top:50%;right:20px;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:10px}
+  .dots button{width:11px;height:11px;border-radius:50%;border:none;padding:0;cursor:pointer;background:#cbd5e1;transition:all .2s;position:relative}
+  .dots button:hover{background:#94a3b8;transform:scale(1.2)}
+  .dots button.act{background:#0d9488;transform:scale(1.35)}
+  .dots button::after{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:12px;font-weight:600;color:#fff;background:#0f172a;padding:3px 9px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .18s}
+  .dots button:hover::after{opacity:1}
+  .hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:30;font-size:12.5px;color:#64748b;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:7px 15px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:opacity .5s}
+  .hint b{color:#0f172a}
+  .hint.hide{opacity:0}
+
+  @media(max-width:820px){
+    .slide{padding:64px 16px 60px}
+    .cover-slide h1{font-size:30px}
+    .goals{grid-template-columns:1fr;gap:10px;margin-top:24px}
+    .goal{padding:16px 18px}.goal .t{font-size:18px}
+    .stitle{font-size:21px}
+    .cap{font-size:14.5px}
+    .kpis{grid-template-columns:1fr}
+    .kpi .k-val{font-size:32px}
+    .feats{grid-template-columns:repeat(2,1fr)}
+    .feat{font-size:14.5px}
+    .life{grid-template-columns:1fr}
+    .stage:not(:last-child)::after{content:"⌄";right:auto;left:50%;top:auto;bottom:-22px;transform:translateX(-50%)}
+    .two{grid-template-columns:1fr}
+    .two>*{min-width:0}
+    .dots{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<a class="home" href="index.html">← 報告首頁</a>
+<div class="counter"><b id="cur">1</b> / <span id="tot">1</span></div>
+<div class="dots" id="dots"></div>
+<div class="hint" id="hint">滑鼠滾輪 / <b>↓ →</b> / 空白鍵翻頁　·　右側圓點可跳頁</div>
+
+<main class="scroll" id="scroll">
+
+  <!-- 1 封面 -->
+  <section class="slide cover-slide on" data-label="業務精進計畫">
+    <div class="inner">
+      <div class="kicker">Sales Enablement · 業務精進計畫</div>
+      <h1>從「報名系統」到<em>「客戶經營」</em></h1>
+      <div class="meta">系統 2026 年 5 月上線，已從線上報名延伸成客戶資料庫（CRM）。<br>單位：直客銷售部</div>
+      <div class="goals">
+        <div class="goal"><span class="n">01</span><span class="t">集中管理資料</span></div>
+        <div class="goal"><span class="n">02</span><span class="t">提升團隊協作</span></div>
+        <div class="goal"><span class="n">03</span><span class="t">精準分眾行銷</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 成果 -->
+  <section class="slide" data-label="目前累積的成果">
+    <div class="inner">
+      <div class="kicker">01 · Results</div>
+      <div class="stitle"><span class="dot"></span>目前累積的成果</div>
+      <div class="cap">報名資料自動進入旅客主檔，持續累積可經營的客戶名單。</div>
+      <div class="kpis">
+        <div class="kpi"><div class="k-label">2026 年旅客人次</div><div class="k-val">1,089<small>人次</small></div></div>
+        <div class="kpi"><div class="k-label">旅客主檔</div><div class="k-val">1,007<small>人</small></div></div>
+        <div class="kpi"><div class="k-label">10 月壽星</div><div class="k-val">52<small>位</small></div></div>
+      </div>
+      <div class="feat-h">已上線功能</div>
+      <div class="feats">
+        <div class="feat">經營儀表板</div>
+        <div class="feat">會員分級</div>
+        <div class="feat">每月壽星名單</div>
+        <div class="feat">旅客報名來源</div>
+        <div class="feat">下次旅遊問卷</div>
+        <div class="feat">每日自動備份</div>
+      </div>
+      <div class="note">數字統計至 2026/09/23。　<a href="https://script.google.com/macros/s/AKfycbwSDad2TuHBMyu4FAi-BPRRAn2HJdydtofAbCYNNaS-SpqN8Al3u0iGi1m98_O_f7YB/exec?page=dashboard" target="_blank" rel="noopener" style="color:#0d9488;font-weight:700;text-decoration:none">開啟經營儀表板 ↗</a></div>
+    </div>
+  </section>
+
+  <!-- 3 生命週期 -->
+  <section class="slide" data-label="旅客生命週期行銷">
+    <div class="inner">
+      <div class="kicker">02 · Customer Lifecycle</div>
+      <div class="stitle"><span class="dot"></span>旅客生命週期行銷</div>
+      <div class="cap">在客人旅程的每個階段，用對的方式保持聯繫。</div>
+      <div class="life">
+        <div class="stage" style="--c:#0d9488"><div class="no">1</div><h3>報名時</h3><p>收集 Email、報名來源、下次想去哪裡</p></div>
+        <div class="stage" style="--c:#0ea5e9"><div class="no">2</div><h3>回國後</h3><p>業務主動關心，並邀請客人分享口碑行銷活動</p></div>
+        <div class="stage" style="--c:#4f46e5"><div class="no">3</div><h3>推薦人氣商品</h3><p>依客人去過和想去的地方推薦人氣商品</p></div>
+        <div class="stage" style="--c:#db2777"><div class="no">4</div><h3>生日當月</h3><p>簡訊寄送生日祝福，贈送生日旅遊金</p><span class="tag">未來規劃</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 人氣商品推薦 -->
+  <section class="slide" data-label="人氣商品推薦">
+    <div class="inner">
+      <div class="kicker">03 · Popular Products</div>
+      <div class="stitle"><span class="dot"></span>人氣商品推薦</div>
+      <div class="cap">把線控的熱賣商品，送到最可能購買的客人手上。</div>
+      <div class="two">
+        <div>
+          <div class="shot-h">現況：9/29–11/30 中國線人氣商品<small>截圖公告在大群</small></div>
+          <a class="shot" href="img/popular-china-0929-1130.jpg" target="_blank" rel="noopener"><img src="img/popular-china-0929-1130.jpg" alt="9/29–11/30 中國線人氣商品截圖"></a>
+        </div>
+        <div>
+          <div class="box">
+            <h4>推薦流程</h4>
+            <ol class="flow">
+              <li><span class="s">1</span>線控提供人氣商品</li>
+              <li class="arrow">↓</li>
+              <li><span class="s">2</span>系統比對適合的客人</li>
+              <li class="arrow">↓</li>
+              <li><span class="s">3</span>預覽確認</li>
+              <li class="arrow">↓</li>
+              <li><span class="s">4</span><span>有 Email 的客人寄信<small>沒有 Email 的，請業務用 LINE 聯絡</small></span></li>
+            </ol>
+          </div>
+          <div class="box sugg">
+            <h4>優化建議</h4>
+            <p>線控改用<b>固定格式的雲端表格</b>提供清單：</p>
+            <ul>
+              <li>與美編協作更方便</li>
+              <li>系統隨時讀取最新資料</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  var scroll=document.getElementById('scroll');
+  var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dotsWrap=document.getElementById('dots');
+  var curEl=document.getElementById('cur'),totEl=document.getElementById('tot');
+  var prog=document.getElementById('prog'),hint=document.getElementById('hint');
+  var idx=0;
+  totEl.textContent=slides.length;
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.setAttribute('data-label',(i+1)+' · '+(s.dataset.label||''));
+    b.addEventListener('click',function(){go(i);});
+    dotsWrap.appendChild(b);
+  });
+  var dots=Array.prototype.slice.call(dotsWrap.children);
+  function setActive(i){
+    idx=i;curEl.textContent=i+1;
+    prog.style.width=((i+1)/slides.length*100)+'%';
+    dots.forEach(function(d,j){d.classList.toggle('act',j===i);});
+    slides[i].classList.add('on');
+  }
+  function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({behavior:'smooth'});}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting&&e.intersectionRatio>=0.55){setActive(slides.indexOf(e.target));}});
+  },{root:scroll,threshold:[0.55]});
+  slides.forEach(function(s){io.observe(s);});
+  document.addEventListener('keydown',function(e){
+    if(['ArrowDown','ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(idx+1);}
+    else if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(idx-1);}
+    else if(e.key==='Home'){e.preventDefault();go(0);}
+    else if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+  });
+  var hid=false;
+  scroll.addEventListener('scroll',function(){if(!hid){hid=true;hint.classList.add('hide');}},{passive:true});
+  setTimeout(function(){hint.classList.add('hide');},6000);
+  setActive(0);
+})();
+</script>
+</body>
+</html>
