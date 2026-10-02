@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<title>Threads 洞察報告 · Deck</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:#0f172a;color:#1f2937;overflow:hidden}
+
+  /* ── 翻頁滾動容器 ───────────────────────────── */
+  .scroll{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth;scrollbar-width:none}
+  .scroll::-webkit-scrollbar{display:none}
+  .slide{min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:60px 40px 64px;background:#f5f7fb;position:relative}
+  .slide:nth-child(even){background:#fdf2f8}
+  .inner{max-width:1120px;width:100%;margin:0 auto}
+
+  .slide .inner>*{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .slide.on .inner>*{opacity:1;transform:none}
+  .slide.on .inner>*:nth-child(2){transition-delay:.06s}
+  .slide.on .inner>*:nth-child(3){transition-delay:.12s}
+  .slide.on .inner>*:nth-child(4){transition-delay:.18s}
+
+  .kicker{font-size:13px;letter-spacing:2px;color:#db2777;font-weight:700;margin-bottom:8px;text-transform:uppercase}
+  .stitle{font-size:27px;font-weight:800;color:#0f172a;margin-bottom:4px;display:flex;align-items:center;gap:10px;line-height:1.3}
+  .stitle .dot{flex:none;width:10px;height:28px;border-radius:3px;background:#db2777;display:inline-block}
+  .cap{font-size:15px;color:#475569;margin:8px 0 20px;line-height:1.6}
+  .note{font-size:12px;color:#94a3b8;margin-top:14px}
+
+  .two{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:start}
+  .two.even{grid-template-columns:1fr 1fr}
+  .box{background:#fff;border-radius:14px;padding:20px 22px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+  .box h3{font-size:17px;font-weight:800;color:#be185d;margin-bottom:14px}
+
+  /* ── 核心數字 ─────────────────────────────── */
+  .metrics{list-style:none}
+  .metrics li{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 12px;padding:11px 0;border-bottom:1px solid #f1f5f9}
+  .metrics li:last-child{border-bottom:none}
+  .metrics .l{font-size:14.5px;color:#475569}
+  .metrics .v{font-size:28px;font-weight:800;color:#0f172a;font-variant-numeric:tabular-nums;text-align:right;line-height:1.1}
+  .metrics .d{grid-column:1/-1;font-size:12.5px;color:#64748b;margin-top:-2px}
+  .metrics .d b{color:#db2777}
+
+  /* ── 年齡長條 ─────────────────────────────── */
+  .legend{display:flex;gap:16px;font-size:12.5px;color:#475569;margin-bottom:10px}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  .age{display:grid;grid-template-columns:54px 1fr;gap:6px 10px;align-items:center;font-size:13.5px}
+  .age .a{font-weight:700;color:#334155}
+  .bars{display:flex;flex-direction:column;gap:3px}
+  .bar{display:flex;align-items:center;gap:8px;height:16px}
+  .bar span{display:block;height:100%;border-radius:0 4px 4px 0;min-width:3px}
+  .bar em{font-style:normal;font-size:12px;color:#475569;font-variant-numeric:tabular-nums}
+  .bar.v span{background:#f472b6}.bar.f span{background:#6366f1}
+  .bar.hl em{font-weight:800;color:#0f172a}
+  .bar.v.hl span{background:#db2777}
+  .facts{list-style:none;margin-top:16px;padding-top:12px;border-top:1px solid #f1f5f9}
+  .facts li{position:relative;padding-left:16px;font-size:14px;color:#334155;line-height:1.75}
+  .facts li::before{content:"▸";position:absolute;left:0;color:#db2777;font-weight:800}
+
+  /* ── 話題 / 內容 ──────────────────────────── */
+  .topics{list-style:none;counter-reset:t;display:flex;flex-direction:column;gap:9px}
+  .topics li{counter-increment:t;position:relative;padding:0 0 0 34px;font-size:13.5px;color:#334155;line-height:1.6}
+  .topics li::before{content:counter(t);position:absolute;left:0;top:1px;width:23px;height:23px;border-radius:50%;background:#db2777;color:#fff;font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+  .topics li b{display:block;font-size:14.5px;color:#0f172a;margin-bottom:1px}
+  .likes{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .likes li{position:relative;padding:9px 12px 9px 16px;font-size:13.5px;color:#334155;line-height:1.6;background:#fdf2f8;border-left:4px solid #db2777;border-radius:0 8px 8px 0}
+  .likes li b{color:#0f172a}
+
+  /* ── 導覽 UI ─────────────────────────────── */
+  .counter{position:fixed;top:20px;right:26px;z-index:30;font-size:14px;font-weight:700;color:#0f172a;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:6px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  .counter b{color:#db2777}
+  .home{position:fixed;top:20px;left:26px;z-index:30;font-size:13px;font-weight:700;color:#0f172a;text-decoration:none;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:6px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  .home:hover{color:#db2777}
+  .progress{position:fixed;top:0;left:0;height:4px;background:#db2777;z-index:31;width:0;transition:width .25s}
+  .dots{position:fixed;top:50%;right:20px;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:10px}
+  .dots button{width:11px;height:11px;border-radius:50%;border:none;padding:0;cursor:pointer;background:#cbd5e1;transition:all .2s;position:relative}
+  .dots button:hover{background:#94a3b8;transform:scale(1.2)}
+  .dots button.act{background:#db2777;transform:scale(1.35)}
+  .dots button::after{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:12px;font-weight:600;color:#fff;background:#0f172a;padding:3px 9px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .18s}
+  .dots button:hover::after{opacity:1}
+  .hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:30;font-size:12.5px;color:#64748b;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:7px 15px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:opacity .5s}
+  .hint b{color:#0f172a}
+  .hint.hide{opacity:0}
+
+  @media(max-width:820px){
+    .slide{padding:64px 16px 60px}
+    .stitle{font-size:20px}
+    .two,.two.even{grid-template-columns:1fr}
+    .two>*{min-width:0}
+    .metrics .v{font-size:24px}
+    .dots{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<a class="home" href="index.html">← 報告首頁</a>
+<div class="counter"><b id="cur">1</b> / <span id="tot">1</span></div>
+<div class="dots" id="dots"></div>
+<div class="hint" id="hint">滑鼠滾輪 / <b>↓ →</b> / 空白鍵翻頁　·　右側圓點可跳頁</div>
+
+<main class="scroll" id="scroll">
+
+  <!-- 1 洞察整理 -->
+  <section class="slide on" data-label="近 90 天洞察">
+    <div class="inner">
+      <div class="kicker">Threads Insights · 7/4 – 10/1</div>
+      <div class="stitle"><span class="dot"></span>Threads 近 90 天洞察整理（7/4–10/1）</div>
+      <div class="two" style="margin-top:18px">
+        <div class="box">
+          <h3>一、核心數字</h3>
+          <ul class="metrics">
+            <li><span class="l">瀏覽人數（看過的人）</span><span class="v">69,296</span><span class="d">和前 90 天比 <b>+264%</b></span></li>
+            <li><span class="l">檢視次數</span><span class="v">99,113</span><span class="d">和前 90 天比 <b>+311%</b></span></li>
+            <li><span class="l">淨增加粉絲</span><span class="v">+102</span><span class="d">總粉絲 417（約 315 → 417，+32.4%）</span></li>
+            <li><span class="l">互動次數</span><span class="v">1,096</span><span class="d">和前 90 天比 <b>+167%</b></span></li>
+            <li><span class="l">觀眾中的非粉絲</span><span class="v">約 6 萬</span></li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>二、觀眾 vs. 粉絲輪廓</h3>
+          <div class="legend"><span><i style="background:#db2777"></i>看貼文的人</span><span><i style="background:#6366f1"></i>粉絲</span></div>
+          <div class="age" id="age"></div>
+          <ul class="facts">
+            <li>性別：觀眾女性約 60%；粉絲女性 57%、男性 35%</li>
+            <li>地區：觀眾 80% 台灣、11% 香港；粉絲 92% 台灣</li>
+            <li>固定發文時段：<b>週一、週二、週日 20:00–23:00</b>，為三個月來最活躍時段，各有 8,000–9,000 位觀看者</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note">資料來源：Threads 後台洞察報告「過去 90 天」，資料到 10/1。年齡與性別為 Threads 統計得到的部分用戶。</div>
+    </div>
+  </section>
+
+  <!-- 2 未來方向 -->
+  <section class="slide" data-label="未來方向">
+    <div class="inner">
+      <div class="kicker">Next Steps · 未來方向</div>
+      <div class="stitle"><span class="dot"></span>Threads 未來方向（以「吸引蜜月客、讓公司年輕化」為目標）</div>
+      <div class="two even" style="margin-top:18px">
+        <div class="box">
+          <h3>一、可以嘗試的話題</h3>
+          <div class="note" style="margin:-6px 0 12px">以下依觀眾特性推論，每個話題先發 2–3 篇小量測試。</div>
+          <ol class="topics">
+            <li><b>蜜月選目的地的比較與決策文</b>「馬爾地夫 vs 帛琉 vs 沖繩怎麼選」、「預算 15 萬蜜月能去哪」，最貼近 25–34 歲的新婚族。</li>
+            <li><b>蜜月避雷與真實花費</b>「蜜月最容易踩的 5 個坑」、「實際花費攤開來給你看」，年輕人愛看透明價格與經驗談。</li>
+            <li><b>追星或事件順遊</b>觀眾興趣有 BIGBANG、BTS、F1，做「去看演唱會、賽事順便玩」的行程，例如首爾、日本鈴鹿，是把話題流量接回旅遊的最順路徑。</li>
+            <li><b>台股、理財族的旅遊切入</b>「存多少錢可以出國」、「分期怎麼規劃」。台股是觀眾興趣前幾名，這群人對預算敏感。</li>
+            <li><b>新人故事</b>去過的新婚客人分享、婚前準備到出發的過程，這類文的信任感最強。</li>
+          </ol>
+        </div>
+        <div class="box">
+          <h3>二、年輕人愛看的內容（依觀眾輪廓）</h3>
+          <ul class="likes">
+            <li><b>第一人稱、口語</b>，像朋友在聊天，不要像公司公告或行程廣告。</li>
+            <li><b>有立場的比較</b>，例如「我會選 A 不選 B，原因是…」。</li>
+            <li><b>真實價格與清單</b>，例如「3 天 2 夜花費明細」。</li>
+            <li><b>短、有鉤子的開頭</b>，第一句就要有話題或反差。</li>
+            <li><b>互動型貼文</b>，例如「蜜月想去哪？留言我幫你抓預算」，同時能收集需求。</li>
+            <li><b>實拍與限動式照片</b>，不要用過度修飾的宣傳圖。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  /* 年齡長條 */
+  var AGES=[['18–24',9.6,3.1],['25–34',43.6,20.3],['35–44',26.4,23.9],['45–54',13.6,28.2],['55–64',4.9,18.2],['65+',1.5,6.0]];
+  var MAX=43.6,box=document.getElementById('age'),h='';
+  AGES.forEach(function(r){
+    var hv=r[1]===MAX,hf=r[2]===28.2;
+    h+='<div class="a">'+r[0]+'</div><div class="bars">'
+      +'<div class="bar v'+(hv?' hl':'')+'"><span style="width:'+(r[1]/MAX*78)+'%"></span><em>'+r[1].toFixed(1)+'%</em></div>'
+      +'<div class="bar f'+(hf?' hl':'')+'"><span style="width:'+(r[2]/MAX*78)+'%"></span><em>'+r[2].toFixed(1)+'%</em></div></div>';
+  });
+  box.innerHTML=h;
+
+  var scroll=document.getElementById('scroll');
+  var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dotsWrap=document.getElementById('dots');
+  var curEl=document.getElementById('cur'),totEl=document.getElementById('tot');
+  var prog=document.getElementById('prog'),hint=document.getElementById('hint');
+  var idx=0;
+  totEl.textContent=slides.length;
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.setAttribute('data-label',(i+1)+' · '+(s.dataset.label||''));
+    b.addEventListener('click',function(){go(i);});
+    dotsWrap.appendChild(b);
+  });
+  var dots=Array.prototype.slice.call(dotsWrap.children);
+  function setActive(i){
+    idx=i;curEl.textContent=i+1;
+    prog.style.width=((i+1)/slides.length*100)+'%';
+    dots.forEach(function(d,j){d.classList.toggle('act',j===i);});
+    slides[i].classList.add('on');
+  }
+  function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({behavior:'smooth'});}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting&&e.intersectionRatio>=0.55){setActive(slides.indexOf(e.target));}});
+  },{root:scroll,threshold:[0.55]});
+  slides.forEach(function(s){io.observe(s);});
+  document.addEventListener('keydown',function(e){
+    if(['ArrowDown','ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(idx+1);}
+    else if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(idx-1);}
+    else if(e.key==='Home'){e.preventDefault();go(0);}
+    else if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+  });
+  var hid=false;
+  scroll.addEventListener('scroll',function(){if(!hid){hid=true;hint.classList.add('hide');}},{passive:true});
+  setTimeout(function(){hint.classList.add('hide');},6000);
+  setActive(0);
+})();
+</script>
+</body>
+</html>
