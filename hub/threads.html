@@ -109,17 +109,17 @@
   <!-- 1 洞察整理 -->
   <section class="slide on" data-label="近 90 天洞察">
     <div class="inner">
-      <div class="kicker">Threads Insights · 7/4 – 10/1</div>
-      <div class="stitle"><span class="dot"></span>Threads 近 90 天洞察整理（7/4–10/1）</div>
+      <div class="kicker">Threads Insights · 7/7 – 10/4</div>
+      <div class="stitle"><span class="dot"></span>Threads 近 90 天洞察整理（7/7–10/4）</div>
       <div class="two" style="margin-top:18px">
         <div class="box">
           <h3>一、核心數字</h3>
           <ul class="metrics">
-            <li><span class="l">瀏覽人數（看過的人）</span><span class="v">69,296</span><span class="d">和前 90 天比 <b>+264%</b></span></li>
-            <li><span class="l">檢視次數</span><span class="v">99,113</span><span class="d">和前 90 天比 <b>+311%</b></span></li>
-            <li><span class="l">淨增加粉絲</span><span class="v">+102</span><span class="d">總粉絲 417（約 315 → 417，+32.4%）</span></li>
-            <li><span class="l">互動次數</span><span class="v">1,096</span><span class="d">和前 90 天比 <b>+167%</b></span></li>
-            <li><span class="l">觀眾中的非粉絲</span><span class="v">約 6 萬</span></li>
+            <li><span class="l">瀏覽人數（看過的人）</span><span class="v">72,352</span><span class="d">和前 90 天比 <b>+271%</b></span></li>
+            <li><span class="l">檢視次數</span><span class="v">104,107</span><span class="d">和前 90 天比 <b>+320%</b></span></li>
+            <li><span class="l">淨增加粉絲</span><span class="v">+108</span><span class="d">總粉絲 426（約 318 → 426，+34.0%）</span></li>
+            <li><span class="l">互動次數</span><span class="v">1,243</span><span class="d">和前 90 天比 <b>+186%</b></span></li>
+            <li><span class="l">觀眾中的非粉絲</span><span class="v">約 7.2 萬</span></li>
           </ul>
         </div>
         <div class="box">
@@ -127,13 +127,13 @@
           <div class="legend"><span><i style="background:#db2777"></i>看貼文的人</span><span><i style="background:#6366f1"></i>粉絲</span></div>
           <div class="age" id="age"></div>
           <ul class="facts">
-            <li>性別：觀眾女性約 60%；粉絲女性 57%、男性 35%</li>
+            <li>性別：觀眾女性約 60%；粉絲女性 58%、男性 34%</li>
             <li>地區：觀眾 80% 台灣、11% 香港；粉絲 92% 台灣</li>
             <li>固定發文時段：<b>週一、週二、週日 20:00–23:00</b>，為三個月來最活躍時段，各有 8,000–9,000 位觀看者</li>
           </ul>
         </div>
       </div>
-      <div class="note">資料來源：Threads 後台洞察報告「過去 90 天」，資料到 10/1。年齡與性別為 Threads 統計得到的部分用戶。</div>
+      <div class="note">資料來源：Threads 後台洞察報告「過去 90 天」，資料到 10/4。年齡與性別為 Threads 統計得到的部分用戶。</div>
     </div>
   </section>
 
@@ -149,7 +149,7 @@
           <ol class="topics">
             <li><b>蜜月選目的地的比較與決策文</b>「馬爾地夫 vs 帛琉 vs 沖繩怎麼選」、「預算 15 萬蜜月能去哪」，最貼近 25–34 歲的新婚族。</li>
             <li><b>蜜月避雷與真實花費</b>「蜜月最容易踩的 5 個坑」、「實際花費攤開來給你看」，年輕人愛看透明價格與經驗談。</li>
-            <li><b>追星或事件順遊</b>觀眾興趣有 BIGBANG、BTS、F1，做「去看演唱會、賽事順便玩」的行程，例如首爾、日本鈴鹿，是把話題流量接回旅遊的最順路徑。</li>
+            <li><b>追星或事件順遊</b>觀眾興趣有 BIGBANG、F1，做「去看演唱會、賽事順便玩」的行程，例如首爾、日本鈴鹿，是把話題流量接回旅遊的最順路徑。</li>
             <li><b>台股、理財族的旅遊切入</b>「存多少錢可以出國」、「分期怎麼規劃」。台股是觀眾興趣前幾名，這群人對預算敏感。</li>
             <li><b>新人故事</b>去過的新婚客人分享、婚前準備到出發的過程，這類文的信任感最強。</li>
           </ol>
@@ -174,10 +174,10 @@
 <script>
 (function(){
   /* 年齡長條 */
-  var AGES=[['18–24',9.6,3.1],['25–34',43.6,20.3],['35–44',26.4,23.9],['45–54',13.6,28.2],['55–64',4.9,18.2],['65+',1.5,6.0]];
-  var MAX=43.6,box=document.getElementById('age'),h='';
+  var AGES=[['18–24',9.41,3.05],['25–34',43.83,20.42],['35–44',26.31,24.65],['45–54',13.56,27.93],['55–64',5.01,17.84],['65+',1.55,5.87]];
+  var MAX=43.83,box=document.getElementById('age'),h='';
   AGES.forEach(function(r){
-    var hv=r[1]===MAX,hf=r[2]===28.2;
+    var hv=r[1]===MAX,hf=r[2]===27.93;
     h+='<div class="a">'+r[0]+'</div><div class="bars">'
       +'<div class="bar v'+(hv?' hl':'')+'"><span style="width:'+(r[1]/MAX*78)+'%"></span><em>'+r[1].toFixed(1)+'%</em></div>'
       +'<div class="bar f'+(hf?' hl':'')+'"><span style="width:'+(r[2]/MAX*78)+'%"></span><em>'+r[2].toFixed(1)+'%</em></div></div>';
