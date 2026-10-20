@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<title>2027 Quarterly Outlook</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:'Microsoft JhengHei','PingFang TC',sans-serif;background:#0b1220;color:#1f2937;overflow:hidden}
+
+  /* ── 翻頁滾動容器 ───────────────────────────── */
+  .scroll{
+    height:100vh;overflow-y:scroll;
+    scroll-snap-type:y mandatory;scroll-behavior:smooth;
+    scrollbar-width:none}
+  .scroll::-webkit-scrollbar{display:none}
+
+  .slide{
+    min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:56px 40px 64px;background:#eef2f9;position:relative}
+  .slide:nth-child(odd){background:#e9eef7}
+  .inner{max-width:1180px;width:100%;margin:0 auto}
+
+  /* slide 進場動畫 */
+  .slide .inner>*{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .slide.on .inner>*{opacity:1;transform:none}
+  .slide.on .inner>*:nth-child(2){transition-delay:.06s}
+  .slide.on .inner>*:nth-child(3){transition-delay:.12s}
+  .slide.on .inner>*:nth-child(4){transition-delay:.18s}
+  .slide.on .inner>*:nth-child(5){transition-delay:.24s}
+
+  .kicker{font-size:13px;letter-spacing:2px;color:#2563eb;font-weight:700;margin-bottom:10px;text-transform:uppercase}
+  .stitle{font-size:26px;font-weight:800;color:#0f172a;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+  .stitle .dot{width:10px;height:26px;border-radius:3px;background:#2563eb;display:inline-block}
+  .cap{font-size:13.5px;color:#475569;margin:10px 0 18px;max-width:960px;line-height:1.55}
+  .mini-h{font-size:14px;font-weight:700;color:#0f172a;margin-bottom:8px}
+
+  /* ── 封面 ─────────────────────────────────── */
+  .cover-slide{background:linear-gradient(135deg,#0f172a,#1e40af)!important}
+  .cover-slide .kicker{color:#93c5fd}
+  .cover-slide h1{font-size:44px;font-weight:800;letter-spacing:1px;color:#fff;line-height:1.15;margin-bottom:16px}
+  .cover-slide .meta{font-size:14px;color:#cbd5e1;line-height:1.8;max-width:820px}
+  .cover-slide .meta b{color:#fbbf24}
+  .cover-slide .headline{background:rgba(255,255,255,.08);border-left:5px solid #38bdf8;border-radius:10px;padding:18px 22px;margin-top:24px;font-size:17px;font-weight:600;color:#e2e8f0;line-height:1.6}
+  .cover-slide .headline .em{color:#4ade80}
+  .cover-slide .kpis{margin-top:26px}
+  .cover-slide .kpi{background:rgba(255,255,255,.07);border-top:4px solid #38bdf8}
+  .cover-slide .kpi .k-label{color:#94a3b8}
+  .cover-slide .kpi .k-val{color:#fff}
+  .cover-slide .kpi .k-val small{color:#cbd5e1}
+
+  .headline{background:#fff;border-left:6px solid #2563eb;border-radius:10px;padding:16px 20px;margin-bottom:16px;font-size:16px;font-weight:600;color:#0f172a;box-shadow:0 2px 8px rgba(0,0,0,.05);line-height:1.6}
+  .headline .em{color:#16a34a}
+
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .kpi{background:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-top:4px solid #2563eb}
+  .kpi.green{border-top-color:#16a34a}.kpi.teal{border-top-color:#0d9488}.kpi.amber{border-top-color:#f59e0b}
+  .kpi .k-label{font-size:12px;color:#64748b;margin-bottom:6px}
+  .kpi .k-val{font-size:28px;font-weight:800;color:#0f172a;line-height:1.1}
+  .kpi .k-val small{font-size:14px;font-weight:600;color:#64748b}
+  .kpi .k-sub{font-size:12px;margin-top:7px;font-weight:600}
+  .up{color:#16a34a}.down{color:#dc2626}.flat{color:#64748b}
+
+  .chart-wrap{position:relative;height:min(52vh,430px)}
+  .two{display:grid;grid-template-columns:1.15fr .85fr;gap:22px}
+  .two2{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+  .twoeq{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+
+  table{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  th{background:#f1f5f9;padding:9px 8px;text-align:right;font-weight:700;color:#334155;border-bottom:2px solid #cbd5e1}
+  th:first-child{text-align:left}
+  td{padding:7px 8px;text-align:right;border-bottom:1px solid #f1f5f9}
+  td:first-child{text-align:left;font-weight:600}
+  tr:hover{background:#f8fafc}
+  .pos{color:#16a34a;font-weight:700}.neg{color:#dc2626;font-weight:700}.zero{color:#94a3b8}
+  .badge{display:inline-block;padding:2px 7px;border-radius:9px;font-size:11px;font-weight:700;margin-left:5px}
+  .b-win{background:#d1fae5;color:#065f46}.b-lose{background:#fee2e2;color:#991b1b}.b-star{background:#fef3c7;color:#92400e}
+  .badge.good{background:#d1fae5;color:#065f46}.badge.warn{background:#fef3c7;color:#92400e}.badge.alert{background:#fee2e2;color:#991b1b}
+  .rowus{background:#ccfbf1 !important;font-weight:800}
+  .grouphdr td{background:#f8fafc;font-weight:700;color:#475569;font-size:12px;text-align:left;padding:6px 8px}
+  .rgnhdr td{background:#e0e7ff;font-weight:800;color:#1e3a8a;font-size:12px;text-align:left;padding:6px 10px;letter-spacing:.05em;border-top:2px solid #c7d2fe}
+  .subln td:first-child{padding-left:24px;font-weight:500}
+  .tbl-tight{font-size:11.5px}
+  .tbl-tight .badge{white-space:nowrap}
+  .tbl-tight td{padding:3px 8px}
+  .tbl-tight .rgnhdr td{padding:2.5px 10px;font-size:11px}
+  .tbl-tight th{padding:5px 8px}
+  .note{font-size:11.5px;color:#94a3b8;margin-top:8px}
+
+  .alert{background:#fef3c7;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:6px;margin:14px 0 0;font-size:13px;color:#78350f;line-height:1.65}
+  .alert.good{background:#d1fae5;border-color:#16a34a;color:#064e3b}
+  .alert.info{background:#e0e7ff;border-color:#2563eb;color:#1e3a8a}
+  .alert.bad{background:#fee2e2;border-color:#dc2626;color:#7f1d1d}
+
+  .tri{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+  .tri .box{border-radius:10px;padding:14px 16px;text-align:center}
+  .tri .b-cn{background:#eff6ff;border:1px solid #bfdbfe}
+  .tri .b-china{background:#fef2f2;border:1px solid #fecaca}
+  .tri .b-ex{background:#f0fdf4;border:1px solid #bbf7d0}
+  .tri .t-lbl{font-size:12.5px;color:#64748b;margin-bottom:4px}
+  .tri .t-yoy{font-size:26px;font-weight:800;line-height:1.1}
+  .tri .t-num{font-size:12px;color:#475569;margin-top:4px}
+  .tri .b-cn .t-yoy{color:#2563eb}.tri .b-china .t-yoy{color:#dc2626}.tri .b-ex .t-yoy{color:#16a34a}
+
+  .verdict{background:#ecfeff;border:1px solid #a5f3fc;border-left:6px solid #0d9488;border-radius:10px;padding:16px 18px}
+  .verdict .vhead{font-size:16px;font-weight:800;color:#0f766e;margin-bottom:10px}
+  .verdict ul{list-style:none;padding:0}
+  .verdict li{font-size:13px;padding:5px 0 5px 16px;position:relative;line-height:1.5}
+  .verdict li::before{content:"▸";position:absolute;left:0;color:#0d9488;font-weight:800}
+  .verdict .kicker{font-size:12.5px;color:#334155;margin-top:10px;padding-top:10px;border-top:1px dashed #a5f3fc;letter-spacing:0;text-transform:none;font-weight:400}
+
+  .insights{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .ins-box{border-radius:12px;padding:18px 20px}
+  .ins-box h3{font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px}
+  .ins-box ul{list-style:none;padding:0}
+  .ins-box li{font-size:14px;padding:6px 0 6px 16px;position:relative;line-height:1.55}
+  .ins-box li::before{content:"▸";position:absolute;left:0;font-weight:800}
+  .obs{background:#f0f9ff;border:1px solid #bae6fd}.obs h3{color:#075985}.obs li::before{color:#0284c7}
+  .act{background:#f0fdf4;border:1px solid #bbf7d0}.act h3{color:#166534}.act li::before{color:#16a34a}
+
+  /* ── 導覽 UI ─────────────────────────────── */
+  .counter{position:fixed;top:20px;right:26px;z-index:30;font-size:14px;font-weight:700;color:#0f172a;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:6px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  .counter b{color:#2563eb}
+  .progress{position:fixed;top:0;left:0;height:4px;background:#2563eb;z-index:31;width:0;transition:width .25s}
+  .dots{position:fixed;top:50%;right:20px;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:10px}
+  .dots button{width:11px;height:11px;border-radius:50%;border:none;padding:0;cursor:pointer;background:#cbd5e1;transition:all .2s;position:relative}
+  .dots button:hover{background:#94a3b8;transform:scale(1.2)}
+  .dots button.act{background:#2563eb;transform:scale(1.35)}
+  .dots button::after{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:12px;font-weight:600;color:#fff;background:#0f172a;padding:3px 9px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .18s}
+  .dots button:hover::after{opacity:1}
+  .hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:30;font-size:12.5px;color:#64748b;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);padding:7px 15px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:opacity .5s}
+  .hint b{color:#0f172a}
+  .hint.hide{opacity:0}
+
+  @media(max-width:820px){
+    .slide{padding:52px 18px 60px}
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .two,.two2,.twoeq,.insights,.tri{grid-template-columns:1fr}
+    .cover-slide h1{font-size:30px}
+    .stitle{font-size:20px}
+    .dots{display:none}
+    table{font-size:12px}
+  }
+</style>
+<style>.soon{background:#fff;border:2px dashed #94a3b8;border-radius:14px;padding:34px 22px;text-align:center}.soon .big{font-size:44px;font-weight:800;color:#cbd5e1}.soon .t{font-size:16px;font-weight:700;color:#334155;margin-top:6px}.soon .s{font-size:13px;color:#64748b;margin-top:8px;line-height:1.6}</style>
+<style>.hub-home{position:fixed;top:20px;left:26px;z-index:40;font-family:"Microsoft JhengHei","PingFang TC",sans-serif;font-size:13px;font-weight:700;color:#0f172a;text-decoration:none;background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:6px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.12);line-height:1.4}.hub-home:hover{color:#db2777}@media(max-width:820px){.hub-home{top:12px;left:12px}}</style>
+</head>
+<body>
+<a class="hub-home" href="index.html">← 報告首頁</a>
+<div class="progress" id="prog"></div>
+<div class="counter"><b id="cur">1</b> / <span id="tot">1</span></div>
+<div class="dots" id="dots"></div>
+<div class="hint" id="hint">滑鼠滾輪 / <b>↓ →</b> / 空白鍵翻頁　·　右側圓點可跳頁</div>
+
+<div class="scroll" id="scroll">
+
+  <section class="slide cover-slide on" data-label="總覽">
+    <div class="inner">
+      <div class="kicker">直客銷售 · 2027 報名</div>
+      <h1>2027 年度各季報名數據分析</h1>
+      <div class="meta">口徑：直客銷售人頭數（出發季別報名） ｜ 本期 <b>2026/10/19</b> 快照 vs 2026 同期 <b>2025/10/20</b>（同 ISO 週 W43）｜ 🫐 藍莓製表</div>
+      <div class="kpis">
+        <div class="kpi"><div class="k-label">2027 Q1（1–3 月出發）</div><div class="k-val">692<small> 人</small></div><div class="k-sub down">YoY -12.4%（2026 同期 790）</div></div>
+        <div class="kpi teal"><div class="k-label">2027 Q2（4–6 月出發）</div><div class="k-val">104<small> 人</small></div><div class="k-sub up">YoY +13.0%（2026 同期 92，基數小）</div></div>
+        <div class="kpi amber"><div class="k-label">2027 上半年（Q1+Q2）</div><div class="k-val">796<small> 人</small></div><div class="k-sub down">YoY -9.8%（2026 同期 882）</div></div>
+        <div class="kpi green"><div class="k-label">全公司 Q1 報名（含同業等）</div><div class="k-val">4,430<small> 人</small></div><div class="k-sub up">YoY +16.8% ｜ 直客佔 15.6%</div></div>
+      </div>
+      <div class="headline" style="margin-top:22px;background:rgba(255,255,255,.08);color:#e2e8f0;border-left-color:#38bdf8">2027 Q3、Q4 目前人資報表<b style="color:#fbbf24">尚未開放報名欄位</b>，本檔先呈現 Q1／Q2，待 Q3／Q4 開放後補入。</div>
+    </div>
+  </section>
+
+  <section class="slide" data-label="Q1 逐線">
+    <div class="inner">
+      <div class="kicker">01 · 2027 Q1（1–3 月出發）</div>
+      <div class="stitle"><span class="dot" style="background:#0891b2"></span>Q1 直客報名 692 人，YoY -12.4%</div>
+      <div class="cap">已累積 2026 同期的 88%；近 2 週新增 +149（去年同期 +134），差距由 10/5 的 -17.2% 收斂至 -12.4%。</div>
+      <div class="two">
+        <div class="chart-wrap"><canvas id="cQ1"></canvas></div>
+        <div><table class="tbl-tight"><thead><tr><th>線別</th><th>2027</th><th>2026 同期</th><th>差</th><th>YoY</th></tr></thead><tbody>
+<tr><td>南歐</td><td>167</td><td>139</td><td class="pos">+28</td><td class="pos">+20%</td></tr>
+<tr><td>東歐</td><td>108</td><td>78</td><td class="pos">+30</td><td class="pos">+38%</td></tr>
+<tr><td>日本</td><td>104</td><td>90</td><td class="pos">+14</td><td class="pos">+16%</td></tr>
+<tr><td>北歐</td><td>90</td><td>77</td><td class="pos">+13</td><td class="pos">+17%</td></tr>
+<tr><td>紐西蘭．澳洲</td><td>43</td><td>81</td><td class="neg">-38</td><td class="neg">-47%</td></tr>
+<tr><td>南亞</td><td>42</td><td>9</td><td class="pos">+33</td><td class="pos">+367%</td></tr>
+<tr><td>中西歐</td><td>39</td><td>54</td><td class="neg">-15</td><td class="neg">-28%</td></tr>
+<tr><td>美洲</td><td>35</td><td>22</td><td class="pos">+13</td><td class="pos">+59%</td></tr>
+<tr><td>遊輪</td><td>25</td><td>64</td><td class="neg">-39</td><td class="neg">-61%</td></tr>
+<tr><td>中國</td><td>19</td><td>38</td><td class="neg">-19</td><td class="neg">-50%</td></tr>
+<tr><td>非洲</td><td>15</td><td>76</td><td class="neg">-61</td><td class="neg">-80%</td></tr>
+<tr><td>俄羅斯．中亞．蒙古</td><td>4</td><td>12</td><td class="neg">-8</td><td class="neg">-67%</td></tr>
+<tr><td>中東</td><td>1</td><td>33</td><td class="neg">-32</td><td class="neg">-97%</td></tr>
+<tr><td>東南亞</td><td>0</td><td>11</td><td class="neg">-11</td><td class="neg">-100%</td></tr>
+<tr><td>自由行</td><td>0</td><td>6</td><td class="neg">-6</td><td class="neg">-100%</td></tr>
+<tr style="background:#e0e7ff;font-weight:800"><td>直客合計</td><td>692</td><td>790</td><td class="neg">-98</td><td class="neg">-12%</td></tr>
+</tbody></table></div>
+      </div>
+      <div class="alert info"><b>領先線：</b>南亞 +33、東歐 +30、南歐 +28、日本 +14、北歐 +13、美洲 +13（合計 +131）；<b>落後線：</b>非洲 -61、遊輪 -39、紐西蘭．澳洲 -38、中東 -32、中國 -19、中西歐 -15（合計 -229）。落後集中在非洲、遊輪、紐澳（三線去年同期 221 人、現僅 83 人），中東、東南亞、自由行幾乎空窗。</div>
+    </div>
+  </section>
+
+  <section class="slide" data-label="Q2 逐線">
+    <div class="inner">
+      <div class="kicker">02 · 2027 Q2（4–6 月出發）</div>
+      <div class="stitle"><span class="dot" style="background:#0891b2"></span>Q2 直客報名 104 人，YoY +13.0%</div>
+      <div class="cap">Q2 目前基數很小（104 人 vs 92 人），單一團體即可大幅改變比例，YoY 僅供參考；近 2 週新增 +25（去年同期 +51）。</div>
+      <div class="two">
+        <div class="chart-wrap"><canvas id="cQ2"></canvas></div>
+        <div><table><thead><tr><th>線別</th><th>2027</th><th>2026 同期</th><th>差</th><th>YoY</th></tr></thead><tbody>
+<tr><td>南歐</td><td>40</td><td>11</td><td class="pos">+29</td><td class="pos">+264%</td></tr>
+<tr><td>俄羅斯．中亞．蒙古</td><td>16</td><td>0</td><td class="pos">+16</td><td class="zero">—</td></tr>
+<tr><td>中西歐</td><td>12</td><td>26</td><td class="neg">-14</td><td class="neg">-54%</td></tr>
+<tr><td>東歐</td><td>12</td><td>13</td><td class="neg">-1</td><td class="neg">-8%</td></tr>
+<tr><td>遊輪</td><td>8</td><td>9</td><td class="neg">-1</td><td class="neg">-11%</td></tr>
+<tr><td>北歐</td><td>6</td><td>0</td><td class="pos">+6</td><td class="zero">—</td></tr>
+<tr><td>中國</td><td>6</td><td>0</td><td class="pos">+6</td><td class="zero">—</td></tr>
+<tr><td>日本</td><td>4</td><td>33</td><td class="neg">-29</td><td class="neg">-88%</td></tr>
+<tr style="background:#e0e7ff;font-weight:800"><td>直客合計</td><td>104</td><td>92</td><td class="pos">+12</td><td class="pos">+13%</td></tr>
+</tbody></table></div>
+      </div>
+      <div class="alert info"><b>領先：</b>南歐 +29、俄羅斯．中亞．蒙古 +16、北歐 +6、中國 +6（南歐為主）；<b>落後：</b>日本 -29、中西歐 -14、東歐 -1（日本去年同期已有 33 人、現僅 4 人）。Q2 其餘線別仍為 0。</div>
+    </div>
+  </section>
+
+  <section class="slide" data-label="進度動能">
+    <div class="inner">
+      <div class="kicker">03 · 報名進度與動能</div>
+      <div class="stitle"><span class="dot" style="background:#f59e0b"></span>近 2 週追趕：Q1 快於去年、Q2 慢於去年</div>
+      <div class="two2">
+        <div class="chart-wrap" style="height:min(46vh,360px)"><canvas id="cPace"></canvas></div>
+        <div>
+          <table><thead><tr><th>項目</th><th>Q1</th><th>Q2</th></tr></thead><tbody>
+            <tr><td>2027 目前（10/19）</td><td>692</td><td>104</td></tr>
+            <tr><td>2027 前期（10/5）</td><td>543</td><td>79</td></tr>
+            <tr><td>2026 同期（2025/10/20）</td><td>790</td><td>92</td></tr>
+            <tr><td>2026 前期（2025/10/7）</td><td>656</td><td>41</td></tr>
+            <tr><td>YoY（前期 → 本期）</td><td>-17.2% → <span class="neg">-12.4%</span></td><td>+92.7% → <span class="pos">+13.0%</span></td></tr>
+            <tr><td>佔 2026 該季最終值</td><td>44.3%<br><small style="color:#64748b">去年同期 50.5%</small></td><td>6.4%<br><small style="color:#64748b">去年同期 5.7%</small></td></tr>
+          </tbody></table>
+          <div class="note">＊2026 最終值：Q1 1,563、Q2 ＝ H1 3,180 − 1,563 ＝ 1617（推算）。2026 Q1 最終值含日本特別團（約 619 人），故不以同期轉換率推估 2027 最終值。</div>
+        </div>
+      </div>
+      <div class="alert">Q1 近 2 週新增 <b>+149</b>，高於去年同期的 +134，逐週追近；其中南歐 +49、美洲 +29、東歐 +26 貢獻最大。Q2 近 2 週新增 +25，去年同期 +51（主要是日本一次 +33），YoY 由 +93% 收斂至 +13%。</div>
+    </div>
+  </section>
+
+  <section class="slide" data-label="線別新增">
+    <div class="inner">
+      <div class="kicker">03 · 報名進度與動能（續）</div>
+      <div class="stitle"><span class="dot" style="background:#f59e0b"></span>16 線別近 2 週新增報名狀況</div>
+      <div class="cap">2027 為 2026/10/5 → 10/19；去年同期為 2025/10/7 → 10/20。依兩季合計新增由多到少排序；「差」＝2027 新增 − 去年同期新增。</div>
+      <table class="tbl-tight"><thead><tr><th rowspan="2">線別</th><th colspan="3">Q1（1–3 月出發）新增</th><th colspan="3">Q2（4–6 月出發）新增</th><th colspan="2">Q1+Q2 新增</th></tr><tr><th>2027</th><th>去年同期</th><th>差</th><th>2027</th><th>去年同期</th><th>差</th><th>2027</th><th>去年同期</th></tr></thead><tbody>
+<tr><td>南歐</td><td>+49</td><td>+53</td><td class="neg">-4</td><td>+10</td><td>+9</td><td class="pos">+1</td><td><b>+59</b></td><td>+62</td></tr>
+<tr><td>東歐</td><td>+26</td><td>+16</td><td class="pos">+10</td><td>+6</td><td>+5</td><td class="pos">+1</td><td><b>+32</b></td><td>+21</td></tr>
+<tr><td>美洲</td><td>+29</td><td>+5</td><td class="pos">+24</td><td>0</td><td>0</td><td class="zero">0</td><td><b>+29</b></td><td>+5</td></tr>
+<tr><td>中西歐</td><td>+9</td><td>+3</td><td class="pos">+6</td><td>+5</td><td>+1</td><td class="pos">+4</td><td><b>+14</b></td><td>+4</td></tr>
+<tr><td>日本</td><td>+11</td><td>+4</td><td class="pos">+7</td><td>0</td><td>+33</td><td class="neg">-33</td><td><b>+11</b></td><td>+37</td></tr>
+<tr><td>中國</td><td>+7</td><td>+10</td><td class="neg">-3</td><td>0</td><td>0</td><td class="zero">0</td><td><b>+7</b></td><td>+10</td></tr>
+<tr><td>非洲</td><td>+6</td><td>+2</td><td class="pos">+4</td><td>0</td><td>0</td><td class="zero">0</td><td><b>+6</b></td><td>+2</td></tr>
+<tr><td>遊輪</td><td>+2</td><td>+3</td><td class="neg">-1</td><td>+4</td><td>+3</td><td class="pos">+1</td><td><b>+6</b></td><td>+6</td></tr>
+<tr><td>北歐</td><td>+3</td><td>+7</td><td class="neg">-4</td><td>0</td><td>0</td><td class="zero">0</td><td><b>+3</b></td><td>+7</td></tr>
+<tr><td>紐西蘭．澳洲</td><td>+3</td><td>+14</td><td class="neg">-11</td><td>0</td><td>0</td><td class="zero">0</td><td><b>+3</b></td><td>+14</td></tr>
+<tr><td>南亞</td><td>+2</td><td>-3</td><td class="pos">+5</td><td>0</td><td>0</td><td class="zero">0</td><td><b>+2</b></td><td>-3</td></tr>
+<tr><td>俄羅斯．中亞．蒙古</td><td>+2</td><td>+8</td><td class="neg">-6</td><td>0</td><td>0</td><td class="zero">0</td><td><b>+2</b></td><td>+8</td></tr>
+<tr><td>中東</td><td>0</td><td>+6</td><td class="neg">-6</td><td>0</td><td>0</td><td class="zero">0</td><td><b>0</b></td><td>+6</td></tr>
+<tr style="color:#94a3b8"><td>韓國</td><td>0</td><td>0</td><td class="zero">0</td><td>0</td><td>0</td><td class="zero">0</td><td>0</td><td>0</td></tr>
+<tr><td>東南亞</td><td>0</td><td>+6</td><td class="neg">-6</td><td>0</td><td>0</td><td class="zero">0</td><td><b>0</b></td><td>+6</td></tr>
+<tr style="color:#94a3b8"><td>自由行</td><td>0</td><td>0</td><td class="zero">0</td><td>0</td><td>0</td><td class="zero">0</td><td>0</td><td>0</td></tr>
+<tr style="background:#e0e7ff;font-weight:800"><td>直客合計</td><td>+149</td><td>+134</td><td class="pos">+15</td><td>+25</td><td>+51</td><td class="neg">-26</td><td>+174</td><td>+185</td></tr>
+      </tbody></table>
+      <div class="note">＊新增＝本期累計人頭 − 上期累計人頭（直客）。灰色列為兩季皆無新增。</div>
+    </div>
+  </section>
+
+  <section class="slide" data-label="全公司結構">
+    <div class="inner">
+      <div class="kicker">04 · 全公司單位結構</div>
+      <div class="stitle"><span class="dot" style="background:#7c3aed"></span>全公司報名成長，但直客占比下降</div>
+      <div class="cap">Q1 全公司 4,430 人（+16.8%）、Q2 1,341 人（+50.8%）；直客佔比 Q1 15.6%（去年同期 20.8%）、Q2 7.8%（去年同期 10.3%）。</div>
+      <div class="two">
+        <div class="chart-wrap" style="height:min(46vh,360px)"><canvas id="cUn"></canvas></div>
+        <div>
+          <div class="mini-h">Q1（1–3 月）</div>
+          <table class="tbl-tight"><thead><tr><th>單位</th><th>2027</th><th>2026 同期</th><th>差</th><th>YoY</th></tr></thead><tbody>
+<tr><td>同業</td><td>1,629</td><td>1,177</td><td class="pos">+452</td><td class="pos">+38.4%</td></tr>
+<tr style="background:#ccfbf1;font-weight:800"><td>直客</td><td>692</td><td>790</td><td class="neg">-98</td><td class="neg">-12.4%</td></tr>
+<tr><td>商務</td><td>1</td><td>2</td><td class="neg">-1</td><td class="neg">-50.0%</td></tr>
+<tr><td>專案</td><td>59</td><td>28</td><td class="pos">+31</td><td class="pos">+110.7%</td></tr>
+<tr><td>獎勵</td><td>90</td><td>93</td><td class="neg">-3</td><td class="neg">-3.2%</td></tr>
+<tr><td>直售業務處</td><td>842</td><td>913</td><td class="neg">-71</td><td class="neg">-7.8%</td></tr>
+<tr><td>分公司</td><td>1,959</td><td>1,704</td><td class="pos">+255</td><td class="pos">+15.0%</td></tr>
+<tr style="background:#e0e7ff;font-weight:800"><td>全公司</td><td>4,430</td><td>3,794</td><td class="pos">+636</td><td class="pos">+16.8%</td></tr>
+          </tbody></table>
+          <div class="mini-h" style="margin-top:12px">Q2（4–6 月）</div>
+          <table class="tbl-tight"><thead><tr><th>單位</th><th>2027</th><th>2026 同期</th><th>差</th><th>YoY</th></tr></thead><tbody>
+<tr><td>同業</td><td>431</td><td>325</td><td class="pos">+106</td><td class="pos">+32.6%</td></tr>
+<tr style="background:#ccfbf1;font-weight:800"><td>直客</td><td>104</td><td>92</td><td class="pos">+12</td><td class="pos">+13.0%</td></tr>
+<tr><td>商務</td><td>0</td><td>0</td><td class="zero">0</td><td class="zero">—</td></tr>
+<tr><td>專案</td><td>37</td><td>28</td><td class="pos">+9</td><td class="pos">+32.1%</td></tr>
+<tr><td>獎勵</td><td>13</td><td>58</td><td class="neg">-45</td><td class="neg">-77.6%</td></tr>
+<tr><td>直售業務處</td><td>154</td><td>178</td><td class="neg">-24</td><td class="neg">-13.5%</td></tr>
+<tr><td>分公司</td><td>756</td><td>386</td><td class="pos">+370</td><td class="pos">+95.9%</td></tr>
+<tr style="background:#e0e7ff;font-weight:800"><td>全公司</td><td>1,341</td><td>889</td><td class="pos">+452</td><td class="pos">+50.8%</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+      <div class="mini-h" style="margin-top:14px">直客占全公司比例：含 vs 不含中國、日本</div>
+      <table class="tbl-tight"><thead><tr><th>季別</th><th>2027</th><th>2026 同期</th><th>變化</th></tr></thead><tbody>
+<tr><td>Q1 含中國、日本</td><td>15.6%</td><td>20.8%</td><td class="neg">-5.2 pt</td></tr>
+<tr style="background:#f0fdf4;font-weight:700"><td>Q1 不含中國、日本</td><td>22.6%</td><td>24.2%</td><td class="neg">-1.5 pt</td></tr>
+<tr><td style="padding-left:22px;font-weight:500">直客 / 全公司人數</td><td>569 / 2,514</td><td>662 / 2,740</td><td>直客 -14.0%｜全公司 -8.2%</td></tr>
+<tr><td>Q2 含中國、日本</td><td>7.8%</td><td>10.3%</td><td class="neg">-2.6 pt</td></tr>
+<tr style="background:#f0fdf4;font-weight:700"><td>Q2 不含中國、日本</td><td>10.7%</td><td>8.6%</td><td class="pos">+2.1 pt</td></tr>
+<tr><td style="padding-left:22px;font-weight:500">直客 / 全公司人數</td><td>94 / 879</td><td>59 / 684</td><td>直客 +59.3%｜全公司 +28.5%</td></tr>
+      </tbody></table>
+      <div class="alert info" style="margin-top:10px"><b>不含中日，Q1 占比仍降（22.6% vs 24.2%），但降幅由 5.2 個百分點縮為 1.5</b>——全公司成長主要由中國、日本帶動（不含中日的全公司 Q1 為 -8.2%）。Q2 不含中日占比反而上升，但直客僅 94 人、基數小。</div>
+      <div class="note">＊「直售」＝直客＋商務＋專案＋獎勵等直售業務處合計；「分公司」＝桃園、新竹、台中、嘉義、台南、高雄合計。資料：人資 2026業績總表(1019).pdf、2025業績總表(1020).pdf。</div>
+    </div>
+  </section>
+
+  <section class="slide" data-label="Q3 Q4">
+    <div class="inner">
+      <div class="kicker">05 · 2027 Q3／Q4</div>
+      <div class="stitle"><span class="dot" style="background:#94a3b8"></span>下半年報名：尚無資料</div>
+      <div class="cap">人資「全公司人數統計表」目前僅列出 2027 Q1、Q2 兩季（去年同期亦僅 2026 Q1、Q2），Q3／Q4 尚未開放報名欄位，故不呈現數字、不做推估。</div>
+      <div class="tri">
+        <div class="soon"><div class="big">Q3</div><div class="t">2027 Q3（7–9 月出發）</div><div class="s">尚無報名資料<br>待人資開放後補入</div></div>
+        <div class="soon"><div class="big">Q4</div><div class="t">2027 Q4（10–12 月出發）</div><div class="s">尚無報名資料<br>待人資開放後補入</div></div>
+        <div class="soon"><div class="big">全年</div><div class="t">2027 全年累計</div><div class="s">目前僅 Q1＋Q2 = 796 人<br>（2026 同期 882 人）</div></div>
+      </div>
+      <div class="alert info">更新方式：之後每週業績總表 PDF 出現 2027 Q3／Q4 區塊，即可沿用本檔同一口徑（本期 vs 2026 同 ISO 週快照）直接補頁。</div>
+    </div>
+  </section>
+
+  <section class="slide" data-label="結論建議">
+    <div class="inner">
+      <div class="kicker">06 · 結論與建議</div>
+      <div class="stitle"><span class="dot" style="background:#0d9488"></span>2027 上半年：Q1 追趕中，Q2 剛起步</div>
+      <div class="insights">
+        <div class="ins-box obs"><h3>🔍 觀察</h3><ul>
+          <li>上半年直客報名 <b>796</b> 人，YoY <b>-9.8%</b>；Q1 -12.4%、Q2 +13.0%（基數小）。</li>
+          <li>Q1 領先線以 <b>南亞、東歐、南歐</b> 為主；落後集中在 <b>非洲、遊輪、紐澳、中東</b>。</li>
+          <li>近 2 週 Q1 新增 +149 優於去年同期 +134，差距由 -17.2% 縮至 -12.4%。</li>
+          <li>全公司 Q1 +16.8%、同業 +38.4%，直客佔比卻由 20.8% 降至 15.6%。</li>
+        </ul></div>
+        <div class="ins-box act"><h3>🎯 建議</h3><ul>
+          <li>Q1 補強非洲、遊輪、紐澳：三線去年同期 221 人、現僅 83 人，是追平去年的最大缺口。</li>
+          <li>延續東歐、南歐、南亞的 Q1 動能，維持行銷資源。</li>
+          <li>Q2 日本去年同期已有 33 人、今年 4 人，建議向業務確認日本團收單時程。</li>
+          <li>持續每週追蹤；Q3／Q4 開放後補入並檢視全年報名曲線。</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ── 導覽邏輯 ─────────────────────────────── */
+var scroll=document.getElementById('scroll');
+var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+var dotsWrap=document.getElementById('dots');
+var curEl=document.getElementById('cur'),totEl=document.getElementById('tot');
+var prog=document.getElementById('prog'),hint=document.getElementById('hint');
+var idx=0;
+totEl.textContent=slides.length;
+
+slides.forEach(function(s,i){
+  var b=document.createElement('button');
+  b.setAttribute('data-label',(i+1)+' · '+(s.dataset.label||''));
+  b.addEventListener('click',function(){go(i);});
+  dotsWrap.appendChild(b);
+});
+var dots=Array.prototype.slice.call(dotsWrap.children);
+
+function setActive(i){
+  idx=i;
+  curEl.textContent=i+1;
+  prog.style.width=((i+1)/slides.length*100)+'%';
+  dots.forEach(function(d,j){d.classList.toggle('act',j===i);});
+  slides.forEach(function(s,j){if(j===i)s.classList.add('on');});
+}
+function go(i){
+  i=Math.max(0,Math.min(slides.length-1,i));
+  slides[i].scrollIntoView({behavior:'smooth'});
+}
+
+var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting&&e.intersectionRatio>=0.55){
+      setActive(slides.indexOf(e.target));
+    }
+  });
+},{root:scroll,threshold:[0.55]});
+slides.forEach(function(s){io.observe(s);});
+
+document.addEventListener('keydown',function(e){
+  if(['ArrowDown','ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(idx+1);}
+  else if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(idx-1);}
+  else if(e.key==='Home'){e.preventDefault();go(0);}
+  else if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+});
+
+var hid=false;
+scroll.addEventListener('scroll',function(){if(!hid){hid=true;hint.classList.add('hide');}},{passive:true});
+setTimeout(function(){hint.classList.add('hide');},6000);
+
+setActive(0);
+
+Chart.defaults.font.family="'Microsoft JhengHei','PingFang TC',sans-serif";Chart.defaults.font.size=12.5;Chart.defaults.color="#475569";
+function bars(id,labels,cur,ly,title,horiz){
+  new Chart(document.getElementById(id),{type:'bar',
+    data:{labels:labels,datasets:[{label:'2026 同期',data:ly,backgroundColor:'#94a3b8',borderRadius:3},{label:'2027 目前',data:cur,backgroundColor:'#0891b2',borderRadius:3}]},
+    options:{indexAxis:horiz?'y':'x',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},title:{display:true,text:title,color:'#0f172a',font:{size:13,weight:'700'}}},scales:{x:{beginAtZero:true,grid:{display:false}},y:{beginAtZero:true,grid:{color:'#eef2f7'}}}}
+  });
+}
+bars('cQ1',["南歐", "東歐", "日本", "北歐", "紐西蘭．澳洲", "南亞", "中西歐", "美洲", "遊輪", "中國", "非洲", "俄羅斯．中亞．蒙古", "中東", "東南亞", "自由行"],[167, 108, 104, 90, 43, 42, 39, 35, 25, 19, 15, 4, 1, 0, 0],[139, 78, 90, 77, 81, 9, 54, 22, 64, 38, 76, 12, 33, 11, 6],'Q1 逐線：2027 vs 2026 同期（人頭）',true);
+bars('cQ2',["南歐", "俄羅斯．中亞．蒙古", "中西歐", "東歐", "遊輪", "北歐", "中國", "日本"],[40, 16, 12, 12, 8, 6, 6, 4],[11, 0, 26, 13, 9, 0, 0, 33],'Q2 逐線：2027 vs 2026 同期（人頭）',true);
+bars('cUn',["同業", "直客", "專案", "獎勵", "分公司"],[1629, 692, 59, 90, 1959],[1177, 790, 28, 93, 1704],'2027 Q1 各單位：報名人頭 vs 2026 同期',false);
+new Chart(document.getElementById('cPace'),{type:'bar',
+  data:{labels:['Q1 近 2 週新增','Q2 近 2 週新增'],datasets:[{label:'2026 同期（2025/10/7→10/20）',data:[134,51],backgroundColor:'#94a3b8',borderRadius:3},{label:'2027（2026/10/5→10/19）',data:[149,25],backgroundColor:'#0891b2',borderRadius:3}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},title:{display:true,text:'近 2 週報名新增人頭',color:'#0f172a',font:{size:13,weight:'700'}}},scales:{y:{beginAtZero:true}}}
+});
+
+</script>
+</body>
+</html>
