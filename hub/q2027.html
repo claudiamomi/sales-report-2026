@@ -403,11 +403,12 @@ function go(i){
 
 var io=new IntersectionObserver(function(entries){
   entries.forEach(function(e){
-    if(e.isIntersecting&&e.intersectionRatio>=0.55){
+    // 比螢幕高的頁面整頁比例到不了 0.55，改以佔螢幕高度判斷
+    if(e.isIntersecting&&(e.intersectionRatio>=0.55||e.intersectionRect.height>=e.rootBounds.height*0.55)){
       setActive(slides.indexOf(e.target));
     }
   });
-},{root:scroll,threshold:[0.55]});
+},{root:scroll,threshold:[0,0.1,0.2,0.3,0.4,0.5,0.55,0.6,0.7,0.8,0.9,1]});
 slides.forEach(function(s){io.observe(s);});
 
 document.addEventListener('keydown',function(e){
