@@ -280,7 +280,7 @@
     <div class="inner">
       <div class="kicker">04 · 全公司單位結構</div>
       <div class="stitle"><span class="dot" style="background:#7c3aed"></span>全公司報名成長，但直客占比下降</div>
-      <div class="cap">Q1 全公司 5,488 人（+20.4%）、Q2 1,767 人（+31.1%）；直客佔比 Q1 15.8%（去年同期 20.0%）、Q2 7.4%（去年同期 10.8%）。</div>
+      <div class="cap">Q1 全公司 5,488 人（+20.4%）、Q2 1,767 人（+31.1%）；直客佔比 Q1 15.8%（去年同期 20.0%）、Q2 7.4%（去年同期 10.8%）。分公司 Q1 +531 主要來自<b>桃園 +473</b>（249→722），新竹 -123、台南 -54 下滑；Q2 除台中 -47 外各分公司皆成長。</div>
       <div class="two">
         <div class="chart-wrap" style="height:min(46vh,360px)"><canvas id="cUn"></canvas></div>
         <div>
@@ -293,6 +293,12 @@
 <tr><td>獎勵</td><td>114</td><td>114</td><td class="zero">0</td><td class="zero">+0.0%</td></tr>
 <tr><td>直售業務處</td><td>1,041</td><td>1,057</td><td class="neg">-16</td><td class="neg">-1.5%</td></tr>
 <tr><td>分公司</td><td>2,592</td><td>2,061</td><td class="pos">+531</td><td class="pos">+25.8%</td></tr>
+<tr class="br"><td style="padding-left:22px;font-weight:500">桃園</td><td>722</td><td>249</td><td class="pos">+473</td><td class="pos">+190.0%</td></tr>
+<tr class="br"><td style="padding-left:22px;font-weight:500">新竹</td><td>239</td><td>362</td><td class="neg">-123</td><td class="neg">-34.0%</td></tr>
+<tr class="br"><td style="padding-left:22px;font-weight:500">台中</td><td>667</td><td>560</td><td class="pos">+107</td><td class="pos">+19.1%</td></tr>
+<tr class="br"><td style="padding-left:22px;font-weight:500">嘉義</td><td>137</td><td>78</td><td class="pos">+59</td><td class="pos">+75.6%</td></tr>
+<tr class="br"><td style="padding-left:22px;font-weight:500">台南</td><td>370</td><td>424</td><td class="neg">-54</td><td class="neg">-12.7%</td></tr>
+<tr class="br"><td style="padding-left:22px;font-weight:500">高雄</td><td>457</td><td>388</td><td class="pos">+69</td><td class="pos">+17.8%</td></tr>
 <tr style="background:#e0e7ff;font-weight:800"><td>全公司</td><td>5,488</td><td>4,558</td><td class="pos">+930</td><td class="pos">+20.4%</td></tr>
           </tbody></table>
           <div class="mini-h" style="margin-top:12px">Q2（4–6 月）</div>
@@ -304,6 +310,12 @@
 <tr><td>獎勵</td><td>21</td><td>58</td><td class="neg">-37</td><td class="neg">-63.8%</td></tr>
 <tr><td>直售業務處</td><td>207</td><td>232</td><td class="neg">-25</td><td class="neg">-10.8%</td></tr>
 <tr><td>分公司</td><td>956</td><td>612</td><td class="pos">+344</td><td class="pos">+56.2%</td></tr>
+<tr class="br"><td style="padding-left:22px;font-weight:500">桃園</td><td>230</td><td>70</td><td class="pos">+160</td><td class="pos">+228.6%</td></tr>
+<tr class="br"><td style="padding-left:22px;font-weight:500">新竹</td><td>118</td><td>83</td><td class="pos">+35</td><td class="pos">+42.2%</td></tr>
+<tr class="br"><td style="padding-left:22px;font-weight:500">台中</td><td>166</td><td>213</td><td class="neg">-47</td><td class="neg">-22.1%</td></tr>
+<tr class="br"><td style="padding-left:22px;font-weight:500">嘉義</td><td>72</td><td>60</td><td class="pos">+12</td><td class="pos">+20.0%</td></tr>
+<tr class="br"><td style="padding-left:22px;font-weight:500">台南</td><td>142</td><td>76</td><td class="pos">+66</td><td class="pos">+86.8%</td></tr>
+<tr class="br"><td style="padding-left:22px;font-weight:500">高雄</td><td>228</td><td>110</td><td class="pos">+118</td><td class="pos">+107.3%</td></tr>
 <tr style="background:#e0e7ff;font-weight:800"><td>全公司</td><td>1,767</td><td>1,348</td><td class="pos">+419</td><td class="pos">+31.1%</td></tr>
           </tbody></table>
         </div>
@@ -420,7 +432,7 @@ function bars(id,labels,cur,ly,title,horiz){
 }
 bars('cQ1',["南歐", "東歐", "日本", "北歐", "中國", "紐西蘭．澳洲", "中西歐", "美洲", "南亞", "遊輪", "非洲", "俄羅斯．中亞．蒙古", "中東", "東南亞", "自由行"],[180, 153, 123, 92, 69, 56, 48, 48, 47, 25, 19, 6, 1, 0, 0],[150, 95, 99, 83, 49, 99, 66, 30, 13, 80, 83, 18, 33, 9, 6],'Q1 逐線：2027 vs 2026 同期（人頭）',true);
 bars('cQ2',["南歐", "東歐", "俄羅斯．中亞．蒙古", "中西歐", "遊輪", "日本", "北歐", "中國"],[46, 24, 16, 14, 10, 9, 6, 6],[26, 24, 0, 36, 23, 37, 0, 0],'Q2 逐線：2027 vs 2026 同期（人頭）',true);
-bars('cUn',["同業", "直客", "專案", "獎勵", "分公司"],[1855, 867, 59, 114, 2592],[1440, 913, 28, 114, 2061],'2027 Q1 各單位：報名人頭 vs 2026 同期',false);
+bars('cUn',["同業", "直客", "專案", "獎勵", "桃園", "新竹", "台中", "嘉義", "台南", "高雄"],[1855, 867, 59, 114, 722, 239, 667, 137, 370, 457],[1440, 913, 28, 114, 249, 362, 560, 78, 424, 388],'2027 Q1 各單位（分公司逐一列出）：報名人頭 vs 2026 同期',false);
 new Chart(document.getElementById('cPace'),{type:'bar',
   data:{labels:['Q1 近 2 週新增','Q2 近 2 週新增'],datasets:[{label:'2026 同期（2025/10/20→11/3）',data:[123,54],backgroundColor:'#94a3b8',borderRadius:3},{label:'2027（2026/10/19→11/2）',data:[175,27],backgroundColor:'#0891b2',borderRadius:3}]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},title:{display:true,text:'近 2 週報名新增人頭',color:'#0f172a',font:{size:13,weight:'700'}}},scales:{y:{beginAtZero:true}}}
